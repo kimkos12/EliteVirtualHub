@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payments | Kimkos Virtual Assistant</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">Kimkos VA</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="hire.html">Hire Me</a></li>
+        <li><a href="payments.html" class="active">Payments</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="payment-section">
+    <h1>Make a Payment</h1>
+    <p>Secure and easy payments for all my Virtual Assistant and Data Entry services.</p>
+
+    <div class="payment-container">
+
+      <!-- Pricing summary -->
+      <div class="pricing-summary">
+        <h2>Updated Service Prices (Discounted by $5)</h2>
+        <ul>
+          <li>📋 Data Entry – <strong>$20</strong> (was $25)</li>
+          <li>💼 Virtual Assistant Services – <strong>$30</strong> (was $35)</li>
+          <li>📊 Bookkeeping – <strong>$40</strong> (was $45)</li>
+          <li>📱 Social Media Management – <strong>$45</strong> (was $50)</li>
+        </ul>
+      </div>
+
+      <!-- Payment options -->
+      <div class="payment-options">
+        <div class="mpesa-payment">
+          <h2>Pay via M-Pesa</h2>
+          <p>Send your payment to:</p>
+          <p><strong>Paybill:</strong> 247247</p>
+          <p><strong>Account Number:</strong> kimkosva</p>
+          <p><strong>Phone:</strong> +254 712 859 814</p>
+          <p>Once payment is sent, kindly share the confirmation via the contact form or email.</p>
+          <button class="btn" onclick="alert('Thank you! Please confirm via email or contact form.')">Confirm M-Pesa Payment</button>
+        </div>
+
+        <div class="card-payment">
+          <h2>Pay via Card</h2>
+          <form onsubmit="event.preventDefault(); alert('Payment processed successfully!');">
+            <label for="name">Name on Card</label>
+            <input type="text" id="name" required>
+
+            <label for="card">Card Number</label>
+            <input type="text" id="card" maxlength="16" required>
+
+            <div class="row">
+              <div>
+                <label for="expiry">Expiry Date</label>
+                <input type="text" id="expiry" placeholder="MM/YY" required>
+              </div>
+              <div>
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" maxlength="3" required>
+              </div>
+            </div>
+
+            <button type="submit" class="btn">Pay Now</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Kimkos Virtual Assistant | Designed by Victor Kosgei Kimutai</p>
+  </footer>
+
+  <style>
+    .payment-section {
+      padding: 40px;
+      text-align: center;
+    }
+    .payment-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 30px;
+    }
+    .payment-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+    .mpesa-payment, .card-payment {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      padding: 30px;
+      width: 350px;
+      text-align: left;
+    }
+    .pricing-summary {
+      text-align: left;
+      background: #f9f9f9;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      margin-bottom: 30px;
+    }
+    form input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .btn {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+    .row {
+      display: flex;
+      gap: 10px;
+    }
+    @media(max-width: 768px){
+      .payment-container, .payment-options {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</body>
+</html>
