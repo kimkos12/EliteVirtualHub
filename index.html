@@ -267,6 +267,71 @@
     </div>
   </section>
 
+  <!-- PAYMENTS -->
+  <section id="Payments" class="mb-5">
+    <div class="text-center mb-4">
+      <h2 class="fw-bold">Payments</h2>
+      <p class="text-muted">Secure and easy payments for all my Virtual Assistant and Data Services.</p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <div class="card p-4 mb-4 shadow-sm">
+          <h4 class="fw-bold mb-3">Updated Service Prices (Discounted by $5)</h4>
+          <ul class="list-unstyled mb-0">
+            <li>📋 Data Entry – <strong>$20</strong> (was $25)</li>
+            <li>💼 Virtual Assistant Services – <strong>$30</strong> (was $35)</li>
+            <li>📊 Bookkeeping – <strong>$40</strong> (was $45)</li>
+            <li>📱 Social Media Management – <strong>$45</strong> (was $50)</li>
+          </ul>
+        </div>
+
+        <div class="row g-4">
+          <!-- M-PESA -->
+          <div class="col-md-6">
+            <div class="card h-100 p-4 shadow-sm">
+              <h4 class="fw-bold">Pay via M-Pesa</h4>
+              <p>Send your payment to:</p>
+              <ul class="list-unstyled small mb-3">
+                <li><strong>Phone:</strong> +254 712 859 814</li>
+              </ul>
+              <p class="text-muted small">Once payment is sent, kindly share the confirmation via the contact form or email.</p>
+              <button class="btn hire-btn w-100" onclick="alert('Thank you! Please confirm via email or contact form.')">Confirm M-Pesa Payment</button>
+            </div>
+          </div>
+
+          <!-- CARD PAYMENT -->
+          <div class="col-md-6">
+            <div class="card h-100 p-4 shadow-sm">
+              <h4 class="fw-bold">Pay via Card</h4>
+              <form onsubmit="event.preventDefault(); alert('Payment processed successfully!');">
+                <div class="mb-3">
+                  <label class="form-label">Name on Card</label>
+                  <input type="text" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Card Number</label>
+                  <input type="text" maxlength="16" class="form-control" required>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <label class="form-label">Expiry Date</label>
+                    <input type="text" placeholder="MM/YY" class="form-control" required>
+                  </div>
+                  <div class="col">
+                    <label class="form-label">CVV</label>
+                    <input type="text" maxlength="3" class="form-control" required>
+                  </div>
+                </div>
+                <button type="submit" class="btn hire-btn w-100 mt-3">Pay Now</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
 </main>
 
 <!-- FOOTER -->
