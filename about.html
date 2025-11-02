@@ -1,29 +1,141 @@
-<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>About — Victor Kosgei</title><link rel='stylesheet' href='style.css'></head><body>
-<header class="site-header">
-  <div class="container header-inner">
-    <div class="brand">Victor Kosgei</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html" class="active">About</a>
-      <a href="services.html">Services</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="hire.html">Hire Me</a>
-      <a href="contact.html">Contact</a>
-       <a href="Payments.html">Payments</a>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>About — Victor Kosgei</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: #f8f9fa;
+      color: #333;
+    }
+    .about-header {
+      background: linear-gradient(90deg, rgba(13,110,253,0.1), rgba(13,110,253,0.05));
+      padding: 60px 0;
+      text-align: center;
+    }
+    .about-header h1 {
+      font-weight: 700;
+    }
+    .about-photo {
+      max-width: 260px;
+      border-radius: 50%;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+    .values i {
+      color: #0d6efd;
+      font-size: 1.8rem;
+    }
+    footer {
+      background: #0b1220;
+      color: white;
+      padding: 25px 0;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="py-3 bg-white shadow-sm">
+  <div class="container d-flex flex-wrap justify-content-between align-items-center">
+    <a href="index.html" class="fw-bold fs-4 text-decoration-none text-primary">Victor Kosgei</a>
+    <nav class="d-flex gap-3">
+      <a href="index.html" class="text-dark text-decoration-none">Home</a>
+      <a href="about.html" class="text-primary fw-bold text-decoration-none">About</a>
+      <a href="services.html" class="text-dark text-decoration-none">Services</a>
+      <a href="portfolio.html" class="text-dark text-decoration-none">Portfolio</a>
+      <a href="hire.html" class="text-dark text-decoration-none">Hire Me</a>
+      <a href="contact.html" class="text-dark text-decoration-none">Contact</a>
+      <a href="Payments.html" class="text-dark text-decoration-none">Payments</a>
     </nav>
   </div>
 </header>
-<main class="container"><section><h2>About Me</h2>
-<div class="card"><p>I am a Virtual Assistant and Data Analyst with 5+ years' experience. Skilled in admin support, bookkeeping, dashboards, and client communication. Currently pursuing a degree in Finance.</p></div>
-</section></main>
-<footer class="site-footer">
+
+<!-- ABOUT INTRO -->
+<section class="about-header">
   <div class="container">
-    <div style="margin-bottom:10px">Connect: 
-      <a href="https://wa.me/254712859814" target="_blank">WhatsApp</a> 
-      <a href="https://www.linkedin.com/in/victor-kosgei-03839b339" target="_blank">LinkedIn</a> 
-      <a href="https://github.com/kimkosva" target="_blank">GitHub</a>
+    <h1>About Me</h1>
+    <p class="text-muted">Professional Virtual Assistant & Data Analyst passionate about helping businesses stay organized and data-driven.</p>
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<main class="container my-5">
+  <div class="row align-items-center mb-5">
+    <div class="col-md-4 text-center">
+      <img src="myphoto.JPG" alt="Victor Kosgei" class="about-photo img-fluid mb-3">
     </div>
-    <div>&copy; 2025 Victor Kosgei — Virtual Assistant & Data Analyst</div>
+    <div class="col-md-8">
+      <h2 class="fw-bold">Who I Am</h2>
+      <p>
+        I'm <strong>Victor Kosgei</strong>, a dedicated <strong>Virtual Assistant and Data Analyst</strong> with over five years of experience helping entrepreneurs and organizations manage their operations efficiently. I specialize in administrative support, data entry, bookkeeping, and social media management — ensuring accuracy, timeliness, and professional communication in every task.
+      </p>
+      <p>
+        I take pride in helping clients stay organized, meet deadlines, and focus on what truly matters — growing their businesses. Currently, I’m pursuing a degree in Finance to further strengthen my analytical and organizational expertise.
+      </p>
+    </div>
+  </div>
+
+  <!-- CORE VALUES -->
+  <section class="values text-center mb-5">
+    <h2 class="fw-bold mb-4">Core Skills & Values</h2>
+    <div class="row g-4">
+      <div class="col-md-3">
+        <i class="bi bi-graph-up-arrow"></i>
+        <h5 class="mt-3">Data Accuracy</h5>
+        <p class="text-muted small">Meticulous attention to detail ensures clean, accurate, and actionable data.</p>
+      </div>
+      <div class="col-md-3">
+        <i class="bi bi-clock-history"></i>
+        <h5 class="mt-3">Reliability</h5>
+        <p class="text-muted small">Timely delivery and consistent communication on all projects.</p>
+      </div>
+      <div class="col-md-3">
+        <i class="bi bi-shield-lock"></i>
+        <h5 class="mt-3">Confidentiality</h5>
+        <p class="text-muted small">Your data and business information are always safe and handled with integrity.</p>
+      </div>
+      <div class="col-md-3">
+        <i class="bi bi-people"></i>
+        <h5 class="mt-3">Client Focus</h5>
+        <p class="text-muted small">Every task is tailored to meet each client’s unique goals and style.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials text-center mb-5">
+    <h2 class="fw-bold mb-4">What Clients Say</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card p-4 shadow-sm mb-3">
+          <p>"Victor transformed our bookkeeping process — accurate, fast, and reliable. Working with him is a breeze!"</p>
+          <p class="text-muted small mb-0"><strong>— Mitchelle Kimutai, Salesforce Administrator</strong></p>
+        </div>
+        <div class="card p-4 shadow-sm">
+          <p>"Excellent attention to detail and clear communication throughout. Highly recommended VA!"</p>
+          <p class="text-muted small mb-0"><strong>— John Doe, Business Owner</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p class="mb-2">Connect with me:</p>
+    <a href="https://wa.me/254712859814" target="_blank" class="text-white me-3">WhatsApp</a>
+    <a href="https://www.linkedin.com/in/victor-kosgei-03839b339" target="_blank" class="text-white me-3">LinkedIn</a>
+    <a href="https://github.com/kimkosva" target="_blank" class="text-white">GitHub</a>
+    <p class="mt-3 mb-0 small text-muted">&copy; 2025 Victor Kosgei — Virtual Assistant & Data Analyst</p>
   </div>
 </footer>
-</body></html>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</body>
+</html>
