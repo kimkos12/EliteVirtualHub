@@ -3,41 +3,88 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title> Kimkos Virtual Services — Services & Portfolio</title>
+  <title>Victor Kosgei — Virtual Assistant & Data Entry Specialist</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
   <style>
-    :root{--brand:#0d6efd;--muted:#6c757d;--card-bg:#ffffff;}
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;scroll-behavior:smooth;background:#f7f7f8;color:#222;}
-    .hero{background:linear-gradient(90deg, rgba(13,110,253,0.06), rgba(13,110,253,0.02));padding:60px 0;}
-    .services .card{transition:transform .28s ease, box-shadow .28s ease;}
-    .services .card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(13,110,253,0.12);}
-    .portfolio-card img{height:220px;object-fit:cover;border-radius:8px;}
-    .tool-badge{background:#e9f1ff;color:#0d6efd;border-radius:6px;padding:3px 8px;font-size:.8rem;margin-right:6px;}
-    .fade-in{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
-    .fade-in.visible{opacity:1;transform:none;}
-    .hire-btn{background:var(--brand);color:#fff;}
-    footer{background:#0b1220;color:#fff;padding:28px 0;}
-    .social-icons a{color:#fff;margin-right:12px;font-size:1.25rem;}
-    @media (max-width:576px){ .portfolio-card img{height:180px} }
+    :root {
+      --brand: #0d6efd;
+      --muted: #6c757d;
+    }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background: #f8f9fa;
+      color: #212529;
+      scroll-behavior: smooth;
+    }
+    .hero {
+      background: linear-gradient(90deg, rgba(13,110,253,0.05), rgba(13,110,253,0.02));
+      padding: 80px 0;
+    }
+    .hero h1 {
+      font-weight: 700;
+    }
+    .hero p {
+      color: var(--muted);
+    }
+    .illustration svg {
+      max-width: 100%;
+      height: auto;
+    }
+    .why-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .why-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+    .tools-section {
+      background: #fff;
+      border-top: 1px solid #eaeaea;
+      border-bottom: 1px solid #eaeaea;
+      padding: 60px 0;
+    }
+    .tool-icon {
+      font-size: 2rem;
+      color: var(--brand);
+      margin: 10px;
+    }
+    footer {
+      background: #0b1220;
+      color: #fff;
+      padding: 25px 0;
+    }
+    .social-icons a {
+      color: #fff;
+      margin-right: 12px;
+      font-size: 1.25rem;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
   <div class="container">
-    <a class="navbar-brand fw-bold" href="#">Professional Support Tailored to Meet Your Business Needs</a>
+    <a class="navbar-brand fw-bold" href="#">Victor Kosgei</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="nav">
       <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
         <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
         <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+        <li class="nav-item"><a class="nav-link" href="hire.html">Hire Me</a></li>
+        <li class="nav-item"><a class="nav-link" href="payments.html">Payments</a></li>
         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-        <li class="nav-item"><a class="nav-link" href="Payments.html">Payments</a></li>
       </ul>
-      <a class="btn btn-sm ms-3 hire-btn" href="#contact">Hire Me</a>
     </div>
   </div>
 </nav>
@@ -46,316 +93,112 @@
 <header class="hero">
   <div class="container">
     <div class="row align-items-center">
-      <div class="col-md-7">
-        <h1 class="display-5">Professional Virtual Assistance & Data Services</h1>
-        <p class="lead text-muted">I help businesses with data entry, bookkeeping, admin support and social media management — accurate, timely, and affordable.</p>
-        <a class="btn hire-btn btn-lg" href="#contact">Hire Me</a>
+      <div class="col-md-6 mb-4 mb-md-0">
+        <h1>Reliable Virtual Assistant & Data Entry Support for Modern Businesses</h1>
+        <p class="lead">Empowering entrepreneurs and organizations to save time, stay organized, and focus on growth — while I handle the rest.</p>
+        <a href="hire.html" class="btn btn-primary btn-lg mt-3 me-2">Hire Me</a>
+        <a href="services.html" class="btn btn-outline-primary btn-lg mt-3">View Services</a>
       </div>
-      <div class="col-md-5 text-center">
-        <img src="Data.jpg" alt="Victor" class="img-fluid rounded shadow" style="max-height:320px;">
+      <div class="col-md-6 text-center illustration">
+        <!-- Inline SVG illustration -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540"><path fill="#f0f4ff" d="M0 0h960v540H0z"/><circle cx="740" cy="180" r="120" fill="#0d6efd" opacity=".15"/><rect x="120" y="200" width="720" height="300" rx="20" fill="#fff" stroke="#d9e3ff" stroke-width="2"/><rect x="160" y="240" width="320" height="200" rx="10" fill="#e9f1ff"/><rect x="520" y="240" width="280" height="60" rx="10" fill="#e9f1ff"/><rect x="520" y="320" width="280" height="60" rx="10" fill="#e9f1ff"/><rect x="520" y="400" width="280" height="40" rx="10" fill="#e9f1ff"/><circle cx="320" cy="340" r="40" fill="#0d6efd" opacity=".3"/></svg>
       </div>
     </div>
   </div>
 </header>
 
-<main class="container my-5">
-
-  <!-- SERVICES -->
-  <section id="services" class="services mb-5">
-    <div class="text-center mb-4">
-      <h2 class="fw-bold">Services & Pricing</h2>
-      <p class="text-muted">Choose a service or request a custom quote.</p>
-    </div>
-    <div class="row gy-4">
-      <div class="col-md-3 col-sm-6 fade-in">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">Data Entry</h5>
-            <p class="card-text text-muted small">Accurate data capture, cleanup and spreadsheet delivery.</p>
-            <h3 class="mt-3">$20</h3>
-            <a href="#contact" class="stretched-link"></a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 fade-in">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">Virtual Assistance</h5>
-            <p class="card-text text-muted small">Calendar, email management, admin tasks and more.</p>
-            <h3 class="mt-3">$30</h3>
-            <a href="#contact" class="stretched-link"></a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 fade-in">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">Bookkeeping</h5>
-            <p class="card-text text-muted small">Expense tracking, reconciliation, and reports.</p>
-            <h3 class="mt-3">$40</h3>
-            <a href="#contact" class="stretched-link"></a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 fade-in">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">Social Media Mgmt.</h5>
-            <p class="card-text text-muted small">Content scheduling, captions and engagement.</p>
-            <h3 class="mt-3">$20</h3>
-            <a href="#contact" class="stretched-link"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
- <!-- PORTFOLIO -->
-<section id="portfolio" class="mb-5">
-  <div class="text-center mb-4">
-    <h2 class="fw-bold">Portfolio</h2>
-    <p class="text-muted mx-auto" style="max-width:700px;">
-      A showcase of real projects highlighting my expertise as a Virtual Assistant and Data Specialist — using tools like Google Workspace, Excel, Notion, Canva, and Trello to deliver reliable, modern business solutions.
-    </p>
+<!-- ABOUT PREVIEW -->
+<section class="py-5">
+  <div class="container text-center">
+    <h2 class="fw-bold mb-3">About Me</h2>
+    <p class="text-muted mx-auto" style="max-width:700px;">I’m Victor Kosgei — a professional Virtual Assistant and Data Entry Specialist passionate about helping entrepreneurs streamline operations, manage administrative tasks, and handle data efficiently. I bring over five years of experience in creating systems that keep businesses running smoothly.</p>
+    <a href="about.html" class="btn btn-outline-primary mt-3">Learn More About Me</a>
   </div>
+</section>
 
-  <div class="row g-4">
-    <!-- DATA ENTRY -->
-    <div class="col-md-4 fade-in">
-      <div class="card portfolio-card shadow-sm h-100">
-        <img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=800&q=80" alt="Data Entry Project" class="card-img-top">
-        <div class="card-body">
-          <h5 class="card-title">Data Entry & Cleaning</h5>
-          <p class="text-muted small">Processed 10,000+ records and removed duplicates for an e-commerce company.</p>
-          <p><span class="tool-badge">Excel</span><span class="tool-badge">Google Sheets</span><span class="tool-badge">Data Validation</span></p>
+<!-- WHY CHOOSE ME -->
+<section class="py-5 bg-light">
+  <div class="container text-center">
+    <h2 class="fw-bold mb-5">Why Choose Me</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="why-card">
+          <i class="bi bi-clock-history display-6 text-primary mb-3"></i>
+          <h5>Timely Delivery</h5>
+          <p class="text-muted small">Every project is handled efficiently and delivered on schedule, so you can stay ahead of your business goals.</p>
         </div>
       </div>
-    </div>
-
-    <!-- ADMIN SUPPORT -->
-    <div class="col-md-4 fade-in">
-      <div class="card portfolio-card shadow-sm h-100">
-        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Administrative Support" class="card-img-top">
-        <div class="card-body">
-          <h5 class="card-title">Administrative Support</h5>
-          <p class="text-muted small">Organized schedules, handled client emails, and tracked tasks efficiently.</p>
-          <p><span class="tool-badge">Google Workspace</span><span class="tool-badge">Slack</span><span class="tool-badge">Calendar Mgmt</span></p>
+      <div class="col-md-4">
+        <div class="why-card">
+          <i class="bi bi-shield-check display-6 text-primary mb-3"></i>
+          <h5>Data Accuracy & Confidentiality</h5>
+          <p class="text-muted small">I maintain the highest standards of accuracy and confidentiality when handling sensitive business data.</p>
         </div>
       </div>
-    </div>
-
-    <!-- BOOKKEEPING -->
-    <div class="col-md-4 fade-in">
-      <div class="card portfolio-card shadow-sm h-100">
-        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80" alt="Bookkeeping Project" class="card-img-top">
-        <div class="card-body">
-          <h5 class="card-title">Bookkeeping & Reporting</h5>
-          <p class="text-muted small">Created monthly expense reports and reconciliations for SMEs.</p>
-          <p><span class="tool-badge">QuickBooks</span><span class="tool-badge">Excel</span><span class="tool-badge">Financial Reports</span></p>
-        </div>
-      </div>
-    </div>
-
-    <!-- SOCIAL MEDIA -->
-    <div class="col-md-4 fade-in">
-      <div class="card portfolio-card shadow-sm h-100">
-      <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80" alt="Social Media Management" class="card-img-top">
-          <div class="card-body">
-          <h5 class="card-title">Social Media Management</h5>
-          <p class="text-muted small">Created engaging content and tracked metrics for business accounts.</p>
-          <p><span class="tool-badge">Canva</span><span class="tool-badge">Buffer</span><span class="tool-badge">Analytics</span></p>
-        </div>
-      </div>
-    </div>
-
-    <!-- DATA VISUALIZATION -->
-    <div class="col-md-4 fade-in">
-      <div class="card portfolio-card shadow-sm h-100">
-        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Data Visualization" class="card-img-top">
-        <div class="card-body">
-          <h5 class="card-title">Data Visualization</h5>
-          <p class="text-muted small">Built interactive dashboards summarizing sales performance.</p>
-          <p><span class="tool-badge">Google Data Studio</span><span class="tool-badge">Excel Charts</span><span class="tool-badge">Reporting</span></p>
-        </div>
-      </div>
-    </div>
-
-    <!-- PROJECT COORDINATION -->
-    <div class="col-md-4 fade-in">
-      <div class="card portfolio-card shadow-sm h-100">
-        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80" alt="Project Coordination" class="card-img-top">
-        <div class="card-body">
-          <h5 class="card-title">Project Coordination</h5>
-          <p class="text-muted small">Managed deliverables and progress tracking using Notion and Trello.</p>
-          <p><span class="tool-badge">Notion</span><span class="tool-badge">Trello</span><span class="tool-badge">Asana</span></p>
+      <div class="col-md-4">
+        <div class="why-card">
+          <i class="bi bi-person-heart display-6 text-primary mb-3"></i>
+          <h5>Client Satisfaction</h5>
+          <p class="text-muted small">Building lasting partnerships through clear communication, consistent quality, and personalized support.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-  <!-- TESTIMONIALS -->
-  <section id="testimonials" class="mb-5">
-    <div class="text-center mb-4">
-      <h2 class="fw-bold">Testimonials</h2>
-      <p class="text-muted">What clients say about working with me.</p>
+<!-- TOOLS I USE -->
+<section class="tools-section text-center">
+  <div class="container">
+    <h2 class="fw-bold mb-4">Tools I Use</h2>
+    <p class="text-muted mb-4">Powerful platforms that help me deliver efficient and modern business solutions.</p>
+    <div>
+      <i class="bi bi-microsoft tool-icon" title="Microsoft Excel"></i>
+      <i class="bi bi-google tool-icon" title="Google Workspace"></i>
+      <i class="bi bi-kanban tool-icon" title="Trello & Notion"></i>
+      <i class="bi bi-bar-chart tool-icon" title="Data Analytics"></i>
+      <i class="bi bi-brush tool-icon" title="Canva Design"></i>
+      <i class="bi bi-journal-check tool-icon" title="QuickBooks"></i>
     </div>
-    <div class="row justify-content-center">
-      <div class="col-md-8 fade-in">
-        <div id="testiCarousel" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="card p-4">
-                <p class="mb-1">"Victor transformed our bookkeeping process — accurate, fast and reliable."</p>
-                <p class="small text-muted mb-0"><strong>— Mitchelle Kimutai, Salesforce Administrator</strong></p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="card p-4">
-                <p class="mb-1">"Great communication and timely delivery. Highly recommended VA!"</p>
-                <p class="small text-muted mb-0"><strong>— John Doe, Small Business Owner</strong></p>
-              </div>
-            </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#testiCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#testiCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="mb-5">
-    <div class="text-center mb-4">
-      <h2 class="fw-bold">Contact</h2>
-      <p class="text-muted">Send a message or request a quote.</p>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-md-8 fade-in">
-        <form action="https://formspree.io/f/mkgwkboj" method="POST" class="card p-4">
-          <div class="mb-3">
-            <label class="form-label">Name</label>
-            <input type="text" name="name" class="form-control" required>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Email</label>
-            <input type="email" name="_replyto" class="form-control" required>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Service</label>
-            <select name="service" class="form-select">
-              <option>Data Entry</option>
-              <option>Virtual Assistance</option>
-              <option>Bookkeeping</option>
-              <option>Social Media Management</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Message</label>
-            <textarea name="message" rows="5" class="form-control" required></textarea>
-          </div>
-          <button type="submit" class="btn hire-btn">Send Message</button>
-        </form>
-      </div>
-    </div>
-  </section>
+<!-- CLIENT SUCCESS -->
+<section class="py-5 text-center">
+  <div class="container">
+    <h2 class="fw-bold mb-3">Client Success Story</h2>
+    <p class="text-muted mx-auto mb-4" style="max-width:700px;">
+      “Victor helped us clean and organize over 20,000 records for our e-commerce store. The result? 40% faster reporting and zero duplicate entries!”
+    </p>
+    <p class="fw-bold text-primary">— Mitchelle Kimutai, Salesforce Administrator</p>
+    <a href="portfolio.html" class="btn btn-outline-primary mt-3">View More Projects</a>
+  </div>
+</section>
 
-  <!-- PAYMENTS -->
-  <section id="Payments" class="mb-5">
-    <div class="text-center mb-4">
-      <h2 class="fw-bold">Payments</h2>
-      <p class="text-muted">Secure and easy payments for all my Virtual Assistant and Data Services.</p>
-    </div>
-
-    <div class="row justify-content-center">
-      <div class="col-md-10">
-        <div class="card p-4 mb-4 shadow-sm">
-          <h4 class="fw-bold mb-3">Updated Service Prices (Discounted by $5)</h4>
-          <ul class="list-unstyled mb-0">
-            <li>📋 Data Entry – <strong>$20</strong> (was $25)</li>
-            <li>💼 Virtual Assistant Services – <strong>$30</strong> (was $35)</li>
-            <li>📊 Bookkeeping – <strong>$40</strong> (was $45)</li>
-            <li>📱 Social Media Management – <strong>$45</strong> (was $50)</li>
-          </ul>
-        </div>
-
-        <div class="row g-4">
-          <!-- M-PESA -->
-          <div class="col-md-6">
-            <div class="card h-100 p-4 shadow-sm">
-              <h4 class="fw-bold">Pay via M-Pesa</h4>
-              <p>Send your payment to:</p>
-              <ul class="list-unstyled small mb-3">
-                <li><strong>Phone:</strong> +254 712 859 814</li>
-              </ul>
-              <p class="text-muted small">Once payment is sent, kindly share the confirmation via the contact form or email.</p>
-              <button class="btn hire-btn w-100" onclick="alert('Thank you! Please confirm via email or contact form.')">Confirm M-Pesa Payment</button>
-            </div>
-          </div>
-
-          <!-- CARD PAYMENT -->
-          <div class="col-md-6">
-            <div class="card h-100 p-4 shadow-sm">
-              <h4 class="fw-bold">Pay via Card</h4>
-              <form onsubmit="event.preventDefault(); alert('Payment processed successfully!');">
-                <div class="mb-3">
-                  <label class="form-label">Name on Card</label>
-                  <input type="text" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                  <label class="form-label">Card Number</label>
-                  <input type="text" maxlength="16" class="form-control" required>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <label class="form-label">Expiry Date</label>
-                    <input type="text" placeholder="MM/YY" class="form-control" required>
-                  </div>
-                  <div class="col">
-                    <label class="form-label">CVV</label>
-                    <input type="text" maxlength="3" class="form-control" required>
-                  </div>
-                </div>
-                <button type="submit" class="btn hire-btn w-100 mt-3">Pay Now</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
- 
-</main>
+<!-- CALL TO ACTION -->
+<section class="py-5 bg-light text-center">
+  <div class="container">
+    <h2 class="fw-bold mb-3">Let’s Work Together</h2>
+    <p class="text-muted mb-4">Ready to delegate and grow your business with reliable support? Let’s discuss your next project today.</p>
+    <a href="contact.html" class="btn btn-primary btn-lg">Get In Touch</a>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
   <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
     <div class="mb-2 mb-md-0">
-      <strong>Victor Kosgei</strong><br><small class="text-muted">Virtual Assistant & Data Services</small>
+      <strong>Victor Kosgei</strong><br>
+      <small class="text-muted">Virtual Assistant & Data Analyst</small>
     </div>
     <div class="social-icons">
-      <a href="https://www.linkedin.com/in/victor-kosgei-03839b339" target="_blank" aria-label="LinkedIn">LinkedIn</a>
-      <a href="mailto:weldonruto41@gmail.com" class="ms-3" aria-label="Email">Email</a>
-      <a href="https://wa.me/254712859814" class="ms-3" aria-label="WhatsApp">WhatsApp</a>
+      <a href="https://www.linkedin.com/in/victor-kosgei-03839b339" target="_blank"><i class="bi bi-linkedin"></i></a>
+      <a href="mailto:weldonruto41@gmail.com"><i class="bi bi-envelope"></i></a>
+      <a href="https://wa.me/254712859814"><i class="bi bi-whatsapp"></i></a>
+      <a href="https://github.com/kimkosva"><i class="bi bi-github"></i></a>
     </div>
   </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
-  }, {threshold:0.12});
-  document.querySelectorAll('.fade-in').forEach(function(el){ io.observe(el); });
-});
-</script>
-
 </body>
 </html>
