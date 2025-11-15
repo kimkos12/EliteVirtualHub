@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Victor Kosgei - Virtual Assistant</title>
+    <title>Contact | Victor Kosgei - Virtual Assistant</title>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -84,94 +84,42 @@
             50% { transform: translateY(-20px) rotate(180deg); }
         }
 
-        /* Portfolio Cards */
-        .portfolio-card {
+        /* Contact Cards */
+        .contact-card {
             transition: var(--transition);
             border: none;
             border-radius: 16px;
             background: var(--card-light);
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            overflow: hidden;
             height: 100%;
         }
 
-        .portfolio-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 35px rgba(13, 110, 253, 0.15);
-        }
-
-        .portfolio-card img {
-            height: 220px;
-            object-fit: cover;
-            width: 100%;
-            transition: var(--transition);
-        }
-
-        .portfolio-card:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Tool Badges */
-        .tool-badge {
-            background: rgba(13, 110, 253, 0.1);
-            color: var(--primary);
-            padding: 0.4rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            border: 1px solid rgba(13, 110, 253, 0.2);
-        }
-
-        /* Project Categories */
-        .category-filter {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
-
-        .filter-btn {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            padding: 0.5rem 1.5rem;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        /* Stats Section */
-        .stat-card {
-            background: var(--card-light);
-            border-radius: 16px;
-            padding: 2.5rem 1.5rem;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            transition: var(--transition);
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .stat-card:hover {
+        .contact-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 30px rgba(0,0,0,0.12);
         }
 
-        .stat-number {
-            font-size: 2.8rem;
-            font-weight: 700;
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
             color: var(--primary);
-            margin-bottom: 0.5rem;
             background: linear-gradient(135deg, var(--primary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+
+        /* Form Styles */
+        .form-control, .form-select {
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            transition: var(--transition);
+            padding: 0.75rem 1rem;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
         }
 
         /* Buttons */
@@ -258,6 +206,21 @@
             animation-delay: 0.4s;
         }
 
+        /* Contact Info Cards */
+        .info-card {
+            transition: var(--transition);
+            border: none;
+            border-radius: 12px;
+            background: var(--card-light);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            padding: 1.5rem;
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+
         /* Fade-in animations */
         .fade-in {
             opacity: 0;
@@ -268,25 +231,6 @@
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
-        }
-
-        /* Project Overlay */
-        .project-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(13, 110, 253, 0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .portfolio-card:hover .project-overlay {
-            opacity: 1;
         }
 
         /* Responsive Design */
@@ -309,29 +253,29 @@
                 height: 50px;
                 font-size: 1.3rem;
             }
-            
-            .stat-number {
-                font-size: 2rem;
-            }
-            
-            .category-filter {
-                gap: 0.5rem;
-            }
-            
-            .filter-btn {
-                padding: 0.4rem 1rem;
-                font-size: 0.9rem;
-            }
         }
 
         /* Dark mode adjustments */
-        [data-theme="dark"] .portfolio-card,
-        [data-theme="dark"] .stat-card {
+        [data-theme="dark"] .contact-card,
+        [data-theme="dark"] .info-card {
             border-color: #374151;
         }
 
         [data-theme="dark"] .text-muted {
             color: #9ca3af !important;
+        }
+
+        [data-theme="dark"] .form-control,
+        [data-theme="dark"] .form-select {
+            background-color: #374151;
+            border-color: #4B5563;
+            color: white;
+        }
+
+        [data-theme="dark"] .form-control:focus,
+        [data-theme="dark"] .form-select:focus {
+            background-color: #374151;
+            color: white;
         }
     </style>
 </head>
@@ -355,10 +299,10 @@
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="portfolio.html">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
                     <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="payments.html">Payments</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
                 </ul>
                 <a href="hire.html" class="btn btn-primary ms-3">Hire Me</a>
             </div>
@@ -368,283 +312,211 @@
     <!-- Hero Section -->
     <header class="hero text-center">
         <div class="container">
-            <h1 class="fw-bold display-5 mb-3 fade-in">My Portfolio</h1>
+            <h1 class="fw-bold display-5 mb-3 fade-in">Get In Touch</h1>
             <p class="lead text-muted mb-4 fade-in" style="animation-delay: 0.2s;">
-                A showcase of successful projects demonstrating my expertise in virtual assistance, 
-                data management, and business support services.
+                Ready to streamline your business operations? Let's discuss how I can help you achieve your goals.
             </p>
             <div class="d-flex gap-3 justify-content-center flex-wrap fade-in" style="animation-delay: 0.4s;">
-                <a href="#projects" class="btn btn-primary btn-lg">View Projects</a>
-                <a href="services.html" class="btn btn-outline-primary btn-lg">My Services</a>
+                <a href="#contact-form" class="btn btn-primary btn-lg">Send Message</a>
+                <a href="https://wa.me/254712859814" class="btn btn-success btn-lg" target="_blank">
+                    <i class="bi bi-whatsapp me-2"></i>WhatsApp
+                </a>
             </div>
         </div>
     </header>
 
-    <!-- Stats Section -->
+    <!-- Contact Information -->
     <section class="container my-5 py-5">
-        <div class="row g-4 text-center">
-            <div class="col-md-3 col-6 fade-in">
-                <div class="stat-card">
-                    <div class="stat-number" data-target="50">0+</div>
-                    <p class="text-muted mb-0 fw-semibold">Projects Completed</p>
+        <div class="row g-4">
+            <div class="col-md-4 fade-in">
+                <div class="contact-card p-4 text-center h-100">
+                    <i class="bi bi-telephone contact-icon"></i>
+                    <h5 class="fw-bold">Phone & WhatsApp</h5>
+                    <p class="text-muted mb-3">Available for calls and messages</p>
+                    <a href="tel:+254712859814" class="btn btn-outline-primary w-100 mb-2">
+                        <i class="bi bi-telephone me-2"></i>+254 712 859 814
+                    </a>
+                    <a href="https://wa.me/254712859814" class="btn btn-success w-100" target="_blank">
+                        <i class="bi bi-whatsapp me-2"></i>WhatsApp
+                    </a>
                 </div>
             </div>
-            <div class="col-md-3 col-6 fade-in" style="animation-delay: 0.1s;">
-                <div class="stat-card">
-                    <div class="stat-number" data-target="95">0%</div>
-                    <p class="text-muted mb-0 fw-semibold">Client Satisfaction</p>
+            <div class="col-md-4 fade-in" style="animation-delay: 0.1s;">
+                <div class="contact-card p-4 text-center h-100">
+                    <i class="bi bi-envelope contact-icon"></i>
+                    <h5 class="fw-bold">Email</h5>
+                    <p class="text-muted mb-3">Send me a detailed message</p>
+                    <a href="mailto:weldonruto41@gmail.com" class="btn btn-outline-primary w-100 mb-2">
+                        <i class="bi bi-envelope me-2"></i>weldonruto41@gmail.com
+                    </a>
+                    <p class="small text-muted mt-2">Response within 2 hours</p>
                 </div>
             </div>
-            <div class="col-md-3 col-6 fade-in" style="animation-delay: 0.2s;">
-                <div class="stat-card">
-                    <div class="stat-number" data-target="100">0%</div>
-                    <p class="text-muted mb-0 fw-semibold">On-Time Delivery</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-6 fade-in" style="animation-delay: 0.3s;">
-                <div class="stat-card">
-                    <div class="stat-number">5+</div>
-                    <p class="text-muted mb-0 fw-semibold">Years Experience</p>
+            <div class="col-md-4 fade-in" style="animation-delay: 0.2s;">
+                <div class="contact-card p-4 text-center h-100">
+                    <i class="bi bi-calendar-check contact-icon"></i>
+                    <h5 class="fw-bold">Schedule a Call</h5>
+                    <p class="text-muted mb-3">Book a meeting at your convenience</p>
+                    <a href="#" class="btn btn-outline-primary w-100 mb-2" onclick="scheduleCall()">
+                        <i class="bi bi-calendar me-2"></i>Book Appointment
+                    </a>
+                    <p class="small text-muted mt-2">Available 24/7 for urgent matters</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Projects -->
-    <section id="projects" class="container my-5 py-5">
+    <!-- Contact Form & Information -->
+    <section class="container my-5">
+        <div class="row g-5">
+            <!-- Contact Form -->
+            <div class="col-lg-8">
+                <div class="contact-card p-4 h-100">
+                    <h3 class="fw-bold mb-4 fade-in">Send Me a Message</h3>
+                    <p class="text-muted mb-4 fade-in" style="animation-delay: 0.1s;">
+                        Fill out the form below and I'll get back to you as soon as possible.
+                    </p>
+                    
+                    <form id="contact-form" class="fade-in" style="animation-delay: 0.2s;">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">Full Name *</label>
+                                <input type="text" class="form-control" name="name" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">Email Address *</label>
+                                <input type="email" class="form-control" name="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Subject *</label>
+                            <input type="text" class="form-control" name="subject" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Service Interested In</label>
+                            <select class="form-select" name="service">
+                                <option value="">Select a service</option>
+                                <option value="data-entry">Data Entry & Cleaning</option>
+                                <option value="admin-support">Administrative Support</option>
+                                <option value="bookkeeping">Bookkeeping & Reporting</option>
+                                <option value="social-media">Social Media Management</option>
+                                <option value="data-visualization">Data Visualization</option>
+                                <option value="project-coordination">Project Coordination</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Message *</label>
+                            <textarea class="form-control" rows="6" name="message" placeholder="Tell me about your project and how I can help..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg w-100">
+                            <i class="bi bi-send me-2"></i>Send Message
+                        </button>
+                    </form>
+
+                    <div id="successMessage" class="alert alert-success mt-3 text-center" style="display: none;">
+                        <i class="bi bi-check-circle-fill me-2"></i>
+                        Thank you! Your message has been sent successfully. I'll get back to you within 2 hours.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Information -->
+            <div class="col-lg-4">
+                <div class="fade-in" style="animation-delay: 0.3s;">
+                    <div class="info-card mb-4">
+                        <h5 class="fw-bold mb-3"><i class="bi bi-clock me-2 text-primary"></i>Availability</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><strong>24/7 Support:</strong> Urgent matters</li>
+                            <li class="mb-2"><strong>Business Hours:</strong> 8:00 AM - 6:00 PM EAT</li>
+                            <li class="mb-2"><strong>Response Time:</strong> Within 2 hours</li>
+                            <li><strong>Weekends:</strong> Available for urgent projects</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-card mb-4">
+                        <h5 class="fw-bold mb-3"><i class="bi bi-geo-alt me-2 text-primary"></i>Service Areas</h5>
+                        <p class="text-muted mb-2">Serving clients worldwide with virtual assistance services.</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge bg-primary">Kenya</span>
+                            <span class="badge bg-primary">East Africa</span>
+                            <span class="badge bg-primary">International</span>
+                            <span class="badge bg-primary">Remote</span>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <h5 class="fw-bold mb-3"><i class="bi bi-lightning me-2 text-primary"></i>Quick Connect</h5>
+                        <div class="d-grid gap-2">
+                            <a href="https://wa.me/254712859814" class="btn btn-success" target="_blank">
+                                <i class="bi bi-whatsapp me-2"></i>WhatsApp Message
+                            </a>
+                            <a href="mailto:weldonruto41@gmail.com" class="btn btn-outline-primary">
+                                <i class="bi bi-envelope me-2"></i>Send Email
+                            </a>
+                            <a href="tel:+254712859814" class="btn btn-outline-secondary">
+                                <i class="bi bi-telephone me-2"></i>Call Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="container my-5 py-5">
         <div class="text-center mb-5">
-            <h2 class="fw-bold display-6 mb-3 fade-in">Featured Projects</h2>
+            <h2 class="fw-bold display-6 mb-3 fade-in">Frequently Asked Questions</h2>
             <p class="text-muted fade-in" style="animation-delay: 0.1s;">
-                Browse through my recent work across different service categories
+                Quick answers to common questions
             </p>
         </div>
 
-        <!-- Category Filters -->
-        <div class="category-filter fade-in" style="animation-delay: 0.2s;">
-            <button class="filter-btn active" data-filter="all">All Projects</button>
-            <button class="filter-btn" data-filter="data-entry">Data Entry</button>
-            <button class="filter-btn" data-filter="admin">Admin Support</button>
-            <button class="filter-btn" data-filter="bookkeeping">Bookkeeping</button>
-            <button class="filter-btn" data-filter="social-media">Social Media</button>
-        </div>
-
-        <!-- Projects Grid -->
-        <div class="row g-4" id="portfolio-grid">
-            <!-- Data Entry Project 1 -->
-            <div class="col-md-6 col-lg-4 portfolio-item fade-in" data-category="data-entry">
-                <div class="portfolio-card">
-                    <div class="position-relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=600&q=80" 
-                             alt="E-commerce Data Management" 
-                             class="card-img-top">
-                        <div class="project-overlay">
-                            <div class="text-center text-white">
-                                <h5 class="fw-bold mb-2">Project Details</h5>
-                                <p class="mb-3">10,000+ records processed</p>
-                                <a href="#" class="btn btn-light btn-sm">View Case Study</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="fw-bold">E-commerce Data Management</h5>
-                        <p class="text-muted small mb-3">
-                            Processed 10,000+ product records and removed duplicates for a growing e-commerce company.
-                        </p>
-                        <div class="mb-3">
-                            <span class="tool-badge">Excel</span>
-                            <span class="tool-badge">Google Sheets</span>
-                            <span class="tool-badge">Data Validation</span>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="badge bg-success">Completed</span>
-                            <small class="text-muted">2 weeks</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Admin Support Project -->
-            <div class="col-md-6 col-lg-4 portfolio-item fade-in" data-category="admin" style="animation-delay: 0.1s;">
-                <div class="portfolio-card">
-                    <div class="position-relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" 
-                             alt="Executive Admin Support" 
-                             class="card-img-top">
-                        <div class="project-overlay">
-                            <div class="text-center text-white">
-                                <h5 class="fw-bold mb-2">Project Details</h5>
-                                <p class="mb-3">Calendar & email management</p>
-                                <a href="#" class="btn btn-light btn-sm">View Case Study</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="fw-bold">Executive Admin Support</h5>
-                        <p class="text-muted small mb-3">
-                            Provided comprehensive administrative support including calendar management, email handling, and document organization.
-                        </p>
-                        <div class="mb-3">
-                            <span class="tool-badge">Google Workspace</span>
-                            <span class="tool-badge">Slack</span>
-                            <span class="tool-badge">Calendar Management</span>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="badge bg-success">Completed</span>
-                            <small class="text-muted">Ongoing</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bookkeeping Project -->
-            <div class="col-md-6 col-lg-4 portfolio-item fade-in" data-category="bookkeeping" style="animation-delay: 0.2s;">
-                <div class="portfolio-card">
-                    <div class="position-relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=80" 
-                             alt="SME Financial Reporting" 
-                             class="card-img-top">
-                        <div class="project-overlay">
-                            <div class="text-center text-white">
-                                <h5 class="fw-bold mb-2">Project Details</h5>
-                                <p class="mb-3">Monthly financial reports</p>
-                                <a href="#" class="btn btn-light btn-sm">View Case Study</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="fw-bold">SME Financial Reporting</h5>
-                        <p class="text-muted small mb-3">
-                            Created monthly expense reports and reconciliations for small to medium enterprises.
-                        </p>
-                        <div class="mb-3">
-                            <span class="tool-badge">QuickBooks</span>
-                            <span class="tool-badge">Excel</span>
-                            <span class="tool-badge">Financial Reports</span>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="badge bg-success">Completed</span>
-                            <small class="text-muted">3 months</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Social Media Project -->
-            <div class="col-md-6 col-lg-4 portfolio-item fade-in" data-category="social-media" style="animation-delay: 0.3s;">
-                <div class="portfolio-card">
-                    <div class="position-relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=600&q=80" 
-                             alt="Social Media Campaign" 
-                             class="card-img-top">
-                        <div class="project-overlay">
-                            <div class="text-center text-white">
-                                <h5 class="fw-bold mb-2">Project Details</h5>
-                                <p class="mb-3">Content creation & scheduling</p>
-                                <a href="#" class="btn btn-light btn-sm">View Case Study</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="fw-bold">Social Media Campaign</h5>
-                        <p class="text-muted small mb-3">
-                            Managed social media accounts with content creation, scheduling, and performance analytics.
-                        </p>
-                        <div class="mb-3">
-                            <span class="tool-badge">Canva</span>
-                            <span class="tool-badge">Buffer</span>
-                            <span class="tool-badge">Analytics</span>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="badge bg-success">Completed</span>
-                            <small class="text-muted">1 month</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Data Entry Project 2 -->
-            <div class="col-md-6 col-lg-4 portfolio-item fade-in" data-category="data-entry" style="animation-delay: 0.4s;">
-                <div class="portfolio-card">
-                    <div class="position-relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" 
-                             alt="CRM Data Migration" 
-                             class="card-img-top">
-                        <div class="project-overlay">
-                            <div class="text-center text-white">
-                                <h5 class="fw-bold mb-2">Project Details</h5>
-                                <p class="mb-3">5,000 customer records</p>
-                                <a href="#" class="btn btn-light btn-sm">View Case Study</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="fw-bold">CRM Data Migration</h5>
-                        <p class="text-muted small mb-3">
-                            Migrated 5,000+ customer records from legacy system to new CRM with data validation and cleanup.
-                        </p>
-                        <div class="mb-3">
-                            <span class="tool-badge">CSV Import</span>
-                            <span class="tool-badge">Data Cleaning</span>
-                            <span class="tool-badge">Validation</span>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="badge bg-success">Completed</span>
-                            <small class="text-muted">3 weeks</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Data Visualization Project -->
-            <div class="col-md-6 col-lg-4 portfolio-item fade-in" data-category="data-entry" style="animation-delay: 0.5s;">
-                <div class="portfolio-card">
-                    <div class="position-relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" 
-                             alt="Sales Dashboard" 
-                             class="card-img-top">
-                        <div class="project-overlay">
-                            <div class="text-center text-white">
-                                <h5 class="fw-bold mb-2">Project Details</h5>
-                                <p class="mb-3">Interactive dashboards</p>
-                                <a href="#" class="btn btn-light btn-sm">View Case Study</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="fw-bold">Sales Performance Dashboard</h5>
-                        <p class="text-muted small mb-3">
-                            Built interactive dashboards summarizing sales performance and key metrics for management.
-                        </p>
-                        <div class="mb-3">
-                            <span class="tool-badge">Google Data Studio</span>
-                            <span class="tool-badge">Excel Charts</span>
-                            <span class="tool-badge">Reporting</span>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="badge bg-success">Completed</span>
-                            <small class="text-muted">2 weeks</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="container my-5">
         <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <div class="bg-primary text-white p-5 text-center rounded-4 position-relative overflow-hidden">
-                    <div class="position-relative z-1">
-                        <h3 class="fw-bold mb-3 display-6">Ready to Start Your Project?</h3>
-                        <p class="mb-4 fs-5">Let's work together to achieve your business goals with professional virtual assistance services.</p>
-                        <div class="d-flex gap-3 justify-content-center flex-wrap">
-                            <a href="contact.html" class="btn btn-light btn-lg px-4">
-                                <i class="bi bi-chat-dots me-2"></i>Start a Project
-                            </a>
-                            <a href="services.html" class="btn btn-outline-light btn-lg px-4">
-                                <i class="bi bi-grid me-2"></i>View Services
-                            </a>
+            <div class="col-lg-8">
+                <div class="accordion fade-in" style="animation-delay: 0.2s;" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                What's your typical response time?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                I typically respond within 2 hours during business hours (8:00 AM - 6:00 PM EAT). 
+                                For urgent matters, I'm available 24/7 via WhatsApp.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                Do you offer free consultations?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Yes! I offer a free 30-minute consultation to discuss your project requirements 
+                                and determine how I can best assist you.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                What payment methods do you accept?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                I accept M-Pesa, credit/debit cards, and bank transfers. You can make payments 
+                                securely through the payments page.
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -736,52 +608,43 @@
             }
         }
 
-        // Portfolio Filtering
-        function initPortfolioFilter() {
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const portfolioItems = document.querySelectorAll('.portfolio-item');
+        // Contact Form Handling
+        function handleContactForm() {
+            const contactForm = document.getElementById('contact-form');
+            const successMessage = document.getElementById('successMessage');
 
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // Remove active class from all buttons
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    // Add active class to clicked button
-                    this.classList.add('active');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const submitButton = contactForm.querySelector('button[type="submit"]');
+                const originalText = submitButton.innerHTML;
+                
+                // Show loading state
+                submitButton.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Sending...';
+                submitButton.disabled = true;
+                
+                // Simulate form submission
+                setTimeout(() => {
+                    // Show success message
+                    successMessage.style.display = 'block';
+                    contactForm.reset();
                     
-                    const filterValue = this.getAttribute('data-filter');
+                    // Reset button
+                    submitButton.innerHTML = originalText;
+                    submitButton.disabled = false;
                     
-                    portfolioItems.forEach(item => {
-                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                            item.style.display = 'block';
-                            setTimeout(() => {
-                                item.style.opacity = '1';
-                                item.style.transform = 'scale(1)';
-                            }, 50);
-                        } else {
-                            item.style.opacity = '0';
-                            item.style.transform = 'scale(0.8)';
-                            setTimeout(() => {
-                                item.style.display = 'none';
-                            }, 300);
-                        }
-                    });
-                });
+                    // Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth' });
+                }, 2000);
             });
         }
 
-        // Animated Counter
-        function animateCounter(element, target, suffix = '') {
-            let current = 0;
-            const increment = target / 50;
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    element.textContent = target + suffix;
-                    clearInterval(timer);
-                } else {
-                    element.textContent = Math.floor(current) + suffix;
-                }
-            }, 30);
+        // Schedule Call Function
+        function scheduleCall() {
+            const phoneNumber = '+254712859814';
+            const message = 'Hi Victor, I would like to schedule a call to discuss my project.';
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
         }
 
         // Scroll Animations
@@ -796,18 +659,6 @@
                     element.classList.add('visible');
                 }
             });
-
-            // Animate counters when in view
-            const statNumbers = document.querySelectorAll('.stat-number[data-target]');
-            statNumbers.forEach(stat => {
-                const rect = stat.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 100 && !stat.hasAttribute('data-animated')) {
-                    const target = parseInt(stat.getAttribute('data-target'));
-                    const suffix = stat.textContent.includes('%') ? '%' : '+';
-                    stat.setAttribute('data-animated', 'true');
-                    animateCounter(stat, target, suffix);
-                }
-            });
         }
 
         // Initialize everything
@@ -818,7 +669,7 @@
                 themeToggle.addEventListener('click', toggleTheme);
             }
 
-            initPortfolioFilter();
+            handleContactForm();
 
             // Initial animation check
             handleScrollAnimations();
