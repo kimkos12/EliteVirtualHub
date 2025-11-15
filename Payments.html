@@ -1,79 +1,89 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Payments | Kimkos Virtual Assistant</title>
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <style>
-    body {
-      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
-      background-color: #f8f9fa;
-      scroll-behavior: smooth;
-    }
     .hero {
       background: linear-gradient(90deg, rgba(13,110,253,0.07), rgba(13,110,253,0.02));
       padding: 60px 0;
     }
-    .card img {
-      height: 220px;
-      object-fit: cover;
-      border-radius: 10px 10px 0 0;
+    .service-card {
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
-    .card {
-      border: none;
-      border-radius: 10px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-    .card:hover {
+    .service-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 25px rgba(13, 110, 253, 0.15);
+      border-color: #0d6efd !important;
+    }
+    .service-card.selected {
+      border: 2px solid #0d6efd;
+      background-color: rgba(13, 110, 253, 0.05);
     }
     .price {
       color: #0d6efd;
       font-weight: 600;
       font-size: 1.1rem;
     }
-    footer {
-      background: #0b1220;
-      color: #fff;
-      padding: 25px 0;
-      margin-top: 60px;
+    .payment-method-card {
+      transition: all 0.3s ease;
     }
-    footer a {
-      color: #fff;
-      margin-left: 10px;
-      text-decoration: none;
+    .payment-method-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
     }
-    footer a:hover {
-      text-decoration: underline;
+    .selected-service-badge {
+      background: #0d6efd;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+    .discount-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #dc3545;
+      color: white;
+      padding: 0.25rem 0.5rem;
+      border-radius: 15px;
+      font-size: 0.75rem;
+      font-weight: 600;
     }
   </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
+<!-- Enhanced Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
   <div class="container">
-    <a class="navbar-brand fw-bold" href="index.html">Kimkos VA</a>
+    <a class="navbar-brand fw-bold" href="index.html">Victor Kosgei</a>
+    
+    <button class="theme-toggle me-3 border-0 bg-transparent" id="themeToggle">
+      <i class="bi bi-moon"></i>
+    </button>
+    
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
-
+    
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
         <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
         <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
-        <li class="nav-item"><a class="nav-link" href="hire.html">Hire Me</a></li>
+        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
         <li class="nav-item"><a class="nav-link active" href="payments.html">Payments</a></li>
         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
       </ul>
+      <a href="hire.html" class="btn btn-primary ms-3">Hire Me</a>
     </div>
   </div>
 </nav>
@@ -81,54 +91,132 @@
 <!-- HERO -->
 <header class="hero text-center">
   <div class="container">
-    <h1 class="fw-bold">Make a Payment</h1>
-    <p class="text-muted">Secure and easy payments for all my Virtual Assistant and Data Entry services.</p>
+    <h1 class="fw-bold display-5">Make a Payment</h1>
+    <p class="lead text-muted">Secure and easy payments for all Virtual Assistant and Data Entry services</p>
+    
+    <!-- Special Offer Banner -->
+    <div class="alert alert-success mt-3 mx-auto" style="max-width: 500px;">
+      <i class="bi bi-tag-fill me-2"></i>
+      <strong>Special Offer!</strong> All services now KSh 1,000 less! Limited time only.
+    </div>
+    
+    <!-- Selected Service Display -->
+    <div id="selectedServiceDisplay" class="mt-4" style="display: none;">
+      <span class="selected-service-badge">
+        <i class="bi bi-check-circle me-2"></i>
+        Selected: <span id="selectedServiceName">Service Name</span> - 
+        <span id="selectedServicePrice">KSh 0 / day</span>
+      </span>
+    </div>
   </div>
 </header>
 
-<!-- SERVICE PACKAGES -->
+<!-- SERVICE SELECTION -->
 <main class="container my-5">
   <div class="text-center mb-5">
-    <h2 class="fw-bold">Select a Service to Pay For</h2>
-    <p class="text-muted">Affordable daily rates — pay securely via M-Pesa or Card below.</p>
+    <h2 class="fw-bold">Select a Service</h2>
+    <p class="text-muted">Choose the service you want to pay for - All prices reduced by KSh 1,000!</p>
   </div>
 
   <div class="row g-4">
-    <!-- Package 1 -->
+    <!-- Data Entry - Reduced from 3,000 to 2,000 -->
     <div class="col-md-4">
-      <div class="card h-100">
-        <img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=800&q=80" alt="Data Entry">
+      <div class="card service-card h-100" data-service="data-entry" data-price="2000" data-name="Data Entry & Cleaning">
+        <div class="position-relative">
+          <span class="discount-badge">Save KSh 1,000</span>
+          <img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=800&q=80" alt="Data Entry" class="card-img-top">
+        </div>
         <div class="card-body">
-          <h5 class="fw-bold">📋 Data Entry & Cleaning</h5>
-          <p class="price">KSh 3,000 / day</p>
+          <h5 class="fw-bold"><i class="bi bi-table me-2"></i>Data Entry & Cleaning</h5>
+          <p class="price">KSh 2,000 / day</p>
+          <p class="text-muted small"><del class="text-danger">KSh 3,000</del> <span class="text-success">You save KSh 1,000!</span></p>
           <p class="small text-muted">Fast and accurate data entry — up to 1,000 records per day.</p>
-          <a href="#payment" class="btn btn-primary w-100">Pay Now</a>
+          <button class="btn btn-outline-primary w-100 select-service">Select Service</button>
         </div>
       </div>
     </div>
 
-    <!-- Package 2 -->
+    <!-- Admin Support - Reduced from 3,500 to 2,500 -->
     <div class="col-md-4">
-      <div class="card h-100">
-        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Admin Support">
+      <div class="card service-card h-100" data-service="admin-support" data-price="2500" data-name="Administrative Support">
+        <div class="position-relative">
+          <span class="discount-badge">Save KSh 1,000</span>
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Admin Support" class="card-img-top">
+        </div>
         <div class="card-body">
-          <h5 class="fw-bold">💼 Administrative Support</h5>
-          <p class="price">KSh 3,500 / day</p>
+          <h5 class="fw-bold"><i class="bi bi-calendar-check me-2"></i>Administrative Support</h5>
+          <p class="price">KSh 2,500 / day</p>
+          <p class="text-muted small"><del class="text-danger">KSh 3,500</del> <span class="text-success">You save KSh 1,000!</span></p>
           <p class="small text-muted">Scheduling, email handling, and business organization.</p>
-          <a href="#payment" class="btn btn-primary w-100">Pay Now</a>
+          <button class="btn btn-outline-primary w-100 select-service">Select Service</button>
         </div>
       </div>
     </div>
 
-    <!-- Package 3 -->
+    <!-- Bookkeeping - Reduced from 4,000 to 3,000 -->
     <div class="col-md-4">
-      <div class="card h-100">
-        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80" alt="Bookkeeping">
+      <div class="card service-card h-100" data-service="bookkeeping" data-price="3000" data-name="Bookkeeping & Reporting">
+        <div class="position-relative">
+          <span class="discount-badge">Save KSh 1,000</span>
+          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80" alt="Bookkeeping" class="card-img-top">
+        </div>
         <div class="card-body">
-          <h5 class="fw-bold">📊 Bookkeeping & Reporting</h5>
-          <p class="price">KSh 4,000 / day</p>
+          <h5 class="fw-bold"><i class="bi bi-graph-up me-2"></i>Bookkeeping & Reporting</h5>
+          <p class="price">KSh 3,000 / day</p>
+          <p class="text-muted small"><del class="text-danger">KSh 4,000</del> <span class="text-success">You save KSh 1,000!</span></p>
           <p class="small text-muted">Expense reports, reconciliation, and financial summaries.</p>
-          <a href="#payment" class="btn btn-primary w-100">Pay Now</a>
+          <button class="btn btn-outline-primary w-100 select-service">Select Service</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Social Media - Reduced from 2,800 to 1,800 -->
+    <div class="col-md-4">
+      <div class="card service-card h-100" data-service="social-media" data-price="1800" data-name="Social Media Management">
+        <div class="position-relative">
+          <span class="discount-badge">Save KSh 1,000</span>
+          <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80" alt="Social Media" class="card-img-top">
+        </div>
+        <div class="card-body">
+          <h5 class="fw-bold"><i class="bi bi-instagram me-2"></i>Social Media Management</h5>
+          <p class="price">KSh 1,800 / day</p>
+          <p class="text-muted small"><del class="text-danger">KSh 2,800</del> <span class="text-success">You save KSh 1,000!</span></p>
+          <p class="small text-muted">Content planning, design, and post scheduling with analytics.</p>
+          <button class="btn btn-outline-primary w-100 select-service">Select Service</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data Visualization - Reduced from 3,800 to 2,800 -->
+    <div class="col-md-4">
+      <div class="card service-card h-100" data-service="data-visualization" data-price="2800" data-name="Data Visualization">
+        <div class="position-relative">
+          <span class="discount-badge">Save KSh 1,000</span>
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Data Visualization" class="card-img-top">
+        </div>
+        <div class="card-body">
+          <h5 class="fw-bold"><i class="bi bi-bar-chart me-2"></i>Data Visualization</h5>
+          <p class="price">KSh 2,800 / day</p>
+          <p class="text-muted small"><del class="text-danger">KSh 3,800</del> <span class="text-success">You save KSh 1,000!</span></p>
+          <p class="small text-muted">Interactive dashboards and performance charts.</p>
+          <button class="btn btn-outline-primary w-100 select-service">Select Service</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project Coordination - Reduced from 4,200 to 3,200 -->
+    <div class="col-md-4">
+      <div class="card service-card h-100" data-service="project-coordination" data-price="3200" data-name="Project Coordination">
+        <div class="position-relative">
+          <span class="discount-badge">Save KSh 1,000</span>
+          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80" alt="Project Coordination" class="card-img-top">
+        </div>
+        <div class="card-body">
+          <h5 class="fw-bold"><i class="bi bi-diagram-3 me-2"></i>Project Coordination</h5>
+          <p class="price">KSh 3,200 / day</p>
+          <p class="text-muted small"><del class="text-danger">KSh 4,200</del> <span class="text-success">You save KSh 1,000!</span></p>
+          <p class="small text-muted">Task tracking, project updates, and communication management.</p>
+          <button class="btn btn-outline-primary w-100 select-service">Select Service</button>
         </div>
       </div>
     </div>
@@ -139,28 +227,56 @@
 <section id="payment" class="container my-5">
   <div class="text-center mb-5">
     <h2 class="fw-bold">Payment Options</h2>
-    <p class="text-muted">Choose your preferred method — M-Pesa or Credit/Debit Card.</p>
+    <p class="text-muted">Choose your preferred payment method</p>
   </div>
 
   <div class="row g-4 justify-content-center">
     
     <!-- M-Pesa -->
-    <div class="col-md-5">
-      <div class="card p-4 h-100">
-        <h5 class="fw-bold">Pay via M-Pesa</h5>
-        <p><strong>Paybill:</strong> 247247</p>
-        <p><strong>Account Number:</strong> kimkosva</p>
-        <p><strong>Phone:</strong> +254 712 859 814</p>
-        <p>After payment, kindly fill out the confirmation form below or email your receipt.</p>
-        <button class="btn btn-primary w-100" onclick="alert('Thank you! Please confirm below or via email.')">Confirm M-Pesa Payment</button>
+    <div class="col-md-6">
+      <div class="card p-4 h-100 payment-method-card">
+        <div class="text-center mb-3">
+          <i class="bi bi-phone text-success display-4"></i>
+        </div>
+        <h4 class="fw-bold text-center">Pay via M-Pesa</h4>
+        
+        <div class="mt-4">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <strong>Paybill Number:</strong>
+            <span class="badge bg-success">247247</span>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <strong>Account Number:</strong>
+            <span class="badge bg-primary">kimkosva</span>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <strong>Phone:</strong>
+            <span>+254 712 859 814</span>
+          </div>
+        </div>
+
+        <div class="alert alert-info">
+          <small>
+            <i class="bi bi-info-circle me-2"></i>
+            After payment, fill the confirmation form below or email your receipt to weldonruto41@gmail.com
+          </small>
+        </div>
+
+        <button class="btn btn-success w-100 mt-3" onclick="showMpesaInstructions()">
+          <i class="bi bi-phone me-2"></i>View M-Pesa Instructions
+        </button>
       </div>
     </div>
 
     <!-- Card Payment -->
-    <div class="col-md-5">
-      <div class="card p-4 h-100">
-        <h5 class="fw-bold">Pay via Card</h5>
-        <form onsubmit="event.preventDefault(); alert('Payment processed successfully!');">
+    <div class="col-md-6">
+      <div class="card p-4 h-100 payment-method-card">
+        <div class="text-center mb-3">
+          <i class="bi bi-credit-card text-primary display-4"></i>
+        </div>
+        <h4 class="fw-bold text-center">Pay via Card</h4>
+        
+        <form id="cardPaymentForm" onsubmit="processCardPayment(event)">
           <div class="mb-3">
             <label class="form-label">Name on Card</label>
             <input type="text" class="form-control" required>
@@ -168,107 +284,286 @@
 
           <div class="mb-3">
             <label class="form-label">Card Number</label>
-            <input type="text" class="form-control" maxlength="16" required>
+            <input type="text" class="form-control" maxlength="16" placeholder="1234 5678 9012 3456" required>
           </div>
 
-          <div class="row">
-            <div class="col">
+          <div class="row mb-3">
+            <div class="col-md-6">
               <label class="form-label">Expiry Date</label>
               <input type="text" class="form-control" placeholder="MM/YY" required>
             </div>
-            <div class="col">
+            <div class="col-md-6">
               <label class="form-label">CVV</label>
-              <input type="text" class="form-control" maxlength="3" required>
+              <input type="text" class="form-control" maxlength="3" placeholder="123" required>
             </div>
           </div>
 
-          <button type="submit" class="btn btn-primary w-100 mt-3">Pay Now</button>
+          <div class="mb-3">
+            <label class="form-label">Amount (KSh)</label>
+            <input type="number" class="form-control" id="cardAmount" placeholder="Enter amount" required>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">
+            <i class="bi bi-credit-card me-2"></i>Pay with Card
+          </button>
         </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- CONFIRMATION FORM -->
-  <div class="text-center mt-5">
-    <h3 class="fw-bold">Payment Confirmation</h3>
-    <p class="text-muted">Please confirm your payment by providing the details below.</p>
-  </div>
-
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <form id="paymentForm" class="card p-4 mt-3" action="https://formspree.io/f/xjkpoebl" method="POST">
-        <div class="mb-3">
-          <label class="form-label">Full Name</label>
-          <input type="text" class="form-control" name="Full Name" required>
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">Service Paid For</label>
-          <input type="text" class="form-control" name="Service Paid For" required>
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">Transaction ID / Reference</label>
-          <input type="text" class="form-control" name="Transaction ID" required>
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">Additional Notes (optional)</label>
-          <textarea class="form-control" rows="3" name="Additional Notes"></textarea>
-        </div>
-
-        <button type="submit" class="btn btn-primary w-100">Submit Confirmation</button>
-      </form>
-
-      <div id="successMessage" class="alert alert-success mt-3 d-none text-center">
-        ✅ Thank you! Your payment confirmation has been sent successfully.
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
-    <div class="mb-2 mb-md-0">
-      <strong>Victor Kosgei</strong><br>
-      <small class="text-muted">Virtual Assistant & Data Services</small>
-    </div>
+<!-- PAYMENT CONFIRMATION -->
+<section class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card p-4">
+        <h3 class="fw-bold text-center mb-4">Payment Confirmation</h3>
+        <p class="text-muted text-center">Please confirm your payment by providing the details below</p>
+        
+        <form id="paymentConfirmationForm" action="https://formspree.io/f/xjkpoebl" method="POST">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Full Name</label>
+              <input type="text" class="form-control" name="Full Name" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Email Address</label>
+              <input type="email" class="form-control" name="Email" required>
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label">Service Paid For</label>
+            <input type="text" class="form-control" id="confirmationService" name="Service Paid For" required readonly>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Amount Paid (KSh)</label>
+              <input type="number" class="form-control" id="confirmationAmount" name="Amount Paid" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Transaction ID / Reference</label>
+              <input type="text" class="form-control" name="Transaction ID" required>
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label">Payment Method</label>
+            <select class="form-select" name="Payment Method" required>
+              <option value="">Select payment method</option>
+              <option value="M-Pesa">M-Pesa</option>
+              <option value="Credit Card">Credit Card</option>
+              <option value="Debit Card">Debit Card</option>
+              <option value="Bank Transfer">Bank Transfer</option>
+            </select>
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label">Additional Notes (optional)</label>
+            <textarea class="form-control" rows="3" name="Additional Notes" placeholder="Any additional information about your payment..."></textarea>
+          </div>
 
-    <div>
-      <a href="https://www.linkedin.com/in/victor-kosgei-03839b339" target="_blank">LinkedIn</a>
-      <a href="mailto:weldonruto41@gmail.com" target="_blank">Email</a>
-      <a href="https://wa.me/254712859814" target="_blank">WhatsApp</a>
+          <button type="submit" class="btn btn-success w-100">
+            <i class="bi bi-check-circle me-2"></i>Submit Payment Confirmation
+          </button>
+        </form>
+
+        <div id="successMessage" class="alert alert-success mt-3 text-center" style="display: none;">
+          <i class="bi bi-check-circle-fill me-2"></i>
+          Thank you! Your payment confirmation has been submitted successfully.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Floating Action Buttons -->
+<div class="floating-buttons">
+  <a href="https://wa.me/254712859814" class="fab-btn whatsapp" target="_blank">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+  <a href="mailto:weldonruto41@gmail.com" class="fab-btn email">
+    <i class="bi bi-envelope"></i>
+  </a>
+  <a href="https://www.linkedin.com/in/victor-kosgei-03839b339" class="fab-btn linkedin" target="_blank">
+    <i class="bi bi-linkedin"></i>
+  </a>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <h5>Victor Kosgei</h5>
+        <p class="text-muted">Virtual Assistant & Data Services</p>
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/victor-kosgei-03839b339" class="text-white me-3"><i class="bi bi-linkedin"></i></a>
+          <a href="mailto:weldonruto41@gmail.com" class="text-white me-3"><i class="bi bi-envelope"></i></a>
+          <a href="https://wa.me/254712859814" class="text-white"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <h6>Quick Links</h6>
+        <ul class="list-unstyled">
+          <li><a href="services.html" class="text-muted text-decoration-none">Services</a></li>
+          <li><a href="portfolio.html" class="text-muted text-decoration-none">Portfolio</a></li>
+          <li><a href="blog.html" class="text-muted text-decoration-none">Blog</a></li>
+          <li><a href="contact.html" class="text-muted text-decoration-none">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4 mb-4">
+        <h6>Contact Info</h6>
+        <p class="text-muted mb-1"><i class="bi bi-phone me-2"></i> +254 712 859 814</p>
+        <p class="text-muted mb-1"><i class="bi bi-envelope me-2"></i> weldonruto41@gmail.com</p>
+        <p class="text-muted"><i class="bi bi-clock me-2"></i> Available 24/7</p>
+      </div>
+    </div>
+    <hr class="my-4">
+    <div class="text-center text-muted">
+      <small>&copy; 2024 Victor Kosgei. All rights reserved.</small>
     </div>
   </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
 <script>
-  // Formspree submission
-  const form = document.getElementById('paymentForm');
-  const successMessage = document.getElementById('successMessage');
+// Service Selection Logic
+let selectedService = null;
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+document.addEventListener('DOMContentLoaded', function() {
+    // Load selected service from localStorage (if coming from index.html)
+    const savedService = localStorage.getItem('selectedService');
+    if (savedService) {
+        const serviceCard = document.querySelector(`[data-service="${savedService}"]`);
+        if (serviceCard) {
+            selectService(serviceCard);
+        }
+    }
 
-    const data = new FormData(form);
-    const response = await fetch(form.action, {
-      method: form.method,
-      body: data,
-      headers: { 'Accept': 'application/json' }
+    // Add click event to all select service buttons
+    document.querySelectorAll('.select-service').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const card = this.closest('.service-card');
+            selectService(card);
+        });
     });
 
-    if (response.ok) {
-      successMessage.classList.remove('d-none');
-      form.reset();
-      form.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      alert("Oops! Something went wrong. Please try again.");
-    }
-  });
-</script>
+    // Add click event to service cards
+    document.querySelectorAll('.service-card').forEach(card => {
+        card.addEventListener('click', function() {
+            selectService(this);
+        });
+    });
+});
 
+function selectService(card) {
+    // Remove selected class from all cards
+    document.querySelectorAll('.service-card').forEach(c => {
+        c.classList.remove('selected');
+    });
+    
+    // Add selected class to clicked card
+    card.classList.add('selected');
+    
+    // Get service details
+    const serviceName = card.getAttribute('data-name');
+    const servicePrice = card.getAttribute('data-price');
+    const serviceId = card.getAttribute('data-service');
+    
+    // Update selected service
+    selectedService = {
+        id: serviceId,
+        name: serviceName,
+        price: servicePrice
+    };
+    
+    // Update display
+    document.getElementById('selectedServiceName').textContent = serviceName;
+    document.getElementById('selectedServicePrice').textContent = `KSh ${servicePrice} / day`;
+    document.getElementById('selectedServiceDisplay').style.display = 'block';
+    
+    // Update confirmation form
+    document.getElementById('confirmationService').value = serviceName;
+    document.getElementById('confirmationAmount').value = servicePrice;
+    document.getElementById('cardAmount').value = servicePrice;
+    
+    // Scroll to payment section
+    document.getElementById('payment').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Payment Processing Functions
+function showMpesaInstructions() {
+    alert('M-Pesa Payment Instructions:\n\n1. Go to M-Pesa on your phone\n2. Select "Lipa Na M-Pesa"\n3. Select "Pay Bill"\n4. Enter Business Number: 247247\n5. Enter Account Number: kimkosva\n6. Enter Amount\n7. Enter your M-Pesa PIN\n8. Press OK to complete payment');
+}
+
+function processCardPayment(event) {
+    event.preventDefault();
+    
+    if (!selectedService) {
+        alert('Please select a service first!');
+        return;
+    }
+    
+    const amount = document.getElementById('cardAmount').value;
+    if (!amount || amount <= 0) {
+        alert('Please enter a valid amount!');
+        return;
+    }
+    
+    // Simulate payment processing
+    const processing = confirm(`Confirm payment of KSh ${amount} for ${selectedService.name}?`);
+    
+    if (processing) {
+        alert('Payment processed successfully! Please fill out the confirmation form below.');
+        document.getElementById('confirmationAmount').value = amount;
+        document.getElementById('paymentConfirmationForm').scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+// Formspree submission handler
+document.getElementById('paymentConfirmationForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const form = this;
+    const submitButton = form.querySelector('button[type="submit"]');
+    const originalText = submitButton.innerHTML;
+    
+    // Show loading state
+    submitButton.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Processing...';
+    submitButton.disabled = true;
+    
+    try {
+        const response = await fetch(form.action, {
+            method: form.method,
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+        });
+        
+        if (response.ok) {
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+            form.reset();
+            form.scrollIntoView({ behavior: 'smooth' });
+            
+            // Reset button after delay
+            setTimeout(() => {
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+            }, 3000);
+        } else {
+            throw new Error('Form submission failed');
+        }
+    } catch (error) {
+        alert('Oops! There was a problem submitting your confirmation. Please try again.');
+        submitButton.innerHTML = originalText;
+        submitButton.disabled = false;
+    }
+});
+</script>
+<script src="main.js"></script>
 </body>
 </html>
+    
