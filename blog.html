@@ -1,29 +1,824 @@
-
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="utf-8">
-  <title>Blog</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Victor Kosgei - Virtual Assistant</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0d6efd;
+            --accent: #3a86ff;
+            --bg-light: #f8f9fa;
+            --bg-dark: #1a1d28;
+            --text-light: #333;
+            --text-dark: #f8f9fa;
+            --card-light: #ffffff;
+            --card-dark: #2d3748;
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --bg-light: #1a1d28;
+            --text-light: #f8f9fa;
+            --card-light: #2d3748;
+        }
+
+        /* Global Styles */
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        /* Navigation */
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: var(--transition);
+            color: var(--text-light);
+        }
+
+        .theme-toggle:hover {
+            background: rgba(13, 110, 253, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(13,110,253,0.1) 0%, rgba(13,110,253,0.05) 100%);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(13,110,253,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Blog Cards */
+        .blog-card {
+            transition: var(--transition);
+            border: none;
+            border-radius: 16px;
+            background: var(--card-light);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(13, 110, 253, 0.15);
+        }
+
+        .blog-card img {
+            height: 220px;
+            object-fit: cover;
+            width: 100%;
+            transition: var(--transition);
+        }
+
+        .blog-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Category Badges */
+        .category-badge {
+            background: rgba(13, 110, 253, 0.1);
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(13, 110, 253, 0.2);
+        }
+
+        /* Read Time */
+        .read-time {
+            font-size: 0.875rem;
+            color: #6c757d;
+        }
+
+        /* Sidebar */
+        .sidebar-card {
+            transition: var(--transition);
+            border: none;
+            border-radius: 16px;
+            background: var(--card-light);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        /* Newsletter Form */
+        .newsletter-form .form-control {
+            border-radius: 8px 0 0 8px;
+        }
+
+        .newsletter-form .btn {
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Popular Tags */
+        .tag {
+            display: inline-block;
+            background: rgba(13, 110, 253, 0.1);
+            color: var(--primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin: 0.2rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .tag:hover {
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Buttons */
+        .btn {
+            border-radius: 8px;
+            font-weight: 600;
+            transition: var(--transition);
+            padding: 0.75rem 1.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #0b1220;
+            color: #fff;
+            padding: 40px 0 20px;
+            margin-top: 80px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: var(--transition);
+        }
+
+        footer a:hover {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Floating Action Buttons */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .fab-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: var(--transition);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .fab-btn:hover {
+            transform: scale(1.1);
+            color: white;
+            text-decoration: none;
+            animation: none;
+        }
+
+        .fab-btn.whatsapp { 
+            background: #25D366; 
+            animation-delay: 0s;
+        }
+        .fab-btn.email { 
+            background: #EA4335; 
+            animation-delay: 0.2s;
+        }
+        .fab-btn.linkedin { 
+            background: #0A66C2; 
+            animation-delay: 0.4s;
+        }
+
+        /* Fade-in animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .display-5 {
+                font-size: 2rem;
+            }
+            
+            .floating-buttons {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .fab-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Dark mode adjustments */
+        [data-theme="dark"] .blog-card,
+        [data-theme="dark"] .sidebar-card {
+            border-color: #374151;
+        }
+
+        [data-theme="dark"] .text-muted {
+            color: #9ca3af !important;
+        }
+    </style>
 </head>
 <body>
-  <header class="site-header"><div class="container"><h1>Blog</h1></div></header>
-  <main class="container">
-    <section id="posts">
-      <div id="posts-list"></div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">Victor Kosgei</a>
+            
+            <!-- Theme Toggle -->
+            <button class="theme-toggle me-3 border-0 bg-transparent" id="themeToggle">
+                <i class="bi bi-moon"></i>
+            </button>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="payments.html">Payments</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <a href="hire.html" class="btn btn-primary ms-3">Hire Me</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero text-center">
+        <div class="container">
+            <h1 class="fw-bold display-5 mb-3 fade-in">Virtual Assistant Blog</h1>
+            <p class="lead text-muted mb-4 fade-in" style="animation-delay: 0.2s;">
+                Insights, tips, and best practices for virtual assistance, data management, and business productivity.
+            </p>
+            <div class="d-flex gap-3 justify-content-center flex-wrap fade-in" style="animation-delay: 0.4s;">
+                <a href="#featured-posts" class="btn btn-primary btn-lg">Read Articles</a>
+                <a href="#newsletter" class="btn btn-outline-primary btn-lg">Subscribe</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Blog Content -->
+    <section class="container my-5 py-5">
+        <div class="row">
+            <!-- Main Content -->
+            <div class="col-lg-8">
+                <!-- Featured Posts -->
+                <div id="featured-posts" class="mb-5">
+                    <h2 class="fw-bold display-6 mb-4 fade-in">Featured Articles</h2>
+                    
+                    <div class="row g-4">
+                        <!-- Featured Post 1 -->
+                        <div class="col-md-6 fade-in">
+                            <div class="blog-card h-100">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" 
+                                     alt="Virtual Assistant Tips" 
+                                     class="card-img-top">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="category-badge">Tips & Tricks</span>
+                                        <span class="read-time">4 min read</span>
+                                    </div>
+                                    <h5 class="fw-bold">5 Essential Tips for Effective Virtual Assistance</h5>
+                                    <p class="text-muted mb-3">
+                                        Learn the key strategies that make virtual assistance work seamlessly for businesses of all sizes.
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">January 15, 2024</small>
+                                        <a href="posts/virtual-assistant-tips.html" class="btn btn-outline-primary btn-sm">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Featured Post 2 -->
+                        <div class="col-md-6 fade-in" style="animation-delay: 0.1s;">
+                            <div class="blog-card h-100">
+                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" 
+                                     alt="Data Management" 
+                                     class="card-img-top">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="category-badge">Data Management</span>
+                                        <span class="read-time">5 min read</span>
+                                    </div>
+                                    <h5 class="fw-bold">Best Practices for Data Management in Small Businesses</h5>
+                                    <p class="text-muted mb-3">
+                                        How proper data management can transform your business operations and decision-making process.
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">January 10, 2024</small>
+                                        <a href="posts/data-management.html" class="btn btn-outline-primary btn-sm">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Posts -->
+                <div class="mb-5">
+                    <h3 class="fw-bold mb-4 fade-in">Recent Articles</h3>
+                    
+                    <div class="row g-4">
+                        <!-- Recent Post 1 -->
+                        <div class="col-md-6 col-lg-4 fade-in">
+                            <div class="blog-card h-100">
+                                <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&w=600&q=80" 
+                                     alt="Productivity Tools" 
+                                     class="card-img-top">
+                                <div class="card-body">
+                                    <span class="category-badge">Tools</span>
+                                    <h6 class="fw-bold mt-2">Top 10 Productivity Tools for Virtual Assistants in 2024</h6>
+                                    <p class="text-muted small mb-3">
+                                        Discover the essential tools that every virtual assistant should have in their toolkit.
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">Jan 5, 2024</small>
+                                        <span class="read-time">6 min</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Post 2 -->
+                        <div class="col-md-6 col-lg-4 fade-in" style="animation-delay: 0.1s;">
+                            <div class="blog-card h-100">
+                                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80" 
+                                     alt="Time Management" 
+                                     class="card-img-top">
+                                <div class="card-body">
+                                    <span class="category-badge">Productivity</span>
+                                    <h6 class="fw-bold mt-2">Time Management Strategies for Remote Workers</h6>
+                                    <p class="text-muted small mb-3">
+                                        Effective techniques to manage your time and boost productivity while working remotely.
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">Dec 28, 2023</small>
+                                        <span class="read-time">5 min</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Post 3 -->
+                        <div class="col-md-6 col-lg-4 fade-in" style="animation-delay: 0.2s;">
+                            <div class="blog-card h-100">
+                                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80" 
+                                     alt="Client Communication" 
+                                     class="card-img-top">
+                                <div class="card-body">
+                                    <span class="category-badge">Communication</span>
+                                    <h6 class="fw-bold mt-2">Mastering Client Communication as a Virtual Assistant</h6>
+                                    <p class="text-muted small mb-3">
+                                        Best practices for clear and effective communication with clients across different time zones.
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">Dec 20, 2023</small>
+                                        <span class="read-time">4 min</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Post 4 -->
+                        <div class="col-md-6 col-lg-4 fade-in" style="animation-delay: 0.3s;">
+                            <div class="blog-card h-100">
+                                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=600&q=80" 
+                                     alt="Project Management" 
+                                     class="card-img-top">
+                                <div class="card-body">
+                                    <span class="category-badge">Management</span>
+                                    <h6 class="fw-bold mt-2">Effective Project Coordination for Virtual Teams</h6>
+                                    <p class="text-muted small mb-3">
+                                        How to coordinate projects efficiently when working with distributed teams and clients.
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">Dec 15, 2023</small>
+                                        <span class="read-time">7 min</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Post 5 -->
+                        <div class="col-md-6 col-lg-4 fade-in" style="animation-delay: 0.4s;">
+                            <div class="blog-card h-100">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" 
+                                     alt="Business Growth" 
+                                     class="card-img-top">
+                                <div class="card-body">
+                                    <span class="category-badge">Business</span>
+                                    <h6 class="fw-bold mt-2">How Virtual Assistants Help Scale Small Businesses</h6>
+                                    <p class="text-muted small mb-3">
+                                        The role of virtual assistants in business growth and operational efficiency.
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">Dec 10, 2023</small>
+                                        <span class="read-time">5 min</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Post 6 -->
+                        <div class="col-md-6 col-lg-4 fade-in" style="animation-delay: 0.5s;">
+                            <div class="blog-card h-100">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" 
+                                     alt="Automation" 
+                                     class="card-img-top">
+                                <div class="card-body">
+                                    <span class="category-badge">Automation</span>
+                                    <h6 class="fw-bold mt-2">Automating Repetitive Tasks: A Virtual Assistant's Guide</h6>
+                                    <p class="text-muted small mb-3">
+                                        Tools and techniques to automate routine tasks and focus on high-value work.
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">Dec 5, 2023</small>
+                                        <span class="read-time">6 min</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Load More Button -->
+                <div class="text-center fade-in" style="animation-delay: 0.6s;">
+                    <button class="btn btn-outline-primary btn-lg" id="loadMoreBtn">
+                        <i class="bi bi-arrow-down me-2"></i>Load More Articles
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <!-- Newsletter Subscription -->
+                <div class="sidebar-card fade-in" style="animation-delay: 0.3s;">
+                    <h5 class="fw-bold mb-3">📬 Stay Updated</h5>
+                    <p class="text-muted small mb-3">Get the latest virtual assistance tips and insights delivered to your inbox.</p>
+                    <form class="newsletter-form" id="newsletter">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your email address" required>
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Popular Categories -->
+                <div class="sidebar-card fade-in" style="animation-delay: 0.4s;">
+                    <h5 class="fw-bold mb-3">📂 Categories</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a href="#" class="text-decoration-none d-flex justify-content-between">
+                                <span>Tips & Tricks</span>
+                                <span class="text-muted">(12)</span>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="text-decoration-none d-flex justify-content-between">
+                                <span>Data Management</span>
+                                <span class="text-muted">(8)</span>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="text-decoration-none d-flex justify-content-between">
+                                <span>Productivity</span>
+                                <span class="text-muted">(15)</span>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="text-decoration-none d-flex justify-content-between">
+                                <span>Tools & Software</span>
+                                <span class="text-muted">(10)</span>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="text-decoration-none d-flex justify-content-between">
+                                <span>Business Growth</span>
+                                <span class="text-muted">(6)</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Popular Tags -->
+                <div class="sidebar-card fade-in" style="animation-delay: 0.5s;">
+                    <h5 class="fw-bold mb-3">🏷️ Popular Tags</h5>
+                    <div class="d-flex flex-wrap">
+                        <a href="#" class="tag">Virtual Assistance</a>
+                        <a href="#" class="tag">Data Entry</a>
+                        <a href="#" class="tag">Productivity</a>
+                        <a href="#" class="tag">Time Management</a>
+                        <a href="#" class="tag">Google Workspace</a>
+                        <a href="#" class="tag">Excel Tips</a>
+                        <a href="#" class="tag">Remote Work</a>
+                        <a href="#" class="tag">Automation</a>
+                        <a href="#" class="tag">Client Management</a>
+                        <a href="#" class="tag">Business Tools</a>
+                    </div>
+                </div>
+
+                <!-- Recent Comments -->
+                <div class="sidebar-card fade-in" style="animation-delay: 0.6s;">
+                    <h5 class="fw-bold mb-3">💬 Recent Comments</h5>
+                    <div class="d-flex align-items-start mb-3">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=50&q=80" 
+                             alt="User" 
+                             class="rounded-circle me-2" 
+                             width="32" 
+                             height="32">
+                        <div>
+                            <small class="fw-bold">Sarah M.</small>
+                            <p class="small text-muted mb-1">"These productivity tips saved me hours each week!"</p>
+                            <small class="text-muted">on Time Management Strategies</small>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=50&q=80" 
+                             alt="User" 
+                             class="rounded-circle me-2" 
+                             width="32" 
+                             height="32">
+                        <div>
+                            <small class="fw-bold">John D.</small>
+                            <p class="small text-muted mb-1">"Great insights on client communication. Very helpful!"</p>
+                            <small class="text-muted">on Mastering Client Communication</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-  </main>
-  <script>
-    fetch('posts/posts.json').then(r=>r.json()).then(posts=>{
-      const list = document.getElementById('posts-list');
-      posts.forEach(p=>{
-        const card = document.createElement('div');
-        card.className = 'card post-card';
-        card.innerHTML = `<h2><a href="posts/${p.id}.html">${p.title}</a></h2><p class="meta">${p.date}</p><p>${p.excerpt}</p>`;
-        list.appendChild(card);
-        // write individual post pages if not exist (best effort)
-      });
-    });
-  </script>
+
+    <!-- CTA Section -->
+    <section class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="bg-primary text-white p-5 text-center rounded-4 position-relative overflow-hidden">
+                    <div class="position-relative z-1">
+                        <h3 class="fw-bold mb-3 display-6">Ready to Boost Your Productivity?</h3>
+                        <p class="mb-4 fs-5">Let's work together to streamline your business operations and achieve your goals.</p>
+                        <div class="d-flex gap-3 justify-content-center flex-wrap">
+                            <a href="contact.html" class="btn btn-light btn-lg px-4">
+                                <i class="bi bi-chat-dots me-2"></i>Get In Touch
+                            </a>
+                            <a href="services.html" class="btn btn-outline-light btn-lg px-4">
+                                <i class="bi bi-grid me-2"></i>View Services
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/254712859814" class="fab-btn whatsapp" target="_blank">
+            <i class="bi bi-whatsapp"></i>
+        </a>
+        <a href="mailto:weldonruto41@gmail.com" class="fab-btn email">
+            <i class="bi bi-envelope"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/victor-kosgei-03839b339" class="fab-btn linkedin" target="_blank">
+            <i class="bi bi-linkedin"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>Victor Kosgei</h5>
+                    <p class="text-muted">Virtual Assistant & Data Services</p>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/victor-kosgei-03839b339" class="text-white me-3">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                        <a href="mailto:weldonruto41@gmail.com" class="text-white me-3">
+                            <i class="bi bi-envelope"></i>
+                        </a>
+                        <a href="https://wa.me/254712859814" class="text-white">
+                            <i class="bi bi-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h6>Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="services.html" class="text-muted text-decoration-none">Services</a></li>
+                        <li><a href="portfolio.html" class="text-muted text-decoration-none">Portfolio</a></li>
+                        <li><a href="blog.html" class="text-muted text-decoration-none">Blog</a></li>
+                        <li><a href="contact.html" class="text-muted text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h6>Contact Info</h6>
+                    <p class="text-muted mb-1"><i class="bi bi-phone me-2"></i> +254 712 859 814</p>
+                    <p class="text-muted mb-1"><i class="bi bi-envelope me-2"></i> weldonruto41@gmail.com</p>
+                    <p class="text-muted"><i class="bi bi-clock me-2"></i> Available 24/7</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center text-muted">
+                <small>&copy; 2024 Victor Kosgei. All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        }
+
+        function updateThemeIcon(theme) {
+            const icon = themeToggle.querySelector('i');
+            if (icon) {
+                icon.className = theme === 'dark' ? 'bi bi-sun' : 'bi bi-moon';
+            }
+        }
+
+        // Newsletter Form Handling
+        function handleNewsletter() {
+            const newsletterForm = document.getElementById('newsletter');
+            
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const input = this.querySelector('input[type="email"]');
+                const button = this.querySelector('button');
+                
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="bi bi-check me-2"></i>Subscribed!';
+                button.disabled = true;
+                
+                setTimeout(() => {
+                    input.value = '';
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                    alert('Thank you for subscribing to our newsletter!');
+                }, 2000);
+            });
+        }
+
+        // Load More Button
+        function handleLoadMore() {
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            let loaded = 6; // Starting with 6 posts
+            
+            loadMoreBtn.addEventListener('click', function() {
+                this.innerHTML = '<i class="bi bi-arrow-repeat me-2"></i>Loading...';
+                this.disabled = true;
+                
+                // Simulate loading more content
+                setTimeout(() => {
+                    loaded += 3;
+                    this.innerHTML = `<i class="bi bi-arrow-down me-2"></i>Load More Articles (${loaded} loaded)`;
+                    this.disabled = false;
+                    
+                    if (loaded >= 15) {
+                        this.style.display = 'none';
+                    }
+                }, 1000);
+            });
+        }
+
+        // Scroll Animations
+        function handleScrollAnimations() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            initTheme();
+            
+            if (themeToggle) {
+                themeToggle.addEventListener('click', toggleTheme);
+            }
+
+            handleNewsletter();
+            handleLoadMore();
+
+            // Initial animation check
+            handleScrollAnimations();
+            
+            // Scroll event listener
+            window.addEventListener('scroll', handleScrollAnimations);
+        });
+    </script>
 </body>
 </html>
