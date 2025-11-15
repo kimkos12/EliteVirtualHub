@@ -1,141 +1,859 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>About — Victor Kosgei</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: #f8f9fa;
-      color: #333;
-    }
-    .about-header {
-      background: linear-gradient(90deg, rgba(13,110,253,0.1), rgba(13,110,253,0.05));
-      padding: 60px 0;
-      text-align: center;
-    }
-    .about-header h1 {
-      font-weight: 700;
-    }
-    .about-photo {
-      max-width: 260px;
-      border-radius: 50%;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    }
-    .values i {
-      color: #0d6efd;
-      font-size: 1.8rem;
-    }
-    footer {
-      background: #0b1220;
-      color: white;
-      padding: 25px 0;
-      text-align: center;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Victor Kosgei - Virtual Assistant</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0d6efd;
+            --accent: #3a86ff;
+            --bg-light: #f8f9fa;
+            --bg-dark: #1a1d28;
+            --text-light: #333;
+            --text-dark: #f8f9fa;
+            --card-light: #ffffff;
+            --card-dark: #2d3748;
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --bg-light: #1a1d28;
+            --text-light: #f8f9fa;
+            --card-light: #2d3748;
+        }
+
+        /* Global Styles */
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        /* Navigation */
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: var(--transition);
+            color: var(--text-light);
+        }
+
+        .theme-toggle:hover {
+            background: rgba(13, 110, 253, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(13,110,253,0.1) 0%, rgba(13,110,253,0.05) 100%);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(13,110,253,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Profile Image */
+        .profile-img {
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .profile-img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(13, 110, 253, 0.2);
+        }
+
+        /* About Cards */
+        .about-card {
+            transition: var(--transition);
+            border: none;
+            border-radius: 16px;
+            background: var(--card-light);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            height: 100%;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Skills Section */
+        .skill-bar {
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 10px;
+            transition: width 1s ease-in-out;
+            width: 0%;
+        }
+
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Testimonial Cards */
+        .testimonial-card {
+            transition: var(--transition);
+            border: none;
+            border-radius: 16px;
+            background: var(--card-light);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            height: 100%;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .client-img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+        }
+
+        /* Stats Section */
+        .stat-card {
+            background: var(--card-light);
+            border-radius: 16px;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Buttons */
+        .btn {
+            border-radius: 8px;
+            font-weight: 600;
+            transition: var(--transition);
+            padding: 0.75rem 1.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #0b1220;
+            color: #fff;
+            padding: 40px 0 20px;
+            margin-top: 80px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: var(--transition);
+        }
+
+        footer a:hover {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Floating Action Buttons */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .fab-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: var(--transition);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .fab-btn:hover {
+            transform: scale(1.1);
+            color: white;
+            text-decoration: none;
+            animation: none;
+        }
+
+        .fab-btn.whatsapp { 
+            background: #25D366; 
+            animation-delay: 0s;
+        }
+        .fab-btn.email { 
+            background: #EA4335; 
+            animation-delay: 0.2s;
+        }
+        .fab-btn.linkedin { 
+            background: #0A66C2; 
+            animation-delay: 0.4s;
+        }
+
+        /* Tool Badges */
+        .tool-badge {
+            background: rgba(13, 110, 253, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(13, 110, 253, 0.2);
+            transition: var(--transition);
+        }
+
+        .tool-badge:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Fade-in animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .display-5 {
+                font-size: 2rem;
+            }
+            
+            .profile-img {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .floating-buttons {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .fab-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+
+        /* Dark mode adjustments */
+        [data-theme="dark"] .about-card,
+        [data-theme="dark"] .testimonial-card,
+        [data-theme="dark"] .stat-card {
+            border-color: #374151;
+        }
+
+        [data-theme="dark"] .text-muted {
+            color: #9ca3af !important;
+        }
+
+        [data-theme="dark"] .skill-bar {
+            background: #374151;
+        }
+    </style>
 </head>
 <body>
-
-<!-- HEADER -->
-<header class="py-3 bg-white shadow-sm">
-  <div class="container d-flex flex-wrap justify-content-between align-items-center">
-    <a href="index.html" class="fw-bold fs-4 text-decoration-none text-primary">Victor Kosgei</a>
-    <nav class="d-flex gap-3">
-      <a href="index.html" class="text-dark text-decoration-none">Home</a>
-      <a href="about.html" class="text-primary fw-bold text-decoration-none">About</a>
-      <a href="services.html" class="text-dark text-decoration-none">Services</a>
-      <a href="portfolio.html" class="text-dark text-decoration-none">Portfolio</a>
-      <a href="hire.html" class="text-dark text-decoration-none">Hire Me</a>
-      <a href="contact.html" class="text-dark text-decoration-none">Contact</a>
-      <a href="Payments.html" class="text-dark text-decoration-none">Payments</a>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">Victor Kosgei</a>
+            
+            <!-- Theme Toggle -->
+            <button class="theme-toggle me-3 border-0 bg-transparent" id="themeToggle">
+                <i class="bi bi-moon"></i>
+            </button>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="payments.html">Payments</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <a href="hire.html" class="btn btn-primary ms-3">Hire Me</a>
+            </div>
+        </div>
     </nav>
-  </div>
-</header>
 
-<!-- ABOUT INTRO -->
-<section class="about-header">
-  <div class="container">
-    <h1>About Me</h1>
-    <p class="text-muted">Professional Virtual Assistant & Data Analyst passionate about helping businesses stay organized and data-driven.</p>
-  </div>
-</section>
-
-<!-- MAIN CONTENT -->
-<main class="container my-5">
-  <div class="row align-items-center mb-5">
-    <div class="col-md-4 text-center">
-      <img src="myphoto.JPG" alt="Victor Kosgei" class="about-photo img-fluid mb-3">
-    </div>
-    <div class="col-md-8">
-      <h2 class="fw-bold">Who I Am</h2>
-      <p>
-        I'm <strong>Victor Kosgei</strong>, a dedicated <strong>Virtual Assistant and Data Analyst</strong> with over five years of experience helping entrepreneurs and organizations manage their operations efficiently. I specialize in administrative support, data entry, bookkeeping, and social media management — ensuring accuracy, timeliness, and professional communication in every task.
-      </p>
-      <p>
-        I take pride in helping clients stay organized, meet deadlines, and focus on what truly matters — growing their businesses. Currently, I’m pursuing a degree in Finance to further strengthen my analytical and organizational expertise.
-      </p>
-    </div>
-  </div>
-
-  <!-- CORE VALUES -->
-  <section class="values text-center mb-5">
-    <h2 class="fw-bold mb-4">Core Skills & Values</h2>
-    <div class="row g-4">
-      <div class="col-md-3">
-        <i class="bi bi-graph-up-arrow"></i>
-        <h5 class="mt-3">Data Accuracy</h5>
-        <p class="text-muted small">Meticulous attention to detail ensures clean, accurate, and actionable data.</p>
-      </div>
-      <div class="col-md-3">
-        <i class="bi bi-clock-history"></i>
-        <h5 class="mt-3">Reliability</h5>
-        <p class="text-muted small">Timely delivery and consistent communication on all projects.</p>
-      </div>
-      <div class="col-md-3">
-        <i class="bi bi-shield-lock"></i>
-        <h5 class="mt-3">Confidentiality</h5>
-        <p class="text-muted small">Your data and business information are always safe and handled with integrity.</p>
-      </div>
-      <div class="col-md-3">
-        <i class="bi bi-people"></i>
-        <h5 class="mt-3">Client Focus</h5>
-        <p class="text-muted small">Every task is tailored to meet each client’s unique goals and style.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="testimonials text-center mb-5">
-    <h2 class="fw-bold mb-4">What Clients Say</h2>
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <div class="card p-4 shadow-sm mb-3">
-          <p>"Victor transformed our bookkeeping process — accurate, fast, and reliable. Working with him is a breeze!"</p>
-          <p class="text-muted small mb-0"><strong>— Mitchelle Kimutai, Salesforce Administrator</strong></p>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="fw-bold display-5 mb-3 fade-in">About Victor Kosgei</h1>
+                    <p class="lead text-muted mb-4 fade-in" style="animation-delay: 0.2s;">
+                        Professional Virtual Assistant & Data Specialist dedicated to helping businesses 
+                        streamline operations and achieve their goals through reliable virtual support.
+                    </p>
+                    <div class="d-flex gap-3 flex-wrap fade-in" style="animation-delay: 0.4s;">
+                        <a href="#contact" class="btn btn-primary btn-lg">Get In Touch</a>
+                        <a href="portfolio.html" class="btn btn-outline-primary btn-lg">View Portfolio</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center mt-4 mt-lg-0">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" 
+                         alt="Victor Kosgei" 
+                         class="profile-img rounded-circle fade-in" 
+                         style="animation-delay: 0.3s;">
+                </div>
+            </div>
         </div>
-        <div class="card p-4 shadow-sm">
-          <p>"Excellent attention to detail and clear communication throughout. Highly recommended VA!"</p>
-          <p class="text-muted small mb-0"><strong>— John Doe, Business Owner</strong></p>
+    </header>
+
+    <!-- About Section -->
+    <section class="container my-5 py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <h2 class="fw-bold display-6 mb-4 fade-in">My Story</h2>
+                <p class="text-muted mb-4 fade-in" style="animation-delay: 0.1s;">
+                    I'm <strong>Victor Kosgei</strong>, a dedicated Virtual Assistant and Data Analyst with over 
+                    five years of experience helping entrepreneurs and organizations manage their operations 
+                    efficiently. My journey began with a passion for organization and technology, which has 
+                    evolved into a career dedicated to helping businesses thrive.
+                </p>
+                <p class="text-muted mb-4 fade-in" style="animation-delay: 0.2s;">
+                    I specialize in administrative support, data entry, bookkeeping, and social media management — 
+                    ensuring accuracy, timeliness, and professional communication in every task. I take pride in 
+                    helping clients stay organized, meet deadlines, and focus on what truly matters — growing their businesses.
+                </p>
+                <p class="text-muted mb-4 fade-in" style="animation-delay: 0.3s;">
+                    Currently, I'm pursuing a degree in Finance to further strengthen my analytical and organizational 
+                    expertise, allowing me to provide even more value to my clients.
+                </p>
+                <div class="d-flex gap-3 flex-wrap fade-in" style="animation-delay: 0.4s;">
+                    <a href="services.html" class="btn btn-primary">View Services</a>
+                    <a href="contact.html" class="btn btn-outline-primary">Contact Me</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="row g-4">
+                    <div class="col-md-6 fade-in" style="animation-delay: 0.2s;">
+                        <div class="about-card p-4 text-center h-100">
+                            <i class="bi bi-award value-icon"></i>
+                            <h5 class="fw-bold">Certified Professional</h5>
+                            <p class="text-muted mb-0">10-week Virtual Assistance certification with proven expertise</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 fade-in" style="animation-delay: 0.3s;">
+                        <div class="about-card p-4 text-center h-100">
+                            <i class="bi bi-clock value-icon"></i>
+                            <h5 class="fw-bold">5+ Years Experience</h5>
+                            <p class="text-muted mb-0">Extensive experience across various industries and business types</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 fade-in" style="animation-delay: 0.4s;">
+                        <div class="about-card p-4 text-center h-100">
+                            <i class="bi bi-check-circle value-icon"></i>
+                            <h5 class="fw-bold">50+ Projects</h5>
+                            <p class="text-muted mb-0">Successfully completed projects with 95% client satisfaction rate</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 fade-in" style="animation-delay: 0.5s;">
+                        <div class="about-card p-4 text-center h-100">
+                            <i class="bi bi-headset value-icon"></i>
+                            <h5 class="fw-bold">24/7 Support</h5>
+                            <p class="text-muted mb-0">Round-the-clock availability for urgent business needs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="container my-5 py-5 bg-light rounded">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold display-6 mb-3 fade-in">Technical Skills</h2>
+            <p class="text-muted fade-in" style="animation-delay: 0.1s;">
+                Comprehensive skill set to handle all your virtual assistance needs
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="skill-item fade-in">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="fw-semibold">Data Analysis & Excel</span>
+                        <span class="text-primary fw-bold">95%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="95"></div>
+                    </div>
+                </div>
+                <div class="skill-item fade-in" style="animation-delay: 0.1s;">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="fw-semibold">Virtual Assistance</span>
+                        <span class="text-primary fw-bold">90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="90"></div>
+                    </div>
+                </div>
+                <div class="skill-item fade-in" style="animation-delay: 0.2s;">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="fw-semibold">Bookkeeping</span>
+                        <span class="text-primary fw-bold">85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="85"></div>
+                    </div>
+                </div>
+                <div class="skill-item fade-in" style="animation-delay: 0.3s;">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="fw-semibold">Social Media Management</span>
+                        <span class="text-primary fw-bold">88%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="88"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h4 class="fw-bold mb-4 fade-in">Tools & Technologies</h4>
+                <div class="d-flex flex-wrap gap-3 fade-in" style="animation-delay: 0.1s;">
+                    <span class="tool-badge">Google Workspace</span>
+                    <span class="tool-badge">Microsoft Excel</span>
+                    <span class="tool-badge">QuickBooks</span>
+                    <span class="tool-badge">Trello</span>
+                    <span class="tool-badge">Notion</span>
+                    <span class="tool-badge">Canva</span>
+                    <span class="tool-badge">Google Data Studio</span>
+                    <span class="tool-badge">Slack</span>
+                    <span class="tool-badge">Asana</span>
+                    <span class="tool-badge">Buffer</span>
+                    <span class="tool-badge">Calendly</span>
+                    <span class="tool-badge">Zoom</span>
+                </div>
+                
+                <div class="mt-5 fade-in" style="animation-delay: 0.2s;">
+                    <h5 class="fw-bold mb-3">Education & Certification</h5>
+                    <div class="about-card p-4">
+                        <div class="d-flex align-items-start mb-3">
+                            <i class="bi bi-award-fill text-primary fs-4 me-3"></i>
+                            <div>
+                                <h6 class="fw-bold mb-1">Virtual Assistant Certification</h6>
+                                <p class="text-muted mb-1">10-week comprehensive program</p>
+                                <small class="text-muted">Completed: November 2024</small>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start">
+                            <i class="bi bi-mortarboard-fill text-primary fs-4 me-3"></i>
+                            <div>
+                                <h6 class="fw-bold mb-1">Finance Degree (In Progress)</h6>
+                                <p class="text-muted mb-1">Strengthening analytical expertise</p>
+                                <small class="text-muted">Expected: 2025</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="container my-5 py-5">
+        <div class="row g-4 text-center">
+            <div class="col-md-3 col-6 fade-in">
+                <div class="stat-card">
+                    <div class="stat-number" data-target="50">0+</div>
+                    <p class="text-muted mb-0 fw-semibold">Projects Completed</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 fade-in" style="animation-delay: 0.1s;">
+                <div class="stat-card">
+                    <div class="stat-number" data-target="95">0%</div>
+                    <p class="text-muted mb-0 fw-semibold">Client Satisfaction</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 fade-in" style="animation-delay: 0.2s;">
+                <div class="stat-card">
+                    <div class="stat-number" data-target="100">0%</div>
+                    <p class="text-muted mb-0 fw-semibold">On-Time Delivery</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 fade-in" style="animation-delay: 0.3s;">
+                <div class="stat-card">
+                    <div class="stat-number">5+</div>
+                    <p class="text-muted mb-0 fw-semibold">Years Experience</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="container my-5 py-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold display-6 mb-3 fade-in">What Clients Say</h2>
+            <p class="text-muted fade-in" style="animation-delay: 0.1s;">
+                Don't just take my word for it - hear from satisfied clients
+            </p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-6 fade-in">
+                <div class="testimonial-card p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=100&q=80" 
+                             alt="Mitchelle Kimutai" 
+                             class="client-img rounded-circle me-3">
+                        <div>
+                            <h6 class="fw-bold mb-1">Mitchelle Kimutai</h6>
+                            <p class="text-muted mb-0 small">Salesforce Administrator</p>
+                        </div>
+                    </div>
+                    <p class="text-muted mb-0">
+                        "Victor transformed our bookkeeping process — accurate, fast, and reliable. 
+                        Working with him is a breeze! His attention to detail and professionalism 
+                        exceeded our expectations."
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 fade-in" style="animation-delay: 0.1s;">
+                <div class="testimonial-card p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&q=80" 
+                             alt="John Doe" 
+                             class="client-img rounded-circle me-3">
+                        <div>
+                            <h6 class="fw-bold mb-1">John Doe</h6>
+                            <p class="text-muted mb-0 small">Business Owner</p>
+                        </div>
+                    </div>
+                    <p class="text-muted mb-0">
+                        "Excellent attention to detail and clear communication throughout. 
+                        Victor's data entry services saved us countless hours and improved 
+                        our data accuracy significantly. Highly recommended VA!"
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 fade-in" style="animation-delay: 0.2s;">
+                <div class="testimonial-card p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&q=80" 
+                             alt="Sarah Johnson" 
+                             class="client-img rounded-circle me-3">
+                        <div>
+                            <h6 class="fw-bold mb-1">Sarah Johnson</h6>
+                            <p class="text-muted mb-0 small">Marketing Director</p>
+                        </div>
+                    </div>
+                    <p class="text-muted mb-0">
+                        "Victor's social media management brought new life to our online presence. 
+                        His strategic approach and creative content helped us engage with our 
+                        audience in meaningful ways."
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 fade-in" style="animation-delay: 0.3s;">
+                <div class="testimonial-card p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" 
+                             alt="Michael Chen" 
+                             class="client-img rounded-circle me-3">
+                        <div>
+                            <h6 class="fw-bold mb-1">Michael Chen</h6>
+                            <p class="text-muted mb-0 small">Startup Founder</p>
+                        </div>
+                    </div>
+                    <p class="text-muted mb-0">
+                        "As a startup, we needed reliable administrative support without the 
+                        overhead of a full-time employee. Victor provided exactly that - professional, 
+                        efficient, and always available when we needed him."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="bg-primary text-white p-5 text-center rounded-4 position-relative overflow-hidden">
+                    <div class="position-relative z-1">
+                        <h3 class="fw-bold mb-3 display-6">Let's Work Together</h3>
+                        <p class="mb-4 fs-5">Ready to streamline your business operations? Get in touch and let's discuss how I can help you achieve your goals.</p>
+                        <div class="d-flex gap-3 justify-content-center flex-wrap">
+                            <a href="contact.html" class="btn btn-light btn-lg px-4">
+                                <i class="bi bi-chat-dots me-2"></i>Contact Me
+                            </a>
+                            <a href="services.html" class="btn btn-outline-light btn-lg px-4">
+                                <i class="bi bi-grid me-2"></i>View Services
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/254712859814" class="fab-btn whatsapp" target="_blank">
+            <i class="bi bi-whatsapp"></i>
+        </a>
+        <a href="mailto:weldonruto41@gmail.com" class="fab-btn email">
+            <i class="bi bi-envelope"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/victor-kosgei-03839b339" class="fab-btn linkedin" target="_blank">
+            <i class="bi bi-linkedin"></i>
+        </a>
     </div>
-  </section>
-</main>
 
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <p class="mb-2">Connect with me:</p>
-    <a href="https://wa.me/254712859814" target="_blank" class="text-white me-3">WhatsApp</a>
-    <a href="https://www.linkedin.com/in/victor-kosgei-03839b339" target="_blank" class="text-white me-3">LinkedIn</a>
-    <a href="https://github.com/kimkosva" target="_blank" class="text-white">GitHub</a>
-    <p class="mt-3 mb-0 small text-muted">&copy; 2025 Victor Kosgei — Virtual Assistant & Data Analyst</p>
-  </div>
-</footer>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>Victor Kosgei</h5>
+                    <p class="text-muted">Virtual Assistant & Data Services</p>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/victor-kosgei-03839b339" class="text-white me-3">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                        <a href="mailto:weldonruto41@gmail.com" class="text-white me-3">
+                            <i class="bi bi-envelope"></i>
+                        </a>
+                        <a href="https://wa.me/254712859814" class="text-white">
+                            <i class="bi bi-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h6>Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="services.html" class="text-muted text-decoration-none">Services</a></li>
+                        <li><a href="portfolio.html" class="text-muted text-decoration-none">Portfolio</a></li>
+                        <li><a href="blog.html" class="text-muted text-decoration-none">Blog</a></li>
+                        <li><a href="contact.html" class="text-muted text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h6>Contact Info</h6>
+                    <p class="text-muted mb-1"><i class="bi bi-phone me-2"></i> +254 712 859 814</p>
+                    <p class="text-muted mb-1"><i class="bi bi-envelope me-2"></i> weldonruto41@gmail.com</p>
+                    <p class="text-muted"><i class="bi bi-clock me-2"></i> Available 24/7</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center text-muted">
+                <small>&copy; 2024 Victor Kosgei. All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        }
+
+        function updateThemeIcon(theme) {
+            const icon = themeToggle.querySelector('i');
+            if (icon) {
+                icon.className = theme === 'dark' ? 'bi bi-sun' : 'bi bi-moon';
+            }
+        }
+
+        // Animated Counter
+        function animateCounter(element, target, suffix = '') {
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + suffix;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + suffix;
+                }
+            }, 30);
+        }
+
+        // Skills Animation
+        function animateSkills() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            
+            skillBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                bar.style.width = width + '%';
+            });
+        }
+
+        // Scroll Animations
+        function handleScrollAnimations() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+
+            // Animate counters when in view
+            const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+            statNumbers.forEach(stat => {
+                const rect = stat.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100 && !stat.hasAttribute('data-animated')) {
+                    const target = parseInt(stat.getAttribute('data-target'));
+                    const suffix = stat.textContent.includes('%') ? '%' : '+';
+                    stat.setAttribute('data-animated', 'true');
+                    animateCounter(stat, target, suffix);
+                }
+            });
+
+            // Animate skills when in view
+            const skillsSection = document.querySelector('.bg-light.rounded');
+            if (skillsSection) {
+                const rect = skillsSection.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    animateSkills();
+                }
+            }
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            initTheme();
+            
+            if (themeToggle) {
+                themeToggle.addEventListener('click', toggleTheme);
+            }
+
+            // Initial animation check
+            handleScrollAnimations();
+            
+            // Scroll event listener
+            window.addEventListener('scroll', handleScrollAnimations);
+        });
+    </script>
 </body>
 </html>
