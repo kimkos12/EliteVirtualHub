@@ -7,6 +7,61 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .service-card {
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(13, 110, 253, 0.2);
+      border-color: #0d6efd !important;
+    }
+    
+    .service-options {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.95);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      padding: 1rem;
+    }
+    
+    .service-card:hover .service-options {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .service-option-btn {
+      width: 80%;
+      margin: 0.3rem 0;
+      font-size: 0.9rem;
+      padding: 0.5rem;
+    }
+    
+    .service-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #0d6efd;
+    }
+    
+    .service-price {
+      font-weight: 600;
+      color: #0d6efd;
+      font-size: 1.1rem;
+    }
+  </style>
 </head>
 <body>
 
@@ -51,8 +106,8 @@
         </p>
         <div class="d-flex gap-2 flex-wrap">
           <a href="hire.html" class="btn btn-primary btn-lg mt-3">Hire Me</a>
-          <a href="services.html" class="btn btn-outline-primary btn-lg mt-3">View Services</a>
-          <a href="#contact" class="btn btn-outline-secondary btn-lg mt-3">Get Quote</a>
+          <a href="services.html" class="btn btn-outline-primary btn-lg mt-3">View All Services</a>
+          <a href="payments.html" class="btn btn-outline-secondary btn-lg mt-3">Make Payment</a>
         </div>
         
         <!-- Stats -->
@@ -82,48 +137,257 @@
   </div>
 </header>
 
-<!-- Quick Services Overview -->
-<section class="container my-5 py-5">
+<!-- Interactive Services Section -->
+<section id="quick-services" class="container my-5 py-5">
   <div class="text-center mb-5">
     <h2 class="fw-bold">Popular Services</h2>
-    <p class="text-muted">Quick access to my most requested services</p>
+    <p class="text-muted">Click on any service to view details or make payment</p>
   </div>
   
   <div class="row g-4">
+    <!-- Data Entry -->
     <div class="col-md-3 col-6">
-      <div class="card service-card text-center h-100">
+      <div class="card service-card text-center h-100" onclick="showServiceOptions('data-entry')">
         <div class="card-body">
-          <i class="bi bi-table text-primary display-6 mb-3"></i>
+          <i class="bi bi-table service-icon"></i>
           <h6>Data Entry</h6>
-          <small class="text-muted">From KSh 3,000/day</small>
+          <div class="service-price">KSh 3,000 / day</div>
+          <small class="text-muted">Fast and accurate data processing</small>
+        </div>
+        <div class="service-options">
+          <h6 class="fw-bold mb-3">Data Entry</h6>
+          <button class="btn btn-primary service-option-btn" onclick="event.stopPropagation(); navigateToService('data-entry')">
+            <i class="bi bi-info-circle me-2"></i>View Details
+          </button>
+          <button class="btn btn-success service-option-btn" onclick="event.stopPropagation(); navigateToPayment('data-entry')">
+            <i class="bi bi-credit-card me-2"></i>Pay Now
+          </button>
+          <button class="btn btn-outline-secondary service-option-btn" onclick="event.stopPropagation(); navigateToContact('data-entry')">
+            <i class="bi bi-chat me-2"></i>Inquire
+          </button>
         </div>
       </div>
     </div>
+
+    <!-- Admin Support -->
     <div class="col-md-3 col-6">
-      <div class="card service-card text-center h-100">
+      <div class="card service-card text-center h-100" onclick="showServiceOptions('admin-support')">
         <div class="card-body">
-          <i class="bi bi-calendar-check text-primary display-6 mb-3"></i>
+          <i class="bi bi-calendar-check service-icon"></i>
           <h6>Admin Support</h6>
-          <small class="text-muted">From KSh 3,500/day</small>
+          <div class="service-price">KSh 3,500 / day</div>
+          <small class="text-muted">Professional administrative assistance</small>
+        </div>
+        <div class="service-options">
+          <h6 class="fw-bold mb-3">Admin Support</h6>
+          <button class="btn btn-primary service-option-btn" onclick="event.stopPropagation(); navigateToService('admin-support')">
+            <i class="bi bi-info-circle me-2"></i>View Details
+          </button>
+          <button class="btn btn-success service-option-btn" onclick="event.stopPropagation(); navigateToPayment('admin-support')">
+            <i class="bi bi-credit-card me-2"></i>Pay Now
+          </button>
+          <button class="btn btn-outline-secondary service-option-btn" onclick="event.stopPropagation(); navigateToContact('admin-support')">
+            <i class="bi bi-chat me-2"></i>Inquire
+          </button>
         </div>
       </div>
     </div>
+
+    <!-- Bookkeeping -->
     <div class="col-md-3 col-6">
-      <div class="card service-card text-center h-100">
+      <div class="card service-card text-center h-100" onclick="showServiceOptions('bookkeeping')">
         <div class="card-body">
-          <i class="bi bi-graph-up text-primary display-6 mb-3"></i>
+          <i class="bi bi-graph-up service-icon"></i>
           <h6>Bookkeeping</h6>
-          <small class="text-muted">From KSh 4,000/day</small>
+          <div class="service-price">KSh 4,000 / day</div>
+          <small class="text-muted">Financial record management</small>
+        </div>
+        <div class="service-options">
+          <h6 class="fw-bold mb-3">Bookkeeping</h6>
+          <button class="btn btn-primary service-option-btn" onclick="event.stopPropagation(); navigateToService('bookkeeping')">
+            <i class="bi bi-info-circle me-2"></i>View Details
+          </button>
+          <button class="btn btn-success service-option-btn" onclick="event.stopPropagation(); navigateToPayment('bookkeeping')">
+            <i class="bi bi-credit-card me-2"></i>Pay Now
+          </button>
+          <button class="btn btn-outline-secondary service-option-btn" onclick="event.stopPropagation(); navigateToContact('bookkeeping')">
+            <i class="bi bi-chat me-2"></i>Inquire
+          </button>
         </div>
       </div>
     </div>
+
+    <!-- Social Media -->
     <div class="col-md-3 col-6">
-      <div class="card service-card text-center h-100">
+      <div class="card service-card text-center h-100" onclick="showServiceOptions('social-media')">
         <div class="card-body">
-          <i class="bi bi-instagram text-primary display-6 mb-3"></i>
+          <i class="bi bi-instagram service-icon"></i>
           <h6>Social Media</h6>
-          <small class="text-muted">From KSh 2,800/day</small>
+          <div class="service-price">KSh 2,800 / day</div>
+          <small class="text-muted">Content creation & management</small>
         </div>
+        <div class="service-options">
+          <h6 class="fw-bold mb-3">Social Media</h6>
+          <button class="btn btn-primary service-option-btn" onclick="event.stopPropagation(); navigateToService('social-media')">
+            <i class="bi bi-info-circle me-2"></i>View Details
+          </button>
+          <button class="btn btn-success service-option-btn" onclick="event.stopPropagation(); navigateToPayment('social-media')">
+            <i class="bi bi-credit-card me-2"></i>Pay Now
+          </button>
+          <button class="btn btn-outline-secondary service-option-btn" onclick="event.stopPropagation(); navigateToContact('social-media')">
+            <i class="bi bi-chat me-2"></i>Inquire
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data Visualization -->
+    <div class="col-md-3 col-6">
+      <div class="card service-card text-center h-100" onclick="showServiceOptions('data-visualization')">
+        <div class="card-body">
+          <i class="bi bi-bar-chart service-icon"></i>
+          <h6>Data Visualization</h6>
+          <div class="service-price">KSh 3,800 / day</div>
+          <small class="text-muted">Interactive dashboards & reports</small>
+        </div>
+        <div class="service-options">
+          <h6 class="fw-bold mb-3">Data Visualization</h6>
+          <button class="btn btn-primary service-option-btn" onclick="event.stopPropagation(); navigateToService('data-visualization')">
+            <i class="bi bi-info-circle me-2"></i>View Details
+          </button>
+          <button class="btn btn-success service-option-btn" onclick="event.stopPropagation(); navigateToPayment('data-visualization')">
+            <i class="bi bi-credit-card me-2"></i>Pay Now
+          </button>
+          <button class="btn btn-outline-secondary service-option-btn" onclick="event.stopPropagation(); navigateToContact('data-visualization')">
+            <i class="bi bi-chat me-2"></i>Inquire
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project Coordination -->
+    <div class="col-md-3 col-6">
+      <div class="card service-card text-center h-100" onclick="showServiceOptions('project-coordination')">
+        <div class="card-body">
+          <i class="bi bi-diagram-3 service-icon"></i>
+          <h6>Project Coordination</h6>
+          <div class="service-price">KSh 4,200 / day</div>
+          <small class="text-muted">Project management & tracking</small>
+        </div>
+        <div class="service-options">
+          <h6 class="fw-bold mb-3">Project Coordination</h6>
+          <button class="btn btn-primary service-option-btn" onclick="event.stopPropagation(); navigateToService('project-coordination')">
+            <i class="bi bi-info-circle me-2"></i>View Details
+          </button>
+          <button class="btn btn-success service-option-btn" onclick="event.stopPropagation(); navigateToPayment('project-coordination')">
+            <i class="bi bi-credit-card me-2"></i>Pay Now
+          </button>
+          <button class="btn btn-outline-secondary service-option-btn" onclick="event.stopPropagation(); navigateToContact('project-coordination')">
+            <i class="bi bi-chat me-2"></i>Inquire
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email Management -->
+    <div class="col-md-3 col-6">
+      <div class="card service-card text-center h-100" onclick="showServiceOptions('email-management')">
+        <div class="card-body">
+          <i class="bi bi-envelope service-icon"></i>
+          <h6>Email Management</h6>
+          <div class="service-price">KSh 2,500 / day</div>
+          <small class="text-muted">Inbox organization & responses</small>
+        </div>
+        <div class="service-options">
+          <h6 class="fw-bold mb-3">Email Management</h6>
+          <button class="btn btn-primary service-option-btn" onclick="event.stopPropagation(); navigateToService('email-management')">
+            <i class="bi bi-info-circle me-2"></i>View Details
+          </button>
+          <button class="btn btn-success service-option-btn" onclick="event.stopPropagation(); navigateToPayment('email-management')">
+            <i class="bi bi-credit-card me-2"></i>Pay Now
+          </button>
+          <button class="btn btn-outline-secondary service-option-btn" onclick="event.stopPropagation(); navigateToContact('email-management')">
+            <i class="bi bi-chat me-2"></i>Inquire
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Web Research -->
+    <div class="col-md-3 col-6">
+      <div class="card service-card text-center h-100" onclick="showServiceOptions('web-research')">
+        <div class="card-body">
+          <i class="bi bi-search service-icon"></i>
+          <h6>Web Research</h6>
+          <div class="service-price">KSh 2,200 / day</div>
+          <small class="text-muted">Comprehensive online research</small>
+        </div>
+        <div class="service-options">
+          <h6 class="fw-bold mb-3">Web Research</h6>
+          <button class="btn btn-primary service-option-btn" onclick="event.stopPropagation(); navigateToService('web-research')">
+            <i class="bi bi-info-circle me-2"></i>View Details
+          </button>
+          <button class="btn btn-success service-option-btn" onclick="event.stopPropagation(); navigateToPayment('web-research')">
+            <i class="bi bi-credit-card me-2"></i>Pay Now
+          </button>
+          <button class="btn btn-outline-secondary service-option-btn" onclick="event.stopPropagation(); navigateToContact('web-research')">
+            <i class="bi bi-chat me-2"></i>Inquire
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- View All Services Button -->
+  <div class="text-center mt-5">
+    <a href="services.html" class="btn btn-outline-primary btn-lg">
+      <i class="bi bi-grid-3x3-gap me-2"></i>View All Services
+    </a>
+  </div>
+</section>
+
+<!-- Why Choose Me -->
+<section class="container my-5 py-5 bg-light rounded">
+  <div class="text-center mb-5">
+    <h2 class="fw-bold">Why Choose Me</h2>
+    <p class="text-muted">Professional virtual assistance with proven results</p>
+  </div>
+  
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="text-center">
+        <i class="bi bi-shield-check text-primary display-4 mb-3"></i>
+        <h5>Reliable & Secure</h5>
+        <p class="text-muted">Your data and business information are always safe and handled with integrity.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="text-center">
+        <i class="bi bi-clock text-primary display-4 mb-3"></i>
+        <h5>24/7 Availability</h5>
+        <p class="text-muted">Round-the-clock support to meet your business needs across different time zones.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="text-center">
+        <i class="bi bi-graph-up-arrow text-primary display-4 mb-3"></i>
+        <h5>Proven Results</h5>
+        <p class="text-muted">Track record of helping businesses save time and increase productivity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact CTA -->
+<section id="contact" class="container my-5 py-5 text-center">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <h2 class="fw-bold mb-3">Ready to Get Started?</h2>
+      <p class="text-muted mb-4">Let's discuss how I can help streamline your business operations and save you valuable time.</p>
+      <div class="d-flex gap-3 justify-content-center flex-wrap">
+        <a href="contact.html" class="btn btn-primary btn-lg">Contact Me</a>
+        <a href="portfolio.html" class="btn btn-outline-primary btn-lg">View Portfolio</a>
+        <a href="payments.html" class="btn btn-success btn-lg">Make Payment</a>
       </div>
     </div>
   </div>
@@ -179,6 +443,93 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Service Navigation Functions
+function showServiceOptions(serviceId) {
+    console.log('Showing options for:', serviceId);
+    // The hover effect already handles this via CSS
+}
+
+function navigateToService(serviceType) {
+    // Store the selected service type in localStorage
+    localStorage.setItem('selectedService', serviceType);
+    // Navigate to services page
+    window.location.href = 'services.html';
+}
+
+function navigateToPayment(serviceType) {
+    // Store the selected service type in localStorage
+    localStorage.setItem('selectedService', serviceType);
+    // Navigate to payments page
+    window.location.href = 'payments.html';
+}
+
+function navigateToContact(serviceType) {
+    // Store the selected service type in localStorage
+    localStorage.setItem('selectedService', serviceType);
+    // Navigate to contact page
+    window.location.href = 'contact.html';
+}
+
+// Mobile touch support
+document.addEventListener('DOMContentLoaded', function() {
+    const serviceCards = document.querySelectorAll('.service-card');
+    
+    serviceCards.forEach(card => {
+        card.addEventListener('touchstart', function() {
+            this.classList.add('active');
+        });
+        
+        card.addEventListener('touchend', function() {
+            this.classList.remove('active');
+        });
+    });
+});
+
+// Service data for reference
+const serviceData = {
+    'data-entry': {
+        name: 'Data Entry & Cleaning',
+        price: 'KSh 3,000 / day',
+        description: 'Fast and accurate data entry — up to 1,000 records per day.'
+    },
+    'admin-support': {
+        name: 'Administrative Support',
+        price: 'KSh 3,500 / day',
+        description: 'Scheduling, email handling, and business organization.'
+    },
+    'bookkeeping': {
+        name: 'Bookkeeping & Reporting',
+        price: 'KSh 4,000 / day',
+        description: 'Expense reports, reconciliation, and financial summaries for SMEs.'
+    },
+    'social-media': {
+        name: 'Social Media Management',
+        price: 'KSh 2,800 / day',
+        description: 'Content planning, design, and post scheduling with analytics.'
+    },
+    'data-visualization': {
+        name: 'Data Visualization',
+        price: 'KSh 3,800 / day',
+        description: 'Interactive dashboards and performance charts using Google Data Studio.'
+    },
+    'project-coordination': {
+        name: 'Project Coordination',
+        price: 'KSh 4,200 / day',
+        description: 'Task tracking, project updates, and communication management.'
+    },
+    'email-management': {
+        name: 'Email Management',
+        price: 'KSh 2,500 / day',
+        description: 'Inbox organization, filtering, and response management.'
+    },
+    'web-research': {
+        name: 'Web Research',
+        price: 'KSh 2,200 / day',
+        description: 'Comprehensive online research and data gathering.'
+    }
+};
+</script>
 <script src="main.js"></script>
 </body>
 </html>
