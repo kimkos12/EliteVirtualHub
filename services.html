@@ -1,215 +1,912 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Services |Kimkos Virtual Assistant</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial;
-      background-color: #f7f7f8;
-      color: #222;
-      scroll-behavior: smooth;
-    }
-    .hero {
-      background: linear-gradient(90deg, rgba(13,110,253,0.06), rgba(13,110,253,0.02));
-      padding: 60px 0;
-    }
-    .service-card img {
-      height: 220px;
-      object-fit: cover;
-      border-radius: 10px 10px 0 0;
-    }
-    .card {
-      border: none;
-      border-radius: 10px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 25px rgba(0,0,0,0.1);
-    }
-    .price {
-      font-size: 1.25rem;
-      font-weight: bold;
-      color: #0d6efd;
-    }
-    .btn-primary {
-      background-color: #0d6efd;
-      border: none;
-      border-radius: 6px;
-    }
-    footer {
-      background: #0b1220;
-      color: #fff;
-      padding: 28px 0;
-    }
-    footer a { color: #fff; text-decoration: none; margin-left: 10px; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Victor Kosgei - Virtual Assistant</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0d6efd;
+            --accent: #3a86ff;
+            --bg-light: #f8f9fa;
+            --bg-dark: #1a1d28;
+            --text-light: #333;
+            --text-dark: #f8f9fa;
+            --card-light: #ffffff;
+            --card-dark: #2d3748;
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --bg-light: #1a1d28;
+            --text-light: #f8f9fa;
+            --card-light: #2d3748;
+        }
+
+        /* Global Styles */
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        /* Navigation */
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: var(--transition);
+            color: var(--text-light);
+        }
+
+        .theme-toggle:hover {
+            background: rgba(13, 110, 253, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(13,110,253,0.1) 0%, rgba(13,110,253,0.05) 100%);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(13,110,253,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Service Cards */
+        .service-card {
+            transition: var(--transition);
+            border: 1px solid transparent;
+            background: var(--card-light);
+            border-radius: 12px;
+            overflow: hidden;
+            height: 100%;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 12px 30px rgba(13, 110, 253, 0.15);
+        }
+
+        .service-card img {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+            transition: var(--transition);
+        }
+
+        .service-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .price {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.3rem;
+        }
+
+        /* Discount Badge */
+        .discount-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #dc3545, #e35d6a);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+        }
+
+        /* Feature List */
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            padding: 0.4rem 0;
+            position: relative;
+            padding-left: 1.8rem;
+            color: var(--text-light);
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.1rem;
+        }
+
+        /* Category Badges */
+        .category-badge {
+            background: rgba(13, 110, 253, 0.1);
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(13, 110, 253, 0.2);
+        }
+
+        /* Buttons */
+        .btn {
+            border-radius: 8px;
+            font-weight: 600;
+            transition: var(--transition);
+            padding: 0.75rem 1.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+        }
+
+        .btn-outline-primary {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+        }
+
+        .btn-outline-primary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Stats Section */
+        .stat-card {
+            background: var(--card-light);
+            border-radius: 16px;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Footer */
+        footer {
+            background: #0b1220;
+            color: #fff;
+            padding: 40px 0 20px;
+            margin-top: 80px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: var(--transition);
+        }
+
+        footer a:hover {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Floating Action Buttons */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .fab-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: var(--transition);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .fab-btn:hover {
+            transform: scale(1.1);
+            color: white;
+            text-decoration: none;
+            animation: none;
+        }
+
+        .fab-btn.whatsapp { 
+            background: #25D366; 
+            animation-delay: 0s;
+        }
+        .fab-btn.email { 
+            background: #EA4335; 
+            animation-delay: 0.2s;
+        }
+        .fab-btn.linkedin { 
+            background: #0A66C2; 
+            animation-delay: 0.4s;
+        }
+
+        /* Service Icon Styles */
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .display-5 {
+                font-size: 2rem;
+            }
+            
+            .floating-buttons {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .fab-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Dark mode adjustments */
+        [data-theme="dark"] .service-card {
+            border-color: #374151;
+        }
+
+        [data-theme="dark"] .stat-card {
+            border-color: #374151;
+        }
+
+        [data-theme="dark"] .feature-list li {
+            color: #e5e7eb;
+        }
+
+        [data-theme="dark"] .text-muted {
+            color: #9ca3af !important;
+        }
+
+        /* Fade-in animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-
-<!-- NAV -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="index.html"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="nav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
-        <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-        <li class="nav-item"><a class="nav-link" href="payments.html">Payments</a></li>
-      </ul>
-      <a class="btn btn-sm btn-primary ms-3" href="contact.html">Hire Me</a>
-    </div>
-  </div>
-</nav>
-
-<!-- HERO -->
-<header class="hero text-center">
-  <div class="container">
-    <h1 class="display-6 fw-bold">Professional Services</h1>
-    <p class="lead text-muted">Affordable daily rates with reliable results — book your preferred service today.</p>
-  </div>
-</header>
-
-<main class="container my-5">
-  <div class="text-center mb-5">
-    <h2 class="fw-bold">Service Price Catalog</h2>
-    <p class="text-muted">Transparent and flexible pricing — tailored for individuals and small businesses.</p>
-  </div>
-
-  <div class="row g-4">
-    <!-- Data Entry -->
-    <div class="col-md-4">
-      <div class="card service-card h-100">
-        <img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=800&q=80" alt="Data Entry & Cleaning">
-        <div class="card-body">
-          <h5 class="fw-bold">Data Entry & Cleaning</h5>
-          <p class="price">KSh 3,000 / day</p>
-          <p class="small text-muted">Accurate entry of up to 1,000 records, data validation, and spreadsheet formatting.</p>
-          <ul class="small mb-3">
-            <li>Excel / Google Sheets cleanup</li>
-            <li>Data accuracy verification</li>
-            <li>Delivery in CSV or XLSX</li>
-          </ul>
-          <a href="contact.html" class="btn btn-primary w-100">Book Now</a>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">Victor Kosgei</a>
+            
+            <!-- Theme Toggle -->
+            <button class="theme-toggle me-3 border-0 bg-transparent" id="themeToggle">
+                <i class="bi bi-moon"></i>
+            </button>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="payments.html">Payments</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <a href="hire.html" class="btn btn-primary ms-3">Hire Me</a>
+            </div>
         </div>
-      </div>
-    </div>
+    </nav>
 
-    <!-- Admin Support -->
-    <div class="col-md-4">
-      <div class="card service-card h-100">
-        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Administrative Support">
-        <div class="card-body">
-          <h5 class="fw-bold">Administrative Support</h5>
-          <p class="price">KSh 3,500 / day</p>
-          <p class="small text-muted">Professional virtual assistance for scheduling, email handling, and daily operations.</p>
-          <ul class="small mb-3">
-            <li>Calendar & meeting coordination</li>
-            <li>Email response management</li>
-            <li>Document organization</li>
-          </ul>
-          <a href="contact.html" class="btn btn-primary w-100">Book Now</a>
+    <!-- Hero Section -->
+    <header class="hero text-center">
+        <div class="container">
+            <h1 class="fw-bold display-5 mb-3 fade-in">Professional Services</h1>
+            <p class="lead text-muted mb-4 fade-in" style="animation-delay: 0.2s;">
+                Comprehensive virtual assistance and data management solutions for your business
+            </p>
+            
+            <!-- Special Offer Banner -->
+            <div class="alert alert-success mx-auto fade-in" style="max-width: 600px; animation-delay: 0.4s;">
+                <i class="bi bi-tag-fill me-2"></i>
+                <strong>Special Offer!</strong> All services now KSh 1,000 less! Limited time only.
+            </div>
         </div>
-      </div>
-    </div>
+    </header>
 
-    <!-- Bookkeeping -->
-    <div class="col-md-4">
-      <div class="card service-card h-100">
-        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80" alt="Bookkeeping & Reporting">
-        <div class="card-body">
-          <h5 class="fw-bold">Bookkeeping & Reporting</h5>
-          <p class="price">KSh 4,000 / day</p>
-          <p class="small text-muted">Daily bookkeeping, financial record updates, and reconciliations for your business.</p>
-          <ul class="small mb-3">
-            <li>QuickBooks or Excel reports</li>
-            <li>Bank and expense reconciliation</li>
-            <li>Monthly summary generation</li>
-          </ul>
-          <a href="contact.html" class="btn btn-primary w-100">Book Now</a>
+    <!-- Services Section -->
+    <main class="container my-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold mb-3 fade-in">Our Services</h2>
+            <p class="text-muted fade-in" style="animation-delay: 0.2s;">
+                Professional virtual assistance services tailored to your business needs
+            </p>
         </div>
-      </div>
-    </div>
 
-    <!-- Social Media Management -->
-    <div class="col-md-4">
-      <div class="card service-card h-100">
-        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80" alt="Social Media Management">
-        <div class="card-body">
-          <h5 class="fw-bold">Social Media Management</h5>
-          <p class="price">KSh 2,800 / day</p>
-          <p class="small text-muted">Plan, design, and schedule posts for social platforms with analytics tracking.</p>
-          <ul class="small mb-3">
-            <li>Content creation with Canva</li>
-            <li>Engagement and analytics</li>
-            <li>Scheduling using Buffer/Meta</li>
-          </ul>
-          <a href="contact.html" class="btn btn-primary w-100">Book Now</a>
+        <div class="row g-4">
+            <!-- Data Entry -->
+            <div class="col-md-6 col-lg-4 fade-in">
+                <div class="card service-card">
+                    <div class="position-relative">
+                        <span class="discount-badge">Save KSh 1,000</span>
+                        <img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=600&q=80" alt="Data Entry" class="card-img-top">
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center mb-3">
+                            <i class="bi bi-table service-icon"></i>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="fw-bold">Data Entry & Cleaning</h5>
+                            <span class="category-badge">Data</span>
+                        </div>
+                        <p class="price mb-2">KSh 2,000 / day</p>
+                        <p class="text-muted small mb-3">
+                            <del class="text-danger me-1">KSh 3,000</del> 
+                            <span class="text-success fw-bold">Save KSh 1,000!</span>
+                        </p>
+                        <p class="text-muted mb-3">Fast and accurate data entry with quality assurance and validation.</p>
+                        
+                        <ul class="feature-list mb-4">
+                            <li>Excel & Google Sheets data entry</li>
+                            <li>Data validation and cleaning</li>
+                            <li>Up to 1,000 records per day</li>
+                            <li>CSV/Excel format delivery</li>
+                            <li>Quality assurance checks</li>
+                        </ul>
+                        
+                        <div class="d-flex gap-2">
+                            <a href="payments.html" class="btn btn-primary flex-fill">
+                                <i class="bi bi-credit-card me-2"></i>Pay Now
+                            </a>
+                            <a href="contact.html" class="btn btn-outline-primary">
+                                <i class="bi bi-info-circle me-2"></i>Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Support -->
+            <div class="col-md-6 col-lg-4 fade-in" style="animation-delay: 0.1s;">
+                <div class="card service-card">
+                    <div class="position-relative">
+                        <span class="discount-badge">Save KSh 1,000</span>
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" alt="Admin Support" class="card-img-top">
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center mb-3">
+                            <i class="bi bi-calendar-check service-icon"></i>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="fw-bold">Administrative Support</h5>
+                            <span class="category-badge">Admin</span>
+                        </div>
+                        <p class="price mb-2">KSh 2,500 / day</p>
+                        <p class="text-muted small mb-3">
+                            <del class="text-danger me-1">KSh 3,500</del> 
+                            <span class="text-success fw-bold">Save KSh 1,000!</span>
+                        </p>
+                        <p class="text-muted mb-3">Professional administrative support to keep your business organized.</p>
+                        
+                        <ul class="feature-list mb-4">
+                            <li>Calendar and schedule management</li>
+                            <li>Email management and responses</li>
+                            <li>Document organization</li>
+                            <li>Meeting coordination</li>
+                            <li>Business correspondence</li>
+                        </ul>
+                        
+                        <div class="d-flex gap-2">
+                            <a href="payments.html" class="btn btn-primary flex-fill">
+                                <i class="bi bi-credit-card me-2"></i>Pay Now
+                            </a>
+                            <a href="contact.html" class="btn btn-outline-primary">
+                                <i class="bi bi-info-circle me-2"></i>Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bookkeeping -->
+            <div class="col-md-6 col-lg-4 fade-in" style="animation-delay: 0.2s;">
+                <div class="card service-card">
+                    <div class="position-relative">
+                        <span class="discount-badge">Save KSh 1,000</span>
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=80" alt="Bookkeeping" class="card-img-top">
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center mb-3">
+                            <i class="bi bi-graph-up service-icon"></i>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="fw-bold">Bookkeeping & Reporting</h5>
+                            <span class="category-badge">Finance</span>
+                        </div>
+                        <p class="price mb-2">KSh 3,000 / day</p>
+                        <p class="text-muted small mb-3">
+                            <del class="text-danger me-1">KSh 4,000</del> 
+                            <span class="text-success fw-bold">Save KSh 1,000!</span>
+                        </p>
+                        <p class="text-muted mb-3">Professional bookkeeping and financial reporting for SMEs.</p>
+                        
+                        <ul class="feature-list mb-4">
+                            <li>Expense tracking and categorization</li>
+                            <li>Financial report generation</li>
+                            <li>Bank reconciliation</li>
+                            <li>QuickBooks/Excel management</li>
+                            <li>Monthly financial summaries</li>
+                        </ul>
+                        
+                        <div class="d-flex gap-2">
+                            <a href="payments.html" class="btn btn-primary flex-fill">
+                                <i class="bi bi-credit-card me-2"></i>Pay Now
+                            </a>
+                            <a href="contact.html" class="btn btn-outline-primary">
+                                <i class="bi bi-info-circle me-2"></i>Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Media Management -->
+            <div class="col-md-6 col-lg-4 fade-in" style="animation-delay: 0.3s;">
+                <div class="card service-card">
+                    <div class="position-relative">
+                        <span class="discount-badge">Save KSh 1,000</span>
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=600&q=80" alt="Social Media" class="card-img-top">
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center mb-3">
+                            <i class="bi bi-instagram service-icon"></i>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="fw-bold">Social Media Management</h5>
+                            <span class="category-badge">Marketing</span>
+                        </div>
+                        <p class="price mb-2">KSh 1,800 / day</p>
+                        <p class="text-muted small mb-3">
+                            <del class="text-danger me-1">KSh 2,800</del> 
+                            <span class="text-success fw-bold">Save KSh 1,000!</span>
+                        </p>
+                        <p class="text-muted mb-3">Complete social media management to grow your online presence.</p>
+                        
+                        <ul class="feature-list mb-4">
+                            <li>Content creation with Canva</li>
+                            <li>Post scheduling and publishing</li>
+                            <li>Engagement monitoring</li>
+                            <li>Analytics and performance reports</li>
+                            <li>Hashtag research and strategy</li>
+                        </ul>
+                        
+                        <div class="d-flex gap-2">
+                            <a href="payments.html" class="btn btn-primary flex-fill">
+                                <i class="bi bi-credit-card me-2"></i>Pay Now
+                            </a>
+                            <a href="contact.html" class="btn btn-outline-primary">
+                                <i class="bi bi-info-circle me-2"></i>Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Visualization -->
+            <div class="col-md-6 col-lg-4 fade-in" style="animation-delay: 0.4s;">
+                <div class="card service-card">
+                    <div class="position-relative">
+                        <span class="discount-badge">Save KSh 1,000</span>
+                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Data Visualization" class="card-img-top">
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center mb-3">
+                            <i class="bi bi-bar-chart service-icon"></i>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="fw-bold">Data Visualization</h5>
+                            <span class="category-badge">Analytics</span>
+                        </div>
+                        <p class="price mb-2">KSh 2,800 / day</p>
+                        <p class="text-muted small mb-3">
+                            <del class="text-danger me-1">KSh 3,800</del> 
+                            <span class="text-success fw-bold">Save KSh 1,000!</span>
+                        </p>
+                        <p class="text-muted mb-3">Transform your data into actionable insights with beautiful visualizations.</p>
+                        
+                        <ul class="feature-list mb-4">
+                            <li>Interactive dashboard creation</li>
+                            <li>Google Data Studio reports</li>
+                            <li>Excel chart and graph design</li>
+                            <li>Performance metric visualization</li>
+                            <li>Custom reporting templates</li>
+                        </ul>
+                        
+                        <div class="d-flex gap-2">
+                            <a href="payments.html" class="btn btn-primary flex-fill">
+                                <i class="bi bi-credit-card me-2"></i>Pay Now
+                            </a>
+                            <a href="contact.html" class="btn btn-outline-primary">
+                                <i class="bi bi-info-circle me-2"></i>Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Coordination -->
+            <div class="col-md-6 col-lg-4 fade-in" style="animation-delay: 0.5s;">
+                <div class="card service-card">
+                    <div class="position-relative">
+                        <span class="discount-badge">Save KSh 1,000</span>
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=600&q=80" alt="Project Coordination" class="card-img-top">
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center mb-3">
+                            <i class="bi bi-diagram-3 service-icon"></i>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="fw-bold">Project Coordination</h5>
+                            <span class="category-badge">Management</span>
+                        </div>
+                        <p class="price mb-2">KSh 3,200 / day</p>
+                        <p class="text-muted small mb-3">
+                            <del class="text-danger me-1">KSh 4,200</del> 
+                            <span class="text-success fw-bold">Save KSh 1,000!</span>
+                        </p>
+                        <p class="text-muted mb-3">Professional project coordination to keep your projects on track.</p>
+                        
+                        <ul class="feature-list mb-4">
+                            <li>Project timeline management</li>
+                            <li>Task tracking and reporting</li>
+                            <li>Team communication coordination</li>
+                            <li>Progress monitoring</li>
+                            <li>Milestone tracking</li>
+                        </ul>
+                        
+                        <div class="d-flex gap-2">
+                            <a href="payments.html" class="btn btn-primary flex-fill">
+                                <i class="bi bi-credit-card me-2"></i>Pay Now
+                            </a>
+                            <a href="contact.html" class="btn btn-outline-primary">
+                                <i class="bi bi-info-circle me-2"></i>Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
+    </main>
 
-    <!-- Data Visualization -->
-    <div class="col-md-4">
-      <div class="card service-card h-100">
-        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Data Visualization">
-        <div class="card-body">
-          <h5 class="fw-bold">Data Visualization</h5>
-          <p class="price">KSh 3,800 / day</p>
-          <p class="small text-muted">Turn raw data into clear visual dashboards for better business decisions.</p>
-          <ul class="small mb-3">
-            <li>Excel charts & Google Data Studio</li>
-            <li>Performance reporting</li>
-            <li>Custom dashboards</li>
-          </ul>
-          <a href="contact.html" class="btn btn-primary w-100">Book Now</a>
+    <!-- Stats Section -->
+    <section class="container my-5 py-5">
+        <div class="row g-4 text-center">
+            <div class="col-md-3 col-6 fade-in">
+                <div class="stat-card">
+                    <div class="stat-number" data-target="50">0+</div>
+                    <p class="text-muted mb-0 fw-semibold">Projects Completed</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 fade-in" style="animation-delay: 0.1s;">
+                <div class="stat-card">
+                    <div class="stat-number" data-target="95">0%</div>
+                    <p class="text-muted mb-0 fw-semibold">Client Satisfaction</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 fade-in" style="animation-delay: 0.2s;">
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <p class="text-muted mb-0 fw-semibold">Support Available</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 fade-in" style="animation-delay: 0.3s;">
+                <div class="stat-card">
+                    <div class="stat-number" data-target="100">0%</div>
+                    <p class="text-muted mb-0 fw-semibold">On-Time Delivery</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
+    </section>
 
-    <!-- Project Coordination -->
-    <div class="col-md-4">
-      <div class="card service-card h-100">
-        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80" alt="Project Coordination">
-        <div class="card-body">
-          <h5 class="fw-bold">Project Coordination</h5>
-          <p class="price">KSh 4,200 / day</p>
-          <p class="small text-muted">Manage deliverables, organize project boards, and ensure timely execution.</p>
-          <ul class="small mb-3">
-            <li>Use of Notion / Trello / Asana</li>
-            <li>Task tracking and reporting</li>
-            <li>Client communication support</li>
-          </ul>
-          <a href="contact.html" class="btn btn-primary w-100">Book Now</a>
+    <!-- CTA Section -->
+    <section class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="cta-section p-5 text-center position-relative">
+                    <div class="position-relative z-1">
+                        <h3 class="fw-bold mb-3 display-6">Ready to Get Started?</h3>
+                        <p class="mb-4 fs-5">Choose a service that fits your needs and let's work together to grow your business.</p>
+                        <div class="d-flex gap-3 justify-content-center flex-wrap">
+                            <a href="contact.html" class="btn btn-light btn-lg px-4">
+                                <i class="bi bi-chat-dots me-2"></i>Contact Me
+                            </a>
+                            <a href="payments.html" class="btn btn-outline-light btn-lg px-4">
+                                <i class="bi bi-credit-card me-2"></i>Make Payment
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</main>
+    </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
-    <div class="mb-2 mb-md-0">
-      <strong>Victor Kosgei</strong><br><small class="text-muted">Virtual Assistant & Data Services</small>
+    <!-- Floating Action Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/254712859814" class="fab-btn whatsapp" target="_blank">
+            <i class="bi bi-whatsapp"></i>
+        </a>
+        <a href="mailto:weldonruto41@gmail.com" class="fab-btn email">
+            <i class="bi bi-envelope"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/victor-kosgei-03839b339" class="fab-btn linkedin" target="_blank">
+            <i class="bi bi-linkedin"></i>
+        </a>
     </div>
-    <div>
-      <a href="https://www.linkedin.com/in/victor-kosgei-03839b339" target="_blank">LinkedIn</a>
-      <a href="mailto:weldonruto41@gmail.com" target="_blank">Email</a>
-      <a href="https://wa.me/254712859814" target="_blank">WhatsApp</a>
-    </div>
-  </div>
-</footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>Victor Kosgei</h5>
+                    <p class="text-muted">Virtual Assistant & Data Services</p>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/victor-kosgei-03839b339" class="text-white me-3">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                        <a href="mailto:weldonruto41@gmail.com" class="text-white me-3">
+                            <i class="bi bi-envelope"></i>
+                        </a>
+                        <a href="https://wa.me/254712859814" class="text-white">
+                            <i class="bi bi-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h6>Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="services.html" class="text-muted text-decoration-none">Services</a></li>
+                        <li><a href="portfolio.html" class="text-muted text-decoration-none">Portfolio</a></li>
+                        <li><a href="blog.html" class="text-muted text-decoration-none">Blog</a></li>
+                        <li><a href="contact.html" class="text-muted text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h6>Contact Info</h6>
+                    <p class="text-muted mb-1"><i class="bi bi-phone me-2"></i> +254 712 859 814</p>
+                    <p class="text-muted mb-1"><i class="bi bi-envelope me-2"></i> weldonruto41@gmail.com</p>
+                    <p class="text-muted"><i class="bi bi-clock me-2"></i> Available 24/7</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center text-muted">
+                <small>&copy; 2024 Victor Kosgei. All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        }
+
+        function updateThemeIcon(theme) {
+            const icon = themeToggle.querySelector('i');
+            if (icon) {
+                icon.className = theme === 'dark' ? 'bi bi-sun' : 'bi bi-moon';
+            }
+        }
+
+        // Animated Counter
+        function animateCounter(element, target, suffix = '') {
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + suffix;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + suffix;
+                }
+            }, 30);
+        }
+
+        // Scroll Animations
+        function handleScrollAnimations() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+
+            // Animate counters when in view
+            const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+            statNumbers.forEach(stat => {
+                const rect = stat.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100 && !stat.hasAttribute('data-animated')) {
+                    const target = parseInt(stat.getAttribute('data-target'));
+                    const suffix = stat.textContent.includes('%') ? '%' : '+';
+                    stat.setAttribute('data-animated', 'true');
+                    animateCounter(stat, target, suffix);
+                }
+            });
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            initTheme();
+            
+            if (themeToggle) {
+                themeToggle.addEventListener('click', toggleTheme);
+            }
+
+            // Initial animation check
+            handleScrollAnimations();
+            
+            // Scroll event listener
+            window.addEventListener('scroll', handleScrollAnimations);
+        });
+
+        // Service card click handlers
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceCards = document.querySelectorAll('.service-card');
+            
+            serviceCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    if (e.target.tagName === 'A' || e.target.closest('a')) {
+                        return; // Don't interfere with link clicks
+                    }
+                    
+                    // Add visual feedback
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
