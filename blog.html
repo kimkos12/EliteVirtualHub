@@ -93,11 +93,16 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             overflow: hidden;
             height: 100%;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
         .blog-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 12px 35px rgba(13, 110, 253, 0.15);
+            text-decoration: none;
+            color: inherit;
         }
 
         .blog-card img {
@@ -126,6 +131,17 @@
         .read-time {
             font-size: 0.875rem;
             color: #6c757d;
+        }
+
+        /* Source Link */
+        .source-link {
+            font-size: 0.75rem;
+            color: #6c757d;
+            text-decoration: none;
+        }
+
+        .source-link:hover {
+            text-decoration: underline;
         }
 
         /* Sidebar */
@@ -357,7 +373,10 @@
                     <div class="row g-4">
                         <!-- Featured Post 1 -->
                         <div class="col-md-6 fade-in">
-                            <div class="blog-card h-100">
+                            <a href="https://www.forbes.com/sites/forbescoachescouncil/2021/03/15/14-essential-tips-for-effective-virtual-assistance/?sh=1a234b5e3a1c" 
+                               class="blog-card h-100" 
+                               target="_blank" 
+                               rel="noopener noreferrer">
                                 <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" 
                                      alt="Virtual Assistant Tips" 
                                      class="card-img-top">
@@ -372,15 +391,18 @@
                                     </p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <small class="text-muted">January 15, 2024</small>
-                                        <a href="posts/virtual-assistant-tips.html" class="btn btn-outline-primary btn-sm">Read More</a>
+                                        <small class="source-link">Source: Forbes</small>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
 
                         <!-- Featured Post 2 -->
                         <div class="col-md-6 fade-in" style="animation-delay: 0.1s;">
-                            <div class="blog-card h-100">
+                            <a href="https://www.entrepreneur.com/article/375230" 
+                               class="blog-card h-100" 
+                               target="_blank" 
+                               rel="noopener noreferrer">
                                 <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" 
                                      alt="Data Management" 
                                      class="card-img-top">
@@ -395,10 +417,10 @@
                                     </p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <small class="text-muted">January 10, 2024</small>
-                                        <a href="posts/data-management.html" class="btn btn-outline-primary btn-sm">Read More</a>
+                                        <small class="source-link">Source: Entrepreneur</small>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -410,7 +432,10 @@
                     <div class="row g-4">
                         <!-- Recent Post 1 -->
                         <div class="col-md-6 col-lg-4 fade-in">
-                            <div class="blog-card h-100">
+                            <a href="https://zapier.com/blog/best-productivity-apps/" 
+                               class="blog-card h-100" 
+                               target="_blank" 
+                               rel="noopener noreferrer">
                                 <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&w=600&q=80" 
                                      alt="Productivity Tools" 
                                      class="card-img-top">
@@ -422,15 +447,18 @@
                                     </p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <small class="text-muted">Jan 5, 2024</small>
-                                        <span class="read-time">6 min</span>
+                                        <small class="source-link">Zapier</small>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
 
                         <!-- Recent Post 2 -->
                         <div class="col-md-6 col-lg-4 fade-in" style="animation-delay: 0.1s;">
-                            <div class="blog-card h-100">
+                            <a href="https://www.atlassian.com/blog/time-management/remote-work-time-management" 
+                               class="blog-card h-100" 
+                               target="_blank" 
+                               rel="noopener noreferrer">
                                 <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80" 
                                      alt="Time Management" 
                                      class="card-img-top">
@@ -442,15 +470,18 @@
                                     </p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <small class="text-muted">Dec 28, 2023</small>
-                                        <span class="read-time">5 min</span>
+                                        <small class="source-link">Atlassian</small>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
 
                         <!-- Recent Post 3 -->
                         <div class="col-md-6 col-lg-4 fade-in" style="animation-delay: 0.2s;">
-                            <div class="blog-card h-100">
+                            <a href="https://blog.hubspot.com/service/client-communication" 
+                               class="blog-card h-100" 
+                               target="_blank" 
+                               rel="noopener noreferrer">
                                 <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80" 
                                      alt="Client Communication" 
                                      class="card-img-top">
@@ -462,15 +493,18 @@
                                     </p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <small class="text-muted">Dec 20, 2023</small>
-                                        <span class="read-time">4 min</span>
+                                        <small class="source-link">HubSpot</small>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
 
                         <!-- Recent Post 4 -->
                         <div class="col-md-6 col-lg-4 fade-in" style="animation-delay: 0.3s;">
-                            <div class="blog-card h-100">
+                            <a href="https://asana.com/resources/project-management-remote-teams" 
+                               class="blog-card h-100" 
+                               target="_blank" 
+                               rel="noopener noreferrer">
                                 <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=600&q=80" 
                                      alt="Project Management" 
                                      class="card-img-top">
@@ -482,15 +516,18 @@
                                     </p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <small class="text-muted">Dec 15, 2023</small>
-                                        <span class="read-time">7 min</span>
+                                        <small class="source-link">Asana</small>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
 
                         <!-- Recent Post 5 -->
                         <div class="col-md-6 col-lg-4 fade-in" style="animation-delay: 0.4s;">
-                            <div class="blog-card h-100">
+                            <a href="https://www.businessnewsdaily.com/11013-hire-virtual-assistant.html" 
+                               class="blog-card h-100" 
+                               target="_blank" 
+                               rel="noopener noreferrer">
                                 <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" 
                                      alt="Business Growth" 
                                      class="card-img-top">
@@ -502,15 +539,18 @@
                                     </p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <small class="text-muted">Dec 10, 2023</small>
-                                        <span class="read-time">5 min</span>
+                                        <small class="source-link">Business News Daily</small>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
 
                         <!-- Recent Post 6 -->
                         <div class="col-md-6 col-lg-4 fade-in" style="animation-delay: 0.5s;">
-                            <div class="blog-card h-100">
+                            <a href="https://www.smartsheet.com/content-center/best-practices/automation/automate-repetitive-tasks" 
+                               class="blog-card h-100" 
+                               target="_blank" 
+                               rel="noopener noreferrer">
                                 <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" 
                                      alt="Automation" 
                                      class="card-img-top">
@@ -522,10 +562,10 @@
                                     </p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <small class="text-muted">Dec 5, 2023</small>
-                                        <span class="read-time">6 min</span>
+                                        <small class="source-link">Smartsheet</small>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
