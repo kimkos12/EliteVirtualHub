@@ -206,24 +206,121 @@
             box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
         }
 
-        /* Footer */
-        footer {
-            background: #0b1220;
-            color: #fff;
-            padding: 40px 0 20px;
+        /* Knowledge & Community Footer Styles */
+        .knowledge-footer {
+            background: linear-gradient(135deg, #0f766e 0%, #0d9488 50%, #14b8a6 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
             margin-top: 80px;
         }
 
-        footer a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-            transition: var(--transition);
+        .knowledge-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #f59e0b, #eab308, #f59e0b);
         }
 
-        footer a:hover {
-            color: var(--primary);
-            text-decoration: none;
+        .community-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            height: 100%;
+        }
+
+        .community-card:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .community-badge {
+            background: linear-gradient(135deg, #f59e0b, #eab308);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .popular-article {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .popular-article:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateX(5px);
+        }
+
+        .article-rank {
+            background: linear-gradient(135deg, #f59e0b, #eab308);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-right: 1rem;
+        }
+
+        .subscriber-count {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #f59e0b;
+            margin-bottom: 0.5rem;
+        }
+
+        .engagement-metric {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #f59e0b;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section {
+            transition: transform 0.3s ease;
+        }
+
+        .footer-section:hover {
+            transform: translateY(-5px);
         }
 
         /* Floating Action Buttons */
@@ -303,6 +400,14 @@
                 width: 50px;
                 height: 50px;
                 font-size: 1.3rem;
+            }
+
+            .community-card {
+                padding: 1.5rem;
+            }
+
+            .metric-value {
+                font-size: 1.5rem;
             }
         }
 
@@ -713,44 +818,221 @@
         </a>
     </div>
 
-    <!-- Footer -->
-    <footer>
+    <!-- Knowledge & Community Footer -->
+    <footer class="knowledge-footer py-5">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5>Victor Kosgei</h5>
-                    <p class="text-muted">Virtual Assistant & Data Services</p>
-                    <div class="social-icons">
-                        <a href="https://www.linkedin.com/in/victor-kosgei-03839b339" class="text-white me-3">
-                            <i class="bi bi-linkedin"></i>
-                        </a>
-                        <a href="mailto:weldonruto41@gmail.com" class="text-white me-3">
-                            <i class="bi bi-envelope"></i>
-                        </a>
-                        <a href="https://wa.me/254712859814" class="text-white">
-                            <i class="bi bi-whatsapp"></i>
+            <!-- Community Engagement Section -->
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h3 class="fw-bold text-white mb-4">Join Our Community of Learners</h3>
+                    <p class="text-light opacity-75">Connect, learn, and grow with fellow virtual assistants and business professionals</p>
+                </div>
+            </div>
+
+            <!-- Community Features -->
+            <div class="row g-4 mb-5">
+                <!-- Newsletter Community -->
+                <div class="col-lg-4 fade-in">
+                    <div class="community-card text-center">
+                        <span class="community-badge">Most Popular</span>
+                        <h5 class="fw-bold text-white mb-3">Weekly Insights</h5>
+                        <div class="subscriber-count">500+</div>
+                        <div class="metric-label">Active Subscribers</div>
+                        <p class="text-light small mt-3">Join our newsletter community and get weekly tips, industry insights, and exclusive content.</p>
+                        
+                        <form class="mt-4">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Enter your email" required>
+                                <button class="btn btn-warning" type="submit">
+                                    <i class="bi bi-envelope-check"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Popular Articles -->
+                <div class="col-lg-4 fade-in" style="animation-delay: 0.1s;">
+                    <div class="community-card">
+                        <span class="community-badge">Trending</span>
+                        <h5 class="fw-bold text-white mb-3">Most Read Articles</h5>
+                        
+                        <div class="popular-article">
+                            <div class="d-flex align-items-center">
+                                <div class="article-rank">1</div>
+                                <div>
+                                    <h6 class="fw-bold text-white mb-1">Time Management Strategies</h6>
+                                    <small class="text-light">2.5K reads • 45 comments</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="popular-article">
+                            <div class="d-flex align-items-center">
+                                <div class="article-rank">2</div>
+                                <div>
+                                    <h6 class="fw-bold text-white mb-1">Productivity Tools Guide</h6>
+                                    <small class="text-light">1.8K reads • 32 comments</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="popular-article">
+                            <div class="d-flex align-items-center">
+                                <div class="article-rank">3</div>
+                                <div>
+                                    <h6 class="fw-bold text-white mb-1">Client Communication Tips</h6>
+                                    <small class="text-light">1.2K reads • 28 comments</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Community Stats -->
+                <div class="col-lg-4 fade-in" style="animation-delay: 0.2s;">
+                    <div class="community-card text-center">
+                        <span class="community-badge">Community</span>
+                        <h5 class="fw-bold text-white mb-4">Engagement Metrics</h5>
+                        
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="engagement-metric">
+                                    <div class="metric-value">2.5K+</div>
+                                    <div class="metric-label">Monthly Readers</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="engagement-metric">
+                                    <div class="metric-value">150+</div>
+                                    <div class="metric-label">Active Comments</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="engagement-metric">
+                                    <div class="metric-value">85%</div>
+                                    <div class="metric-label">Return Readers</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="engagement-metric">
+                                    <div class="metric-value">4.8★</div>
+                                    <div class="metric-label">Avg. Rating</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="contact.html" class="btn btn-outline-light w-100 mt-3">
+                            <i class="bi bi-chat-dots me-2"></i>Join Discussion
                         </a>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <h6>Quick Links</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="services.html" class="text-muted text-decoration-none">Services</a></li>
-                        <li><a href="portfolio.html" class="text-muted text-decoration-none">Portfolio</a></li>
-                        <li><a href="blog.html" class="text-muted text-decoration-none">Blog</a></li>
-                        <li><a href="contact.html" class="text-muted text-decoration-none">Contact</a></li>
-                    </ul>
+            </div>
+
+            <!-- Footer Content -->
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="footer-section">
+                        <div class="footer-logo">Victor Kosgei</div>
+                        <p class="text-light mb-4">
+                            Sharing knowledge and building community around virtual assistance, data management, 
+                            and business productivity. Join thousands of readers who trust our insights.
+                        </p>
+                        
+                        <!-- Quick Blog Links -->
+                        <h6 class="fw-bold text-white mb-3">Quick Access</h6>
+                        <div class="row">
+                            <div class="col-6">
+                                <ul class="list-unstyled">
+                                    <li><a href="#" class="text-light text-decoration-none d-block mb-2">Latest Articles</a></li>
+                                    <li><a href="#" class="text-light text-decoration-none d-block mb-2">Popular Topics</a></li>
+                                    <li><a href="#" class="text-light text-decoration-none d-block mb-2">Tips & Tricks</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-6">
+                                <ul class="list-unstyled">
+                                    <li><a href="#" class="text-light text-decoration-none d-block mb-2">Tools & Resources</a></li>
+                                    <li><a href="#" class="text-light text-decoration-none d-block mb-2">Case Studies</a></li>
+                                    <li><a href="#" class="text-light text-decoration-none d-block mb-2">Community Forum</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <h6>Contact Info</h6>
-                    <p class="text-muted mb-1"><i class="bi bi-phone me-2"></i> +254 712 859 814</p>
-                    <p class="text-muted mb-1"><i class="bi bi-envelope me-2"></i> weldonruto41@gmail.com</p>
-                    <p class="text-muted"><i class="bi bi-clock me-2"></i> Available 24/7</p>
+
+                <div class="col-lg-6">
+                    <div class="footer-section">
+                        <h6 class="fw-bold text-white mb-3">Stay Connected</h6>
+                        
+                        <!-- Social Engagement -->
+                        <div class="social-engagement mb-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div>
+                                    <small class="text-light d-block">Follow for Updates</small>
+                                    <div class="d-flex gap-3 mt-2">
+                                        <a href="https://www.linkedin.com/in/victor-kosgei-03839b339" class="text-warning">
+                                            <i class="bi bi-linkedin fs-5"></i>
+                                        </a>
+                                        <a href="mailto:weldonruto41@gmail.com" class="text-warning">
+                                            <i class="bi bi-envelope fs-5"></i>
+                                        </a>
+                                        <a href="https://wa.me/254712859814" class="text-warning">
+                                            <i class="bi bi-whatsapp fs-5"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="text-end">
+                                    <div class="metric-value">1.2K</div>
+                                    <div class="metric-label">Followers</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact & Newsletter -->
+                        <div class="contact-info mb-4">
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="bi bi-envelope text-warning me-3"></i>
+                                <div>
+                                    <small class="text-light d-block">Email Updates</small>
+                                    <span class="text-white fw-semibold">weldonruto41@gmail.com</span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-clock text-warning me-3"></i>
+                                <div>
+                                    <small class="text-light d-block">New Articles</small>
+                                    <span class="text-white fw-semibold">Weekly Updates</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Community CTA -->
+                        <div class="d-grid gap-2">
+                            <a href="#newsletter" class="btn btn-warning">
+                                <i class="bi bi-envelope-plus me-2"></i>Subscribe to Newsletter
+                            </a>
+                            <a href="contact.html" class="btn btn-outline-light">
+                                <i class="bi bi-pencil me-2"></i>Write Guest Post
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <hr class="my-4">
-            <div class="text-center text-muted">
-                <small>&copy; 2024 Victor Kosgei. All rights reserved.</small>
+
+            <!-- Bottom Bar -->
+            <div class="row mt-5 pt-4 border-top border-warning">
+                <div class="col-md-6">
+                    <small class="text-light">
+                        &copy; 2024 Victor Kosgei. Knowledge Shared, Community Built.
+                        <span class="text-warning">Join the conversation.</span>
+                    </small>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <small class="text-light">
+                        <span class="me-3">📚 50+ Articles Published</span>
+                        <span>👥 2.5K+ Monthly Readers</span>
+                    </small>
+                </div>
             </div>
         </div>
     </footer>
