@@ -140,24 +140,110 @@
             box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
         }
 
-        /* Footer */
-        footer {
-            background: #0b1220;
-            color: #fff;
-            padding: 40px 0 20px;
+        /* Connect & Support Footer Styles */
+        .connect-footer {
+            background: linear-gradient(135deg, #7e22ce 0%, #a855f7 50%, #c084fc 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
             margin-top: 80px;
         }
 
-        footer a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-            transition: var(--transition);
+        .connect-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #f59e0b, #eab308, #f59e0b);
         }
 
-        footer a:hover {
-            color: var(--primary);
-            text-decoration: none;
+        .support-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            height: 100%;
+        }
+
+        .support-card:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .support-badge {
+            background: linear-gradient(135deg, #f59e0b, #eab308);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .contact-channel {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .contact-channel:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateX(5px);
+        }
+
+        .response-metric {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #f59e0b;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+
+        .availability-badge {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section {
+            transition: transform 0.3s ease;
+        }
+
+        .footer-section:hover {
+            transform: translateY(-5px);
         }
 
         /* Floating Action Buttons */
@@ -252,6 +338,14 @@
                 width: 50px;
                 height: 50px;
                 font-size: 1.3rem;
+            }
+
+            .support-card {
+                padding: 1.5rem;
+            }
+
+            .metric-value {
+                font-size: 1.5rem;
             }
         }
 
@@ -537,44 +631,201 @@
         </a>
     </div>
 
-    <!-- Footer -->
-    <footer>
+    <!-- Connect & Support Footer -->
+    <footer class="connect-footer py-5">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5>Victor Kosgei</h5>
-                    <p class="text-muted">Virtual Assistant & Data Services</p>
-                    <div class="social-icons">
-                        <a href="https://www.linkedin.com/in/victor-kosgei-03839b339" class="text-white me-3">
-                            <i class="bi bi-linkedin"></i>
-                        </a>
-                        <a href="mailto:weldonruto41@gmail.com" class="text-white me-3">
-                            <i class="bi bi-envelope"></i>
-                        </a>
-                        <a href="https://wa.me/254712859814" class="text-white">
-                            <i class="bi bi-whatsapp"></i>
+            <!-- Support Channels Section -->
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h3 class="fw-bold text-white mb-4">Multiple Ways to Connect</h3>
+                    <p class="text-light opacity-75">Choose your preferred method - I'm always available to help you get started</p>
+                </div>
+            </div>
+
+            <!-- Support Channels -->
+            <div class="row g-4 mb-5">
+                <div class="col-lg-4">
+                    <div class="support-card text-center">
+                        <span class="support-badge">Instant</span>
+                        <h5 class="fw-bold text-white mb-3">Live Chat Support</h5>
+                        <div class="metric-value">24/7</div>
+                        <div class="metric-label">WhatsApp Available</div>
+                        <p class="text-light small mt-3">Get instant answers and quick project discussions through WhatsApp</p>
+                        
+                        <a href="https://wa.me/254712859814" class="btn btn-success w-100 mt-3" target="_blank">
+                            <i class="bi bi-whatsapp me-2"></i>Start Chat
                         </a>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <h6>Quick Links</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="services.html" class="text-muted text-decoration-none">Services</a></li>
-                        <li><a href="portfolio.html" class="text-muted text-decoration-none">Portfolio</a></li>
-                        <li><a href="blog.html" class="text-muted text-decoration-none">Blog</a></li>
-                        <li><a href="contact.html" class="text-muted text-decoration-none">Contact</a></li>
-                    </ul>
+
+                <div class="col-lg-4">
+                    <div class="support-card text-center">
+                        <span class="support-badge">Fast</span>
+                        <h5 class="fw-bold text-white mb-3">Email Support</h5>
+                        <div class="metric-value">2 Hours</div>
+                        <div class="metric-label">Avg. Response Time</div>
+                        <p class="text-light small mt-3">Detailed project discussions and formal communication via email</p>
+                        
+                        <a href="mailto:weldonruto41@gmail.com" class="btn btn-warning w-100 mt-3">
+                            <i class="bi bi-envelope me-2"></i>Send Email
+                        </a>
+                    </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <h6>Contact Info</h6>
-                    <p class="text-muted mb-1"><i class="bi bi-phone me-2"></i> +254 712 859 814</p>
-                    <p class="text-muted mb-1"><i class="bi bi-envelope me-2"></i> weldonruto41@gmail.com</p>
-                    <p class="text-muted"><i class="bi bi-clock me-2"></i> Available 24/7</p>
+
+                <div class="col-lg-4">
+                    <div class="support-card text-center">
+                        <span class="support-badge">Direct</span>
+                        <h5 class="fw-bold text-white mb-3">Phone Support</h5>
+                        <div class="metric-value">15 Min</div>
+                        <div class="metric-label">Free Consultation</div>
+                        <p class="text-light small mt-3">Quick calls for urgent matters and detailed project discussions</p>
+                        
+                        <a href="tel:+254712859814" class="btn btn-primary w-100 mt-3">
+                            <i class="bi bi-telephone me-2"></i>Call Now
+                        </a>
+                    </div>
                 </div>
             </div>
-            <hr class="my-4">
-            <div class="text-center text-muted">
-                <small>&copy; 2024 Victor Kosgei. All rights reserved.</small>
+
+            <!-- Contact Channels & Support -->
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="footer-section">
+                        <div class="footer-logo">Victor Kosgei</div>
+                        <p class="text-light mb-4">
+                            Professional virtual assistant dedicated to helping businesses succeed. 
+                            Multiple contact channels available to ensure you get the support you need, when you need it.
+                        </p>
+                        
+                        <!-- Contact Channels -->
+                        <h6 class="fw-bold text-white mb-3">Preferred Contact Channels</h6>
+                        <div class="d-grid gap-3">
+                            <div class="contact-channel">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-whatsapp text-success me-3 fs-4"></i>
+                                        <div>
+                                            <h6 class="fw-bold text-white mb-1">WhatsApp Business</h6>
+                                            <small class="text-light">Instant messaging for quick queries</small>
+                                        </div>
+                                    </div>
+                                    <span class="availability-badge">24/7</span>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-channel">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-envelope text-warning me-3 fs-4"></i>
+                                        <div>
+                                            <h6 class="fw-bold text-white mb-1">Email Support</h6>
+                                            <small class="text-light">Detailed project discussions</small>
+                                        </div>
+                                    </div>
+                                    <span class="availability-badge">2hr response</span>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-channel">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-telephone text-primary me-3 fs-4"></i>
+                                        <div>
+                                            <h6 class="fw-bold text-white mb-1">Voice Calls</h6>
+                                            <small class="text-light">Urgent matters & consultations</small>
+                                        </div>
+                                    </div>
+                                    <span class="availability-badge">Available</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="footer-section">
+                        <h6 class="fw-bold text-white mb-3">Support & Response Guarantee</h6>
+                        
+                        <!-- Response Metrics -->
+                        <div class="row mb-4">
+                            <div class="col-6">
+                                <div class="response-metric">
+                                    <div class="metric-value">98%</div>
+                                    <div class="metric-label">Response Rate</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="response-metric">
+                                    <div class="metric-value">24/7</div>
+                                    <div class="metric-label">Urgent Support</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="response-metric">
+                                    <div class="metric-value">15min</div>
+                                    <div class="metric-label">Free Consult</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="response-metric">
+                                    <div class="metric-value">2hr</div>
+                                    <div class="metric-label">Max Response</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Support Information -->
+                        <div class="support-info mb-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-clock text-warning me-3"></i>
+                                <div>
+                                    <small class="text-light d-block">Business Hours</small>
+                                    <span class="text-white fw-semibold">8:00 AM - 6:00 PM EAT</span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-lightning text-warning me-3"></i>
+                                <div>
+                                    <small class="text-light d-block">Urgent Support</small>
+                                    <span class="text-white fw-semibold">24/7 via WhatsApp</span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-check-circle text-warning me-3"></i>
+                                <div>
+                                    <small class="text-light d-block">Response Guarantee</small>
+                                    <span class="text-white fw-semibold">Within 2 Hours</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Contact CTAs -->
+                        <div class="d-grid gap-2">
+                            <a href="https://wa.me/254712859814" class="btn btn-success" target="_blank">
+                                <i class="bi bi-whatsapp me-2"></i>Message on WhatsApp
+                            </a>
+                            <a href="mailto:weldonruto41@gmail.com" class="btn btn-warning">
+                                <i class="bi bi-envelope me-2"></i>Send Detailed Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="row mt-5 pt-4 border-top border-warning">
+                <div class="col-md-6">
+                    <small class="text-light">
+                        &copy; 2024 Victor Kosgei. Always Available to Help.
+                        <span class="text-warning">Your success is just a message away.</span>
+                    </small>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <small class="text-light">
+                        <span class="me-3">📞 +254 712 859 814</span>
+                        <span>💬 24/7 WhatsApp Support</span>
+                    </small>
+                </div>
             </div>
         </div>
     </footer>
