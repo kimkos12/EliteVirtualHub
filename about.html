@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | Victor Kosgei - Virtual Assistant</title>
+    <title>About | Professional Virtual Assistant Services</title>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -16,18 +16,9 @@
             --primary: #0d6efd;
             --accent: #3a86ff;
             --bg-light: #f8f9fa;
-            --bg-dark: #1a1d28;
             --text-light: #333;
-            --text-dark: #f8f9fa;
             --card-light: #ffffff;
-            --card-dark: #2d3748;
             --transition: all 0.3s ease;
-        }
-
-        [data-theme="dark"] {
-            --bg-light: #1a1d28;
-            --text-light: #f8f9fa;
-            --card-light: #2d3748;
         }
 
         /* Global Styles */
@@ -43,21 +34,10 @@
         .navbar-brand {
             font-weight: 700;
             font-size: 1.5rem;
-        }
-
-        .theme-toggle {
-            background: none;
-            border: none;
-            font-size: 1.2rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 50%;
-            transition: var(--transition);
-            color: var(--text-light);
-        }
-
-        .theme-toggle:hover {
-            background: rgba(13, 110, 253, 0.1);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         /* Hero Section */
@@ -92,6 +72,7 @@
             border: 5px solid white;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: var(--transition);
+            border-radius: 50%;
         }
 
         .profile-img:hover {
@@ -211,24 +192,130 @@
             box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
         }
 
-        /* Footer */
-        footer {
-            background: #0b1220;
-            color: #fff;
-            padding: 40px 0 20px;
+        /* Modern Footer */
+        .modern-footer {
+            background: linear-gradient(135deg, #0b1220 0%, #1a1d28 50%, #2d3748 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
             margin-top: 80px;
         }
 
-        footer a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-            transition: var(--transition);
+        .modern-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
         }
 
-        footer a:hover {
-            color: var(--primary);
+        .footer-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-section {
+            transition: transform 0.3s ease;
+        }
+
+        .footer-section:hover {
+            transform: translateY(-5px);
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
             text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .social-icon:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(13, 110, 253, 0.4);
+        }
+
+        .footer-link {
+            color: #cbd5e0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .footer-link::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-link:hover::before {
+            transform: translateX(3px);
+        }
+
+        .footer-badge {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .trust-indicators {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #cbd5e0;
+        }
+
+        .trust-item i {
+            color: var(--primary);
         }
 
         /* Floating Action Buttons */
@@ -337,33 +424,13 @@
                 font-size: 2rem;
             }
         }
-
-        /* Dark mode adjustments */
-        [data-theme="dark"] .about-card,
-        [data-theme="dark"] .testimonial-card,
-        [data-theme="dark"] .stat-card {
-            border-color: #374151;
-        }
-
-        [data-theme="dark"] .text-muted {
-            color: #9ca3af !important;
-        }
-
-        [data-theme="dark"] .skill-bar {
-            background: #374151;
-        }
     </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html">Victor Kosgei</a>
-            
-            <!-- Theme Toggle -->
-            <button class="theme-toggle me-3 border-0 bg-transparent" id="themeToggle">
-                <i class="bi bi-moon"></i>
-            </button>
+            <a class="navbar-brand fw-bold" href="index.html">Virtual Assistant Pro</a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -389,7 +456,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8">
-                    <h1 class="fw-bold display-5 mb-3 fade-in">About Victor Kosgei</h1>
+                    <h1 class="fw-bold display-5 mb-3 fade-in">About Our Virtual Assistant Services</h1>
                     <p class="lead text-muted mb-4 fade-in" style="animation-delay: 0.2s;">
                         Professional Virtual Assistant & Data Specialist dedicated to helping businesses 
                         streamline operations and achieve their goals through reliable virtual support.
@@ -399,11 +466,13 @@
                         <a href="portfolio.html" class="btn btn-outline-primary btn-lg">View Portfolio</a>
                     </div>
                 </div>
-             <div class="col-lg-4 text-center mt-4 mt-lg-0">
-    <img src="myphoto.JPG" 
-         alt="Victor Kosgei - Professional Virtual Assistant" 
-         class="profile-img rounded-circle fade-in" 
-         style="animation-delay: 0.3s;">
+                <div class="col-lg-4 text-center mt-4 mt-lg-0">
+                    <img src="myphoto.JPG" 
+                         alt="Professional Virtual Assistant" 
+                         class="profile-img rounded-circle fade-in" 
+                         style="animation-delay: 0.3s;">
+                </div>
+            </div>
         </div>
     </header>
 
@@ -411,25 +480,25 @@
     <section class="container my-5 py-5">
         <div class="row align-items-center">
             <div class="col-lg-6 mb-5 mb-lg-0">
-                <h2 class="fw-bold display-6 mb-4 fade-in">My Story</h2>
+                <h2 class="fw-bold display-6 mb-4 fade-in">Our Story</h2>
                 <p class="text-muted mb-4 fade-in" style="animation-delay: 0.1s;">
-                    I'm <strong>Victor Kosgei</strong>, a dedicated Virtual Assistant and Data Analyst with over 
+                    We are a team of dedicated Virtual Assistants and Data Analysts with over 
                     five years of experience helping entrepreneurs and organizations manage their operations 
-                    efficiently. My journey began with a passion for organization and technology, which has 
+                    efficiently. Our journey began with a passion for organization and technology, which has 
                     evolved into a career dedicated to helping businesses thrive.
                 </p>
                 <p class="text-muted mb-4 fade-in" style="animation-delay: 0.2s;">
-                    I specialize in administrative support, data entry, bookkeeping, and social media management — 
-                    ensuring accuracy, timeliness, and professional communication in every task. I take pride in 
+                    We specialize in administrative support, data entry, bookkeeping, and social media management — 
+                    ensuring accuracy, timeliness, and professional communication in every task. We take pride in 
                     helping clients stay organized, meet deadlines, and focus on what truly matters — growing their businesses.
                 </p>
                 <p class="text-muted mb-4 fade-in" style="animation-delay: 0.3s;">
-                    Currently, I'm pursuing a degree in Finance to further strengthen my analytical and organizational 
-                    expertise, allowing me to provide even more value to my clients.
+                    Our team continuously upgrades skills and stays current with the latest tools and technologies 
+                    to provide even more value to our clients.
                 </p>
                 <div class="d-flex gap-3 flex-wrap fade-in" style="animation-delay: 0.4s;">
                     <a href="services.html" class="btn btn-primary">View Services</a>
-                    <a href="contact.html" class="btn btn-outline-primary">Contact Me</a>
+                    <a href="contact.html" class="btn btn-outline-primary">Contact Us</a>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -437,7 +506,7 @@
                     <div class="col-md-6 fade-in" style="animation-delay: 0.2s;">
                         <div class="about-card p-4 text-center h-100">
                             <i class="bi bi-award value-icon"></i>
-                            <h5 class="fw-bold">Certified Professional</h5>
+                            <h5 class="fw-bold">Certified Professionals</h5>
                             <p class="text-muted mb-0">10-week Virtual Assistance certification with proven expertise</p>
                         </div>
                     </div>
@@ -546,9 +615,9 @@
                         <div class="d-flex align-items-start">
                             <i class="bi bi-mortarboard-fill text-primary fs-4 me-3"></i>
                             <div>
-                                <h6 class="fw-bold mb-1">Finance Degree (In Progress)</h6>
-                                <p class="text-muted mb-1">Strengthening analytical expertise</p>
-                                <small class="text-muted">Expected: 2025</small>
+                                <h6 class="fw-bold mb-1">Team Training Program</h6>
+                                <p class="text-muted mb-1">Continuous skill development</p>
+                                <small class="text-muted">Ongoing professional development</small>
                             </div>
                         </div>
                     </div>
@@ -592,7 +661,7 @@
         <div class="text-center mb-5">
             <h2 class="fw-bold display-6 mb-3 fade-in">What Clients Say</h2>
             <p class="text-muted fade-in" style="animation-delay: 0.1s;">
-                Don't just take my word for it - hear from satisfied clients
+                Don't just take our word for it - hear from satisfied clients
             </p>
         </div>
 
@@ -609,8 +678,8 @@
                         </div>
                     </div>
                     <p class="text-muted mb-0">
-                        "Victor transformed our bookkeeping process — accurate, fast, and reliable. 
-                        Working with him is a breeze! His attention to detail and professionalism 
+                        "The team transformed our bookkeeping process — accurate, fast, and reliable. 
+                        Working with them is a breeze! Their attention to detail and professionalism 
                         exceeded our expectations."
                     </p>
                 </div>
@@ -628,8 +697,8 @@
                     </div>
                     <p class="text-muted mb-0">
                         "Excellent attention to detail and clear communication throughout. 
-                        Victor's data entry services saved us countless hours and improved 
-                        our data accuracy significantly. Highly recommended VA!"
+                        Their data entry services saved us countless hours and improved 
+                        our data accuracy significantly. Highly recommended VA service!"
                     </p>
                 </div>
             </div>
@@ -645,8 +714,8 @@
                         </div>
                     </div>
                     <p class="text-muted mb-0">
-                        "Victor's social media management brought new life to our online presence. 
-                        His strategic approach and creative content helped us engage with our 
+                        "Their social media management brought new life to our online presence. 
+                        The strategic approach and creative content helped us engage with our 
                         audience in meaningful ways."
                     </p>
                 </div>
@@ -664,8 +733,8 @@
                     </div>
                     <p class="text-muted mb-0">
                         "As a startup, we needed reliable administrative support without the 
-                        overhead of a full-time employee. Victor provided exactly that - professional, 
-                        efficient, and always available when we needed him."
+                        overhead of a full-time employee. They provided exactly that - professional, 
+                        efficient, and always available when we needed them."
                     </p>
                 </div>
             </div>
@@ -679,10 +748,10 @@
                 <div class="bg-primary text-white p-5 text-center rounded-4 position-relative overflow-hidden">
                     <div class="position-relative z-1">
                         <h3 class="fw-bold mb-3 display-6">Let's Work Together</h3>
-                        <p class="mb-4 fs-5">Ready to streamline your business operations? Get in touch and let's discuss how I can help you achieve your goals.</p>
+                        <p class="mb-4 fs-5">Ready to streamline your business operations? Get in touch and let's discuss how we can help you achieve your goals.</p>
                         <div class="d-flex gap-3 justify-content-center flex-wrap">
                             <a href="contact.html" class="btn btn-light btn-lg px-4">
-                                <i class="bi bi-chat-dots me-2"></i>Contact Me
+                                <i class="bi bi-chat-dots me-2"></i>Contact Us
                             </a>
                             <a href="services.html" class="btn btn-outline-light btn-lg px-4">
                                 <i class="bi bi-grid me-2"></i>View Services
@@ -707,44 +776,113 @@
         </a>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5>Victor Kosgei</h5>
-                    <p class="text-muted">Virtual Assistant & Data Services</p>
-                    <div class="social-icons">
-                        <a href="https://www.linkedin.com/in/victor-kosgei-03839b339" class="text-white me-3">
+    <!-- Modern Enhanced Footer -->
+    <footer class="modern-footer py-5">
+        <div class="container footer-content">
+            <div class="row g-4">
+                <!-- Brand Section -->
+                <div class="col-lg-4 col-md-6 footer-section">
+                    <div class="footer-logo">Virtual Assistant Pro</div>
+                    <p class="text-light mb-4">
+                        Professional Virtual Assistant & Data Services helping businesses streamline operations 
+                        and achieve their goals through reliable virtual support. Save time and boost productivity with our expert team.
+                    </p>
+                    
+                    <div class="footer-social">
+                        <a href="https://www.linkedin.com/in/victor-kosgei-03839b339" class="social-icon" target="_blank">
                             <i class="bi bi-linkedin"></i>
                         </a>
-                        <a href="mailto:weldonruto41@gmail.com" class="text-white me-3">
+                        <a href="mailto:weldonruto41@gmail.com" class="social-icon">
                             <i class="bi bi-envelope"></i>
                         </a>
-                        <a href="https://wa.me/254712859814" class="text-white">
+                        <a href="https://wa.me/254712859814" class="social-icon" target="_blank">
                             <i class="bi bi-whatsapp"></i>
                         </a>
+                        <a href="#" class="social-icon">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                    </div>
+
+                    <div class="trust-indicators">
+                        <div class="trust-item">
+                            <i class="bi bi-shield-check"></i>
+                            <span>Secure & Confidential</span>
+                        </div>
+                        <div class="trust-item">
+                            <i class="bi bi-lightning"></i>
+                            <span>Fast Response</span>
+                        </div>
+                        <div class="trust-item">
+                            <i class="bi bi-star"></i>
+                            <span>5-Star Rated</span>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <h6>Quick Links</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="services.html" class="text-muted text-decoration-none">Services</a></li>
-                        <li><a href="portfolio.html" class="text-muted text-decoration-none">Portfolio</a></li>
-                        <li><a href="blog.html" class="text-muted text-decoration-none">Blog</a></li>
-                        <li><a href="contact.html" class="text-muted text-decoration-none">Contact</a></li>
-                    </ul>
+
+                <!-- Quick Links -->
+                <div class="col-lg-2 col-md-6 footer-section">
+                    <h6 class="fw-bold mb-3">Quick Links</h6>
+                    <a href="services.html" class="footer-link">Our Services</a>
+                    <a href="portfolio.html" class="footer-link">Portfolio</a>
+                    <a href="blog.html" class="footer-link">Blog & Tips</a>
+                    <a href="about.html" class="footer-link">About Us</a>
+                    <a href="contact.html" class="footer-link">Contact</a>
+                    <a href="payments.html" class="footer-link">Make Payment</a>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <h6>Contact Info</h6>
-                    <p class="text-muted mb-1"><i class="bi bi-phone me-2"></i> +254 712 859 814</p>
-                    <p class="text-muted mb-1"><i class="bi bi-envelope me-2"></i> weldonruto41@gmail.com</p>
-                    <p class="text-muted"><i class="bi bi-clock me-2"></i> Available 24/7</p>
+
+                <!-- Services -->
+                <div class="col-lg-3 col-md-6 footer-section">
+                    <h6 class="fw-bold mb-3">Popular Services</h6>
+                    <a href="services.html#data-entry" class="footer-link">Data Entry & Processing</a>
+                    <a href="services.html#admin-support" class="footer-link">Admin Support</a>
+                    <a href="services.html#bookkeeping" class="footer-link">Bookkeeping</a>
+                    <a href="services.html#social-media" class="footer-link">Social Media Management</a>
+                    <a href="services.html#data-visualization" class="footer-link">Data Visualization</a>
+                    <a href="services.html#project-coordination" class="footer-link">Project Coordination</a>
+                </div>
+
+                <!-- Contact & Newsletter -->
+                <div class="col-lg-3 col-md-6 footer-section">
+                    <div class="footer-badge">
+                        <i class="bi bi-rocket-takeoff me-2"></i>Get Started
+                    </div>
+                    <h6 class="fw-bold mb-3">Ready to Boost Productivity?</h6>
+                    <p class="text-light small mb-3">Start saving 10+ hours per week with our professional virtual assistance services.</p>
+                    
+                    <div class="contact-info">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-telephone text-primary me-2"></i>
+                            <span class="text-light small">+254 712 859 814</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-envelope text-primary me-2"></i>
+                            <span class="text-light small">weldonruto41@gmail.com</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-clock text-primary me-2"></i>
+                            <span class="text-light small">Available 24/7</span>
+                        </div>
+                    </div>
+                    <a href="hire.html" class="btn btn-primary w-100">
+                        <i class="bi bi-briefcase me-2"></i>Hire Us Today
+                    </a>
                 </div>
             </div>
-            <hr class="my-4">
-            <div class="text-center text-muted">
-                <small>&copy; 2024 Victor Kosgei. All rights reserved.</small>
+
+            <!-- Bottom Bar -->
+            <div class="row mt-5 pt-4 border-top border-secondary">
+                <div class="col-md-6">
+                    <small class="text-muted">
+                        &copy; 2024 Virtual Assistant Pro. All rights reserved. 
+                        <span class="text-primary">Your success is our priority.</span>
+                    </small>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <small class="text-muted">
+                        <span class="me-3">🚀 Saving businesses time since 2019</span>
+                        <span>⭐ 95% Client Satisfaction</span>
+                    </small>
+                </div>
             </div>
         </div>
     </footer>
@@ -753,31 +891,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // Theme Toggle Functionality
-        const themeToggle = document.getElementById('themeToggle');
-        
-        function initTheme() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-            updateThemeIcon(savedTheme);
-        }
-
-        function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon(newTheme);
-        }
-
-        function updateThemeIcon(theme) {
-            const icon = themeToggle.querySelector('i');
-            if (icon) {
-                icon.className = theme === 'dark' ? 'bi bi-sun' : 'bi bi-moon';
-            }
-        }
-
         // Animated Counter
         function animateCounter(element, target, suffix = '') {
             let current = 0;
@@ -840,12 +953,6 @@
 
         // Initialize everything
         document.addEventListener('DOMContentLoaded', function() {
-            initTheme();
-            
-            if (themeToggle) {
-                themeToggle.addEventListener('click', toggleTheme);
-            }
-
             // Initial animation check
             handleScrollAnimations();
             
