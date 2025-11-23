@@ -148,36 +148,130 @@
       box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
     }
 
-    /* Modern Footer */
-    .modern-footer {
-      background: linear-gradient(135deg, #0b1220 0%, #1a1d28 50%, #2d3748 100%);
+    /* Results & Success Footer Styles */
+    .results-footer {
+      background: linear-gradient(135deg, #1e1b4b 0%, #3730a3 50%, #4f46e5 100%);
       color: white;
       position: relative;
       overflow: hidden;
       margin-top: 80px;
     }
 
-    .modern-footer::before {
+    .results-footer::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+      height: 3px;
+      background: linear-gradient(90deg, #f59e0b, #eab308, #f59e0b);
     }
 
-    .footer-content {
-      position: relative;
-      z-index: 2;
+    .achievement-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      height: 100%;
     }
 
-    .footer-section {
-      transition: transform 0.3s ease;
-    }
-
-    .footer-section:hover {
+    .achievement-card:hover {
+      background: rgba(255, 255, 255, 0.1);
       transform: translateY(-5px);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .achievement-badge {
+      background: linear-gradient(135deg, #f59e0b, #eab308);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .success-metric {
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .metric-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #f59e0b;
+      margin-bottom: 0.5rem;
+    }
+
+    .metric-label {
+      font-size: 0.9rem;
+      color: #cbd5e0;
+      font-weight: 500;
+    }
+
+    .client-logo {
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .client-logo:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.1);
+    }
+
+    .portfolio-category {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .portfolio-category:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateX(5px);
+    }
+
+    .category-count {
+      background: linear-gradient(135deg, #10b981, #34d399);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .case-study-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .case-study-card:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-3px);
+    }
+
+    .impact-badge {
+      background: linear-gradient(135deg, #ef4444, #f87171);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.7rem;
+      font-weight: 600;
     }
 
     .footer-logo {
@@ -190,88 +284,12 @@
       margin-bottom: 1rem;
     }
 
-    .footer-social {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .social-icon {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .social-icon:hover {
-      background: var(--primary);
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(13, 110, 253, 0.4);
-    }
-
-    .footer-link {
-      color: #cbd5e0;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      display: block;
-      margin-bottom: 0.5rem;
-      position: relative;
-      padding-left: 1rem;
-    }
-
-    .footer-link::before {
-      content: '▸';
-      position: absolute;
-      left: 0;
-      color: var(--primary);
+    .footer-section {
       transition: transform 0.3s ease;
     }
 
-    .footer-link:hover {
-      color: white;
-      transform: translateX(5px);
-    }
-
-    .footer-link:hover::before {
-      transform: translateX(3px);
-    }
-
-    .footer-badge {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      display: inline-block;
-      margin-bottom: 1rem;
-    }
-
-    .trust-indicators {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 1rem;
-    }
-
-    .trust-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.9rem;
-      color: #cbd5e0;
-    }
-
-    .trust-item i {
-      color: var(--primary);
+    .footer-section:hover {
+      transform: translateY(-5px);
     }
 
     /* Floating Action Buttons */
@@ -373,6 +391,14 @@
       }
       
       .stat-number {
+        font-size: 2rem;
+      }
+
+      .achievement-card {
+        padding: 1.5rem;
+      }
+
+      .metric-value {
         font-size: 2rem;
       }
     }
@@ -670,96 +696,134 @@
   </a>
 </div>
 
-<!-- Modern Enhanced Footer -->
-<footer class="modern-footer py-5">
-  <div class="container footer-content">
+<!-- Results & Success Footer -->
+<footer class="results-footer py-5">
+  <div class="container">
+    <!-- Success Metrics Section -->
+    <div class="row mb-5">
+      <div class="col-12 text-center">
+        <h3 class="fw-bold text-white mb-4">Proven Results & Success Stories</h3>
+        <p class="text-light opacity-75">Real achievements and measurable impact for our clients across various industries</p>
+      </div>
+    </div>
+
+    <!-- Achievement Showcase -->
+    <div class="row g-4 mb-5">
+      <div class="col-lg-4 fade-in">
+        <div class="achievement-card text-center">
+          <span class="achievement-badge">Top Performer</span>
+          <h5 class="fw-bold text-white mb-3">Project Excellence</h5>
+          <div class="metric-value">50+</div>
+          <div class="metric-label">Successful Projects Delivered</div>
+          <p class="text-light small mt-3">Consistently delivering quality results that exceed client expectations</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 fade-in" style="animation-delay: 0.1s;">
+        <div class="achievement-card text-center">
+          <span class="achievement-badge">Client Success</span>
+          <h5 class="fw-bold text-white mb-3">Satisfaction Rate</h5>
+          <div class="metric-value">95%</div>
+          <div class="metric-label">Client Satisfaction Score</div>
+          <p class="text-light small mt-3">Proven track record of delivering exceptional service and results</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 fade-in" style="animation-delay: 0.2s;">
+        <div class="achievement-card text-center">
+          <span class="achievement-badge">Efficiency</span>
+          <h5 class="fw-bold text-white mb-3">Time Saved</h5>
+          <div class="metric-value">500+</div>
+          <div class="metric-label">Hours Saved for Clients</div>
+          <p class="text-light small mt-3">Helping businesses focus on growth by handling routine tasks</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Portfolio Categories & Case Studies -->
     <div class="row g-4">
-      <!-- Brand Section -->
-      <div class="col-lg-4 col-md-6 footer-section">
-        <div class="footer-logo">Virtual Assistant Pro</div>
-        <p class="text-light mb-4">
-          Professional Virtual Assistant & Data Services helping businesses streamline operations 
-          and achieve their goals through reliable virtual support. We deliver quality results that drive business growth.
-        </p>
-        
-        <div class="footer-social">
-          <a href="https://www.linkedin.com/in/victor-kosgei-03839b339" class="social-icon" target="_blank">
-            <i class="bi bi-linkedin"></i>
-          </a>
-          <a href="mailto:weldonruto41@gmail.com" class="social-icon">
-            <i class="bi bi-envelope"></i>
-          </a>
-          <a href="https://wa.me/254712859814" class="social-icon" target="_blank">
-            <i class="bi bi-whatsapp"></i>
-          </a>
-          <a href="#" class="social-icon">
-            <i class="bi bi-facebook"></i>
-          </a>
-        </div>
-
-        <div class="trust-indicators">
-          <div class="trust-item">
-            <i class="bi bi-shield-check"></i>
-            <span>Secure & Confidential</span>
-          </div>
-          <div class="trust-item">
-            <i class="bi bi-lightning"></i>
-            <span>Fast Response</span>
-          </div>
-          <div class="trust-item">
-            <i class="bi bi-star"></i>
-            <span>5-Star Rated</span>
+      <div class="col-lg-6">
+        <div class="footer-section">
+          <div class="footer-logo">Virtual Assistant Pro</div>
+          <p class="text-light mb-4">
+            Transforming businesses through professional virtual assistance services. 
+            Our portfolio showcases real results and measurable success across various industries.
+          </p>
+          
+          <!-- Portfolio Categories -->
+          <h6 class="fw-bold text-white mb-3">Portfolio Categories</h6>
+          <div class="d-grid gap-3">
+            <div class="portfolio-category">
+              <div class="d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold text-white mb-0">Data Management</h6>
+                <span class="category-count">15 Projects</span>
+              </div>
+              <p class="text-light small mb-0">Data entry, processing, and analysis projects</p>
+            </div>
+            
+            <div class="portfolio-category">
+              <div class="d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold text-white mb-0">Administrative Support</h6>
+                <span class="category-count">12 Projects</span>
+              </div>
+              <p class="text-light small mb-0">Calendar, email, and document management</p>
+            </div>
+            
+            <div class="portfolio-category">
+              <div class="d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold text-white mb-0">Financial Services</h6>
+                <span class="category-count">8 Projects</span>
+              </div>
+              <p class="text-light small mb-0">Bookkeeping and financial reporting</p>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Quick Links -->
-      <div class="col-lg-2 col-md-6 footer-section">
-        <h6 class="fw-bold mb-3">Quick Links</h6>
-        <a href="services.html" class="footer-link">Our Services</a>
-        <a href="portfolio.html" class="footer-link">Portfolio</a>
-        <a href="blog.html" class="footer-link">Blog & Tips</a>
-        <a href="about.html" class="footer-link">About Us</a>
-        <a href="contact.html" class="footer-link">Contact</a>
-        <a href="payments.html" class="footer-link">Make Payment</a>
-      </div>
+      <div class="col-lg-6">
+        <div class="footer-section">
+          <h6 class="fw-bold text-white mb-3">Featured Case Studies</h6>
+          
+          <!-- Case Study Highlights -->
+          <div class="case-study-card mb-3">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <h6 class="fw-bold text-white mb-0">E-commerce Data Optimization</h6>
+              <span class="impact-badge">+95% Accuracy</span>
+            </div>
+            <p class="text-light small mb-2">Processed 10,000+ product records and improved data accuracy for online store</p>
+            <a href="#" class="btn btn-sm btn-outline-light">Read Case Study</a>
+          </div>
+          
+          <div class="case-study-card">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <h6 class="fw-bold text-white mb-0">Consulting Firm Support</h6>
+              <span class="impact-badge">15+ Hours/Week</span>
+            </div>
+            <p class="text-light small mb-2">Streamlined administrative tasks saving 15+ hours weekly for consulting team</p>
+            <a href="#" class="btn btn-sm btn-outline-light">Read Case Study</a>
+          </div>
 
-      <!-- Services -->
-      <div class="col-lg-3 col-md-6 footer-section">
-        <h6 class="fw-bold mb-3">Popular Services</h6>
-        <a href="services.html#data-entry" class="footer-link">Data Entry & Processing</a>
-        <a href="services.html#admin-support" class="footer-link">Admin Support</a>
-        <a href="services.html#bookkeeping" class="footer-link">Bookkeeping</a>
-        <a href="services.html#social-media" class="footer-link">Social Media Management</a>
-        <a href="services.html#data-visualization" class="footer-link">Data Visualization</a>
-        <a href="services.html#project-coordination" class="footer-link">Project Coordination</a>
-      </div>
+          <!-- Success Metrics -->
+          <div class="row mt-4">
+            <div class="col-6">
+              <div class="success-metric">
+                <div class="metric-value">100%</div>
+                <div class="metric-label">On-Time Delivery</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="success-metric">
+                <div class="metric-value">5+</div>
+                <div class="metric-label">Years Experience</div>
+              </div>
+            </div>
+          </div>
 
-      <!-- Contact & Newsletter -->
-      <div class="col-lg-3 col-md-6 footer-section">
-        <div class="footer-badge">
-          <i class="bi bi-rocket-takeoff me-2"></i>Get Started
+          <!-- Portfolio CTA -->
+          <a href="contact.html" class="btn btn-primary w-100 mt-4">
+            <i class="bi bi-trophy me-2"></i>Start Your Success Story
+          </a>
         </div>
-        <h6 class="fw-bold mb-3">Ready to See Results?</h6>
-        <p class="text-light small mb-3">Start your project today and experience professional virtual assistance that delivers real value.</p>
-        
-        <div class="contact-info">
-          <div class="d-flex align-items-center mb-2">
-            <i class="bi bi-telephone text-primary me-2"></i>
-            <span class="text-light small">+254 712 859 814</span>
-          </div>
-          <div class="d-flex align-items-center mb-2">
-            <i class="bi bi-envelope text-primary me-2"></i>
-            <span class="text-light small">weldonruto41@gmail.com</span>
-          </div>
-          <div class="d-flex align-items-center mb-3">
-            <i class="bi bi-clock text-primary me-2"></i>
-            <span class="text-light small">Available 24/7</span>
-          </div>
-        </div>
-        <a href="hire.html" class="btn btn-primary w-100">
-          <i class="bi bi-briefcase me-2"></i>Start Your Project
-        </a>
       </div>
     </div>
 
@@ -767,13 +831,13 @@
     <div class="row mt-5 pt-4 border-top border-secondary">
       <div class="col-md-6">
         <small class="text-muted">
-          &copy; 2024 Virtual Assistant Pro. All rights reserved. 
-          <span class="text-primary">Transforming businesses through virtual excellence.</span>
+          &copy; 2024 Virtual Assistant Pro. Excellence in Virtual Assistance.
+          <span class="text-warning">Proven results, guaranteed satisfaction.</span>
         </small>
       </div>
       <div class="col-md-6 text-md-end">
         <small class="text-muted">
-          <span class="me-3">🚀 50+ Projects Completed</span>
+          <span class="me-3">🏆 50+ Successful Projects</span>
           <span>⭐ 95% Client Satisfaction</span>
         </small>
       </div>
@@ -835,4 +899,3 @@
 </script>
 </body>
 </html>
-    
