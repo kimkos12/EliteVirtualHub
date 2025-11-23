@@ -192,132 +192,6 @@
             box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
         }
 
-        /* Modern Footer */
-        .modern-footer {
-            background: linear-gradient(135deg, #0b1220 0%, #1a1d28 50%, #2d3748 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-            margin-top: 80px;
-        }
-
-        .modern-footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
-        }
-
-        .footer-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .footer-section {
-            transition: transform 0.3s ease;
-        }
-
-        .footer-section:hover {
-            transform: translateY(-5px);
-        }
-
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .social-icon:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(13, 110, 253, 0.4);
-        }
-
-        .footer-link {
-            color: #cbd5e0;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: block;
-            margin-bottom: 0.5rem;
-            position: relative;
-            padding-left: 1rem;
-        }
-
-        .footer-link::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            transition: transform 0.3s ease;
-        }
-
-        .footer-link:hover {
-            color: white;
-            transform: translateX(5px);
-        }
-
-        .footer-link:hover::before {
-            transform: translateX(3px);
-        }
-
-        .footer-badge {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 1rem;
-        }
-
-        .trust-indicators {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-top: 1rem;
-        }
-
-        .trust-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-            color: #cbd5e0;
-        }
-
-        .trust-item i {
-            color: var(--primary);
-        }
-
         /* Floating Action Buttons */
         .floating-buttons {
             position: fixed;
@@ -394,6 +268,177 @@
             transform: translateY(0);
         }
 
+        /* Trust & Expertise Footer Styles */
+        .trust-footer {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 50%, #5b21b6 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .trust-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #00c6ff, #0072ff, #00c6ff);
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .trust-badge {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .trust-badge:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .expertise-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .expertise-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #e2e8f0;
+            font-size: 0.9rem;
+        }
+
+        .certifications-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .certification-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .certification-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .cert-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .membership-badges {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .membership-badge {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .trust-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .trust-metric {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #00c6ff;
+            margin-bottom: 0.25rem;
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: #cbd5e0;
+        }
+
+        .trust-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-item i {
+            font-size: 1.2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section {
+            transition: transform 0.3s ease;
+        }
+
+        .footer-section:hover {
+            transform: translateY(-5px);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero {
@@ -422,6 +467,23 @@
             
             .stat-number {
                 font-size: 2rem;
+            }
+
+            .trust-badges {
+                gap: 0.5rem;
+            }
+            
+            .trust-badge {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+            
+            .trust-metrics {
+                grid-template-columns: 1fr;
+            }
+            
+            .certification-item {
+                padding: 0.5rem;
             }
         }
     </style>
@@ -776,110 +838,184 @@
         </a>
     </div>
 
-    <!-- Modern Enhanced Footer -->
-    <footer class="modern-footer py-5">
-        <div class="container footer-content">
-            <div class="row g-4">
-                <!-- Brand Section -->
-                <div class="col-lg-4 col-md-6 footer-section">
-                    <div class="footer-logo">Virtual Assistant Pro</div>
-                    <p class="text-light mb-4">
-                        Professional Virtual Assistant & Data Services helping businesses streamline operations 
-                        and achieve their goals through reliable virtual support. Save time and boost productivity with our expert team.
-                    </p>
-                    
-                    <div class="footer-social">
-                        <a href="https://www.linkedin.com/in/victor-kosgei-03839b339" class="social-icon" target="_blank">
-                            <i class="bi bi-linkedin"></i>
-                        </a>
-                        <a href="mailto:weldonruto41@gmail.com" class="social-icon">
-                            <i class="bi bi-envelope"></i>
-                        </a>
-                        <a href="https://wa.me/254712859814" class="social-icon" target="_blank">
-                            <i class="bi bi-whatsapp"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="bi bi-facebook"></i>
-                        </a>
+    <!-- Trust & Expertise Footer -->
+    <footer class="trust-footer py-5">
+        <div class="container">
+            <!-- Trust Badges Section -->
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <div class="trust-badges mb-4">
+                        <span class="trust-badge">
+                            <i class="bi bi-shield-check me-2"></i>Verified Professional
+                        </span>
+                        <span class="trust-badge">
+                            <i class="bi bi-award me-2"></i>Certified VA
+                        </span>
+                        <span class="trust-badge">
+                            <i class="bi bi-star me-2"></i>Top Rated
+                        </span>
+                        <span class="trust-badge">
+                            <i class="bi bi-clock me-2"></i>5+ Years Exp
+                        </span>
                     </div>
-
-                    <div class="trust-indicators">
-                        <div class="trust-item">
-                            <i class="bi bi-shield-check"></i>
-                            <span>Secure & Confidential</span>
-                        </div>
-                        <div class="trust-item">
-                            <i class="bi bi-lightning"></i>
-                            <span>Fast Response</span>
-                        </div>
-                        <div class="trust-item">
-                            <i class="bi bi-star"></i>
-                            <span>5-Star Rated</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Quick Links -->
-                <div class="col-lg-2 col-md-6 footer-section">
-                    <h6 class="fw-bold mb-3">Quick Links</h6>
-                    <a href="services.html" class="footer-link">Our Services</a>
-                    <a href="portfolio.html" class="footer-link">Portfolio</a>
-                    <a href="blog.html" class="footer-link">Blog & Tips</a>
-                    <a href="about.html" class="footer-link">About Us</a>
-                    <a href="contact.html" class="footer-link">Contact</a>
-                    <a href="payments.html" class="footer-link">Make Payment</a>
-                </div>
-
-                <!-- Services -->
-                <div class="col-lg-3 col-md-6 footer-section">
-                    <h6 class="fw-bold mb-3">Popular Services</h6>
-                    <a href="services.html#data-entry" class="footer-link">Data Entry & Processing</a>
-                    <a href="services.html#admin-support" class="footer-link">Admin Support</a>
-                    <a href="services.html#bookkeeping" class="footer-link">Bookkeeping</a>
-                    <a href="services.html#social-media" class="footer-link">Social Media Management</a>
-                    <a href="services.html#data-visualization" class="footer-link">Data Visualization</a>
-                    <a href="services.html#project-coordination" class="footer-link">Project Coordination</a>
-                </div>
-
-                <!-- Contact & Newsletter -->
-                <div class="col-lg-3 col-md-6 footer-section">
-                    <div class="footer-badge">
-                        <i class="bi bi-rocket-takeoff me-2"></i>Get Started
-                    </div>
-                    <h6 class="fw-bold mb-3">Ready to Boost Productivity?</h6>
-                    <p class="text-light small mb-3">Start saving 10+ hours per week with our professional virtual assistance services.</p>
-                    
-                    <div class="contact-info">
-                        <div class="d-flex align-items-center mb-2">
-                            <i class="bi bi-telephone text-primary me-2"></i>
-                            <span class="text-light small">+254 712 859 814</span>
-                        </div>
-                        <div class="d-flex align-items-center mb-2">
-                            <i class="bi bi-envelope text-primary me-2"></i>
-                            <span class="text-light small">weldonruto41@gmail.com</span>
-                        </div>
-                        <div class="d-flex align-items-center mb-3">
-                            <i class="bi bi-clock text-primary me-2"></i>
-                            <span class="text-light small">Available 24/7</span>
-                        </div>
-                    </div>
-                    <a href="hire.html" class="btn btn-primary w-100">
-                        <i class="bi bi-briefcase me-2"></i>Hire Us Today
-                    </a>
+                    <h4 class="text-white mb-3">Trusted by Businesses Worldwide</h4>
+                    <p class="text-light opacity-75">Professional virtual assistance with certified expertise and proven results</p>
                 </div>
             </div>
 
-            <!-- Bottom Bar -->
+            <div class="row g-4">
+                <!-- Expertise Showcase -->
+                <div class="col-lg-4">
+                    <div class="footer-section">
+                        <div class="footer-logo mb-3">Virtual Assistant Pro</div>
+                        <p class="text-light mb-4">
+                            Certified Virtual Assistant & Data Specialist with 5+ years of experience 
+                            helping businesses streamline operations and boost productivity through 
+                            reliable virtual support services.
+                        </p>
+                        
+                        <!-- Expertise Indicators -->
+                        <div class="expertise-list">
+                            <div class="expertise-item">
+                                <i class="bi bi-patch-check text-primary"></i>
+                                <span>Google Workspace Certified</span>
+                            </div>
+                            <div class="expertise-item">
+                                <i class="bi bi-patch-check text-primary"></i>
+                                <span>Virtual Assistant Certified</span>
+                            </div>
+                            <div class="expertise-item">
+                                <i class="bi bi-patch-check text-primary"></i>
+                                <span>Data Analysis Specialist</span>
+                            </div>
+                            <div class="expertise-item">
+                                <i class="bi bi-patch-check text-primary"></i>
+                                <span>Bookkeeping Qualified</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Certifications -->
+                <div class="col-lg-4">
+                    <div class="footer-section">
+                        <h6 class="fw-bold mb-3 text-white">Certifications & Training</h6>
+                        <div class="certifications-grid">
+                            <div class="certification-item">
+                                <div class="cert-icon">
+                                    <i class="bi bi-google"></i>
+                                </div>
+                                <div>
+                                    <small class="fw-bold text-white">Google Workspace</small>
+                                    <div class="text-primary small">Professional Certified</div>
+                                </div>
+                            </div>
+                            <div class="certification-item">
+                                <div class="cert-icon">
+                                    <i class="bi bi-bar-chart"></i>
+                                </div>
+                                <div>
+                                    <small class="fw-bold text-white">Data Analysis</small>
+                                    <div class="text-primary small">Advanced Certified</div>
+                                </div>
+                            </div>
+                            <div class="certification-item">
+                                <div class="cert-icon">
+                                    <i class="bi bi-calculator"></i>
+                                </div>
+                                <div>
+                                    <small class="fw-bold text-white">QuickBooks</small>
+                                    <div class="text-primary small">Bookkeeping Pro</div>
+                                </div>
+                            </div>
+                            <div class="certification-item">
+                                <div class="cert-icon">
+                                    <i class="bi bi-laptop"></i>
+                                </div>
+                                <div>
+                                    <small class="fw-bold text-white">Virtual Assistance</small>
+                                    <div class="text-primary small">10-Week Program</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Professional Memberships -->
+                        <div class="mt-4">
+                            <h6 class="fw-bold mb-3 text-white">Professional Memberships</h6>
+                            <div class="membership-badges">
+                                <span class="membership-badge">IVAA</span>
+                                <span class="membership-badge">VA Networking</span>
+                                <span class="membership-badge">Freelancers Union</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact & Trust -->
+                <div class="col-lg-4">
+                    <div class="footer-section">
+                        <h6 class="fw-bold mb-3 text-white">Verified Professional</h6>
+                        
+                        <!-- Trust Metrics -->
+                        <div class="trust-metrics mb-4">
+                            <div class="trust-metric">
+                                <div class="metric-value">95%</div>
+                                <div class="metric-label">Client Satisfaction</div>
+                            </div>
+                            <div class="trust-metric">
+                                <div class="metric-value">100%</div>
+                                <div class="metric-label">On-Time Delivery</div>
+                            </div>
+                            <div class="trust-metric">
+                                <div class="metric-value">50+</div>
+                                <div class="metric-label">Projects Completed</div>
+                            </div>
+                        </div>
+
+                        <!-- Contact with Trust -->
+                        <div class="trust-contact">
+                            <div class="contact-item">
+                                <i class="bi bi-telephone text-primary"></i>
+                                <div>
+                                    <small class="text-light d-block">Verified Phone</small>
+                                    <span class="text-white">+254 712 859 814</span>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="bi bi-envelope text-primary"></i>
+                                <div>
+                                    <small class="text-light d-block">Professional Email</small>
+                                    <span class="text-white">weldonruto41@gmail.com</span>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="bi bi-shield-check text-primary"></i>
+                                <div>
+                                    <small class="text-light d-block">Background Verified</small>
+                                    <span class="text-white">Professional VA</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Trust Action -->
+                        <a href="hire.html" class="btn btn-primary w-100 mt-4">
+                            <i class="bi bi-patch-check me-2"></i>Hire Verified Professional
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Footer Bar -->
             <div class="row mt-5 pt-4 border-top border-secondary">
                 <div class="col-md-6">
                     <small class="text-muted">
-                        &copy; 2024 Virtual Assistant Pro. All rights reserved. 
-                        <span class="text-primary">Your success is our priority.</span>
+                        &copy; 2024 Virtual Assistant Pro. Professional Virtual Assistance Services.
+                        <span class="text-primary">Certified & Verified.</span>
                     </small>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <small class="text-muted">
-                        <span class="me-3">🚀 Saving businesses time since 2019</span>
+                        <span class="me-3">🔒 Secure & Confidential</span>
                         <span>⭐ 95% Client Satisfaction</span>
                     </small>
                 </div>
